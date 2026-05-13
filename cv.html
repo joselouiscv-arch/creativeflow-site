@@ -1,0 +1,4642 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar CV - CreativeFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes shimmerSweep {
+            0%   { transform: translateX(-120%) skewX(-15deg); opacity: 0; }
+            30%  { opacity: 1; }
+            100% { transform: translateX(250%) skewX(-15deg); opacity: 0; }
+        }
+        @keyframes headerPulse {
+            0%,100% { box-shadow: 0 6px 30px rgba(15,40,120,0.5), inset 0 1.5px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(0,15,80,0.35); }
+            50%      { box-shadow: 0 10px 44px rgba(15,40,120,0.68), inset 0 1.5px 0 rgba(255,255,255,0.32), inset 0 -1px 0 rgba(0,15,80,0.2); }
+        }
+        @keyframes cardReveal {
+            0%   { opacity: 0; transform: translateY(-14px) scaleY(0.94); filter: blur(4px); }
+            60%  { filter: blur(0); }
+            100% { opacity: 1; transform: translateY(0) scaleY(1); filter: blur(0); }
+        }
+        @keyframes inputGlow {
+            0%   { box-shadow: 0 0 0 0 rgba(27,67,220,0.15), 0 2px 8px rgba(27,47,110,0.07); }
+            100% { box-shadow: 0 0 0 5px rgba(27,67,220,0.10), 0 6px 24px rgba(27,47,110,0.16); }
+        }
+        @keyframes orb1 {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50%     { transform: translate(4%,6%) scale(1.08); }
+        }
+        @keyframes orb2 {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50%     { transform: translate(-5%,-4%) scale(1.05); }
+        }
+        @keyframes cardFloat {
+            0%,100% { transform: translateY(0px); }
+            50%     { transform: translateY(-3px); }
+        }
+        @keyframes submitBreath {
+            0%,100% { box-shadow: 0 8px 28px rgba(15,40,130,0.38), inset 0 1.5px 0 rgba(255,255,255,0.25); }
+            50%     { box-shadow: 0 14px 44px rgba(15,40,130,0.55), inset 0 1.5px 0 rgba(255,255,255,0.38); }
+        }
+        @keyframes calDrop {
+            0%   { opacity: 0; transform: translateY(-10px) scaleY(0.88); transform-origin: top center; filter: blur(5px); }
+            55%  { filter: blur(0); }
+            80%  { transform: translateY(2px) scaleY(1.01); transform-origin: top center; }
+            100% { opacity: 1; transform: translateY(0) scaleY(1); transform-origin: top center; filter: blur(0); }
+        }
+        @keyframes calClose {
+            0%   { opacity: 1; transform: translateY(0) scaleY(1); transform-origin: top center; }
+            100% { opacity: 0; transform: translateY(-8px) scaleY(0.88); transform-origin: top center; filter: blur(4px); }
+        }
+        @keyframes tabSlideLeft {
+            0%   { opacity: 0; transform: translateX(28px) scale(0.97); filter: blur(3px); }
+            60%  { filter: blur(0); }
+            100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+        }
+        @keyframes tabSlideRight {
+            0%   { opacity: 0; transform: translateX(-28px) scale(0.97); filter: blur(3px); }
+            60%  { filter: blur(0); }
+            100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+        }
+        @keyframes tabFadeOut {
+            0%   { opacity: 1; transform: translateX(0) scale(1); }
+            100% { opacity: 0; transform: translateX(-18px) scale(0.97); filter: blur(3px); }
+        }
+        @keyframes calDayIn {
+            0%   { opacity: 0; transform: scale(0.6); }
+            70%  { transform: scale(1.08); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes ambientSweep {
+            0%,100% { transform: translate3d(-2%, -1%, 0) rotate(0deg); opacity: 0.75; }
+            50% { transform: translate3d(2%, 1%, 0) rotate(1deg); opacity: 0.95; }
+        }
+        @keyframes liveWallpaperFlow {
+            0% { background-position: 0% 40%, 100% 20%, 50% 100%; }
+            50% { background-position: 100% 60%, 0% 80%, 35% 0%; }
+            100% { background-position: 0% 40%, 100% 20%, 50% 100%; }
+        }
+        @keyframes introWaveDrift {
+            0%,100% { transform: translate3d(-4%, 1%, 0) rotate(-2deg) scale(1.03); opacity: 0.82; }
+            50% { transform: translate3d(4%, -2%, 0) rotate(2deg) scale(1.08); opacity: 1; }
+        }
+        @keyframes introGlassLight {
+            0%,100% { transform: translateX(-18%) rotate(-8deg); opacity: 0.22; }
+            50% { transform: translateX(18%) rotate(8deg); opacity: 0.38; }
+        }
+        @keyframes introPanelIn {
+            0% { opacity: 0; transform: translateY(26px) scale(0.96); filter: blur(14px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+        @keyframes introBeam {
+            0% { transform: translateX(-18%) rotate(-8deg); opacity: 0.4; }
+            50% { transform: translateX(18%) rotate(8deg); opacity: 0.8; }
+            100% { transform: translateX(-18%) rotate(-8deg); opacity: 0.4; }
+        }
+        @keyframes introExit {
+            0% { opacity: 1; transform: scale(1); filter: blur(0); }
+            100% { opacity: 0; transform: scale(1.04); filter: blur(18px); visibility: hidden; }
+        }
+        @keyframes shellReveal {
+            0% { opacity: 0; transform: translateY(32px) scale(0.97); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+        @keyframes navItemReveal {
+            0% { opacity: 0; transform: translateX(-22px) scale(0.92); filter: blur(6px); }
+            100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+        }
+        @keyframes logoReveal {
+            0% { opacity: 0; transform: translateY(34px) scale(2.55); filter: blur(18px); }
+            16% { opacity: 1; transform: translateY(8px) scale(2.25); filter: blur(4px); }
+            42% { opacity: 1; transform: translateY(0) scale(2.08); filter: blur(0); }
+            70% { opacity: 1; transform: translateY(-3px) scale(1.18); filter: blur(0); }
+            88% { opacity: 1; transform: translateY(1px) scale(0.98); filter: blur(0); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+        @keyframes logoBreath {
+            0%,100% { transform: translateY(0) scale(1); filter: drop-shadow(0 18px 38px rgba(30,120,255,0.26)); }
+            50% { transform: translateY(-4px) scale(1.012); filter: drop-shadow(0 24px 52px rgba(50,190,255,0.34)); }
+        }
+        @keyframes softSpringIn {
+            0% { opacity: 0; transform: translateY(22px) scale(0.92); filter: blur(8px); }
+            72% { opacity: 1; transform: translateY(-3px) scale(1.018); filter: blur(0); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+        @keyframes borderRun {
+            0% { transform: translateX(-140%); opacity: 0; }
+            18% { opacity: 0.8; }
+            100% { transform: translateX(140%); opacity: 0; }
+        }
+        @keyframes actionGlow {
+            0%,100% { box-shadow: 0 18px 42px rgba(30,80,220,0.28), inset 0 1.5px 0 rgba(255,255,255,0.22); }
+            50% { box-shadow: 0 24px 62px rgba(30,150,255,0.42), inset 0 1.5px 0 rgba(255,255,255,0.34); }
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(27,47,110,0.18); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(27,47,110,0.32); }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            color: #0f1c3f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            background:
+                radial-gradient(ellipse 80% 60% at 10% 10%, rgba(160,195,255,0.55) 0%, transparent 60%),
+                radial-gradient(ellipse 65% 55% at 90% 85%, rgba(180,215,255,0.42) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 45% at 55% 50%, rgba(210,230,255,0.25) 0%, transparent 70%),
+                linear-gradient(165deg, #f0f5ff 0%, #e2ecfb 30%, #eaf2fd 60%, #f5f8ff 100%);
+        }
+
+        body.intro-active {
+            overflow: hidden;
+        }
+
+        .intro-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            overflow: hidden;
+            background:
+                linear-gradient(115deg, rgba(255,255,255,0.90) 0%, rgba(236,246,255,0.82) 36%, rgba(214,232,255,0.70) 100%),
+                linear-gradient(150deg, rgba(255,255,255,0.58), rgba(35,103,255,0.12) 50%, rgba(90,220,255,0.16) 100%);
+            background-size: 130% 130%, 160% 160%;
+            animation: liveWallpaperFlow 18s ease-in-out infinite;
+        }
+
+        .intro-screen::before,
+        .intro-screen::after {
+            content: '';
+            position: absolute;
+            inset: -20%;
+            pointer-events: none;
+        }
+
+        .intro-screen::before {
+            background:
+                linear-gradient(118deg, transparent 7%, rgba(255,255,255,0.72) 19%, rgba(83,145,255,0.42) 31%, rgba(255,255,255,0.58) 42%, transparent 58%),
+                linear-gradient(132deg, transparent 32%, rgba(56,106,255,0.42) 46%, rgba(170,230,255,0.45) 55%, transparent 72%),
+                linear-gradient(22deg, transparent 16%, rgba(42,93,255,0.14) 31%, rgba(255,255,255,0.54) 44%, transparent 62%);
+            filter: blur(22px);
+            animation: introWaveDrift 16s ease-in-out infinite;
+        }
+
+        .intro-screen::after {
+            background-image:
+                linear-gradient(112deg, transparent 24%, rgba(255,255,255,0.34) 45%, transparent 66%),
+                linear-gradient(rgba(35,95,210,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(35,95,210,0.022) 1px, transparent 1px);
+            background-size: 100% 100%, 58px 58px, 58px 58px;
+            mask-image: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.46));
+            opacity: 0.78;
+            animation: introGlassLight 14s ease-in-out infinite;
+        }
+
+        .intro-card {
+            width: min(760px, 100%);
+            min-height: 520px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding: 54px 46px;
+            border: 1px solid rgba(255,255,255,0.70);
+            border-radius: 40px;
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.54), rgba(226,242,255,0.24)),
+                linear-gradient(35deg, rgba(255,255,255,0.30), rgba(60,130,255,0.12));
+            backdrop-filter: blur(36px) saturate(165%);
+            -webkit-backdrop-filter: blur(36px) saturate(165%);
+            box-shadow:
+                0 38px 120px rgba(80,125,190,0.22),
+                0 12px 44px rgba(30,90,180,0.12),
+                inset 0 1.5px 0 rgba(255,255,255,0.95),
+                inset 0 -1px 0 rgba(120,170,235,0.28);
+            animation: introPanelIn 0.9s cubic-bezier(0.16,1,0.28,1) both;
+            overflow: hidden;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            inset: 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.42);
+            box-shadow: inset 0 0 42px rgba(255,255,255,0.12);
+            pointer-events: none;
+        }
+
+        .intro-cv-ghost {
+            position: absolute;
+            right: 42px;
+            top: 46px;
+            width: 138px;
+            height: 176px;
+            border-radius: 24px;
+            background: linear-gradient(160deg, rgba(255,255,255,0.34), rgba(78,145,255,0.11));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.62), 0 22px 60px rgba(65,115,210,0.14);
+            opacity: 0.50;
+        }
+
+        .intro-cv-ghost::before,
+        .intro-cv-ghost::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(66,132,255,0.20);
+            box-shadow: 0 26px 0 rgba(66,132,255,0.16), 0 52px 0 rgba(66,132,255,0.12), 0 78px 0 rgba(66,132,255,0.10);
+        }
+
+        .intro-cv-ghost::before { top: 30px; }
+        .intro-cv-ghost::after { top: 118px; width: 46px; right: auto; background: rgba(38,105,255,0.22); box-shadow: none; }
+
+        .intro-logo-wrap {
+            width: min(340px, 72vw);
+            position: relative;
+            z-index: 1;
+            transform-origin: center;
+            animation: logoReveal 2.2s cubic-bezier(0.13,1,0.18,1) both, logoBreath 5.2s ease-in-out 2.35s infinite;
+        }
+
+        .intro-logo-wrap::after {
+            content: '';
+            position: absolute;
+            inset: -16%;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(80,160,255,0.18), transparent 64%);
+            z-index: -1;
+            filter: blur(10px);
+        }
+
+        .intro-logo {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .intro-eyebrow {
+            color: rgba(34,76,160,0.74);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            animation: softSpringIn 0.72s cubic-bezier(0.16,1,0.28,1) 1.45s both;
+        }
+
+        .intro-title {
+            max-width: 520px;
+            color: #102b61;
+            font-size: clamp(30px, 5vw, 54px);
+            line-height: 1.02;
+            text-align: center;
+            letter-spacing: -0.04em;
+            font-weight: 850;
+            text-shadow: 0 16px 42px rgba(255,255,255,0.60);
+            animation: softSpringIn 0.72s cubic-bezier(0.16,1,0.28,1) 1.58s both;
+        }
+
+        .intro-copy {
+            max-width: 430px;
+            color: rgba(16,43,97,0.68);
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.55;
+            animation: softSpringIn 0.72s cubic-bezier(0.16,1,0.28,1) 1.72s both;
+        }
+
+        .intro-start-btn {
+            margin-top: 4px;
+            border: 1px solid rgba(255,255,255,0.28);
+            border-radius: 999px;
+            padding: 16px 28px;
+            min-width: 190px;
+            color: #fff;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 800;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #1859ff 0%, #14cdf1 100%);
+            box-shadow: 0 22px 56px rgba(0,110,255,0.38), inset 0 1.5px 0 rgba(255,255,255,0.30);
+            transition: transform 0.48s cubic-bezier(0.2,1.4,0.28,1), box-shadow 0.38s ease;
+            animation: softSpringIn 0.72s cubic-bezier(0.16,1,0.28,1) 1.86s both, actionGlow 4s ease-in-out 2.4s infinite;
+        }
+
+        .intro-start-btn:hover {
+            transform: translateY(-4px) scale(1.045);
+            box-shadow: 0 30px 72px rgba(0,150,255,0.48), inset 0 1.5px 0 rgba(255,255,255,0.42);
+        }
+
+        .intro-screen.leaving {
+            animation: introExit 0.58s ease forwards;
+        }
+
+        body.intro-active .container {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            filter: blur(8px);
+            pointer-events: none;
+        }
+
+        body.form-entered .container {
+            animation: shellReveal 0.7s cubic-bezier(0.2,0.9,0.2,1) both;
+        }
+
+        body.theme-dark {
+            color: #eaf2ff;
+            background:
+                linear-gradient(135deg, rgba(15,80,210,0.22), transparent 28%),
+                linear-gradient(235deg, rgba(35,115,255,0.20), transparent 34%),
+                linear-gradient(165deg, #080b12 0%, #101825 40%, #07101f 100%);
+        }
+
+        body::before {
+            content: '';
+            position: fixed; top: -18%; left: -12%;
+            width: 60vw; height: 60vw;
+            background:
+                linear-gradient(120deg, transparent 0%, rgba(75,145,255,0.18) 28%, rgba(255,255,255,0.14) 45%, transparent 70%);
+            border-radius: 42% 58% 48% 52%;
+            filter: blur(24px);
+            animation: ambientSweep 18s ease-in-out infinite;
+            pointer-events: none; z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed; bottom: -12%; right: -10%;
+            width: 50vw; height: 50vw;
+            background:
+                linear-gradient(45deg, transparent 0%, rgba(40,105,255,0.12) 32%, rgba(180,220,255,0.16) 52%, transparent 78%);
+            border-radius: 48% 52% 44% 56%;
+            filter: blur(28px);
+            animation: ambientSweep 22s ease-in-out infinite reverse;
+            pointer-events: none; z-index: 0;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 32px 18px 56px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-title {
+            font-size: 32px;
+            letter-spacing: 4px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0f2a7a 0%, #1e4bc8 60%, #3a6fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 36px;
+            text-align: center;
+            letter-spacing: -0.3px;
+            filter: drop-shadow(0 2px 8px rgba(27,47,180,0.12));
+        }
+
+        .form-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        .form-topbar .form-title {
+            margin-bottom: 0;
+            text-align: left;
+        }
+
+        .theme-toggle {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(255,255,255,0.72);
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(255,255,255,0.86), rgba(225,240,255,0.68));
+            color: #15327e;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 16px 38px rgba(20,50,140,0.16), inset 0 1.5px 0 rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px) saturate(170%);
+            -webkit-backdrop-filter: blur(20px) saturate(170%);
+            transition: all 0.42s cubic-bezier(0.34,1.56,0.64,1);
+            flex: 0 0 auto;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-3px) scale(1.06);
+            box-shadow: 0 22px 50px rgba(20,50,140,0.22), inset 0 1.5px 0 rgba(255,255,255,1);
+        }
+
+        body.theme-dark .form-title {
+            background: linear-gradient(135deg, #f7fbff 0%, #9ec9ff 42%, #2d7dff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 8px 22px rgba(20,110,255,0.22));
+        }
+
+        body.theme-dark .theme-toggle {
+            background: linear-gradient(145deg, rgba(22,30,42,0.92), rgba(8,14,24,0.82));
+            color: #dcecff;
+            border-color: rgba(255,255,255,0.14);
+            box-shadow: 0 18px 48px rgba(0,0,0,0.34), inset 0 1.5px 0 rgba(255,255,255,0.12);
+        }
+
+        .form-shell {
+            display: grid;
+            grid-template-columns: 250px minmax(0, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (min-width: 1220px) {
+            .container {
+                max-width: 1760px;
+                width: min(96vw, 1760px);
+            }
+            .form-shell {
+                grid-template-columns: clamp(250px, 16vw, 290px) minmax(0, 1fr) clamp(270px, 16vw, 310px);
+                gap: 26px;
+            }
+        }
+
+        .form-workspace {
+            min-width: 0;
+        }
+
+        .cv-action-panel {
+            display: none;
+        }
+
+        @media (min-width: 1220px) {
+            .cv-action-panel {
+                display: block;
+                position: sticky;
+                top: 24px;
+                border-radius: 26px;
+                padding: 18px;
+                background: linear-gradient(165deg, rgba(255,255,255,0.70), rgba(225,240,255,0.46));
+                border: 1px solid rgba(255,255,255,0.82);
+                backdrop-filter: blur(28px) saturate(170%);
+                -webkit-backdrop-filter: blur(28px) saturate(170%);
+                box-shadow: 0 22px 62px rgba(20,50,140,0.14), inset 0 1.5px 0 rgba(255,255,255,0.95);
+                overflow: hidden;
+                animation: softSpringIn 0.72s cubic-bezier(0.2,0.9,0.2,1) both;
+            }
+
+            .cv-action-panel::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.24) 42%, transparent 70%);
+                transform: translateX(-130%);
+                animation: borderRun 6s ease-in-out infinite;
+                pointer-events: none;
+            }
+
+            .cv-action-title {
+                font-size: 13px;
+                font-weight: 850;
+                color: #15327e;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 8px;
+            }
+
+            .cv-action-copy {
+                font-size: 12px;
+                color: rgba(27,67,180,0.62);
+                line-height: 1.45;
+                margin-bottom: 16px;
+            }
+
+            .cv-action-submit {
+                width: 100%;
+                min-height: 62px;
+                border: 1px solid rgba(255,255,255,0.34);
+                border-radius: 22px;
+                background: linear-gradient(135deg, #1d55ff 0%, #16c4ed 100%);
+                color: #fff;
+                cursor: pointer;
+                font: inherit;
+                font-size: 15px;
+                font-weight: 850;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                box-shadow: 0 18px 44px rgba(30,95,230,0.30), inset 0 1.5px 0 rgba(255,255,255,0.32);
+                transition: transform 0.48s cubic-bezier(0.2,1.4,0.28,1), box-shadow 0.35s ease;
+                animation: actionGlow 4.8s ease-in-out infinite;
+            }
+
+            .cv-action-submit:hover {
+                transform: translateY(-4px) scale(1.025);
+                box-shadow: 0 26px 66px rgba(30,145,255,0.42), inset 0 1.5px 0 rgba(255,255,255,0.42);
+            }
+
+            .form-footer,
+            .footer-divider,
+            .footer-text { display: none !important; }
+        }
+
+        body.theme-dark .cv-action-panel {
+            background: linear-gradient(165deg, rgba(25,32,43,0.78), rgba(7,12,20,0.76));
+            border-color: rgba(255,255,255,0.10);
+            box-shadow: 0 26px 78px rgba(0,0,0,0.36), inset 0 1.5px 0 rgba(255,255,255,0.08);
+        }
+
+        body.theme-dark .cv-action-title { color: #dcecff; }
+        body.theme-dark .cv-action-copy { color: rgba(220,235,255,0.58); }
+
+        /* ============================================
+           TAB NAVIGATION – Frosted glass
+           ============================================ */
+        .tabs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 0;
+            flex-wrap: nowrap;
+            background: rgba(255,255,255,0.68);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            padding: 14px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.92);
+            box-shadow:
+                0 10px 40px rgba(20,50,140,0.13),
+                0 2px 8px rgba(20,50,140,0.07),
+                inset 0 1.5px 0 rgba(255,255,255,1),
+                inset 0 -1px 0 rgba(180,205,255,0.35);
+            animation: cardFloat 9s ease-in-out infinite;
+            position: sticky;
+            top: 24px;
+            max-height: calc(100vh - 48px);
+            overflow-y: auto;
+        }
+
+        body.theme-dark .tabs-container {
+            background: linear-gradient(175deg, rgba(28,34,42,0.78), rgba(7,12,20,0.78));
+            border-color: rgba(255,255,255,0.10);
+            box-shadow:
+                0 28px 80px rgba(0,0,0,0.42),
+                inset 0 1.5px 0 rgba(255,255,255,0.10),
+                inset 0 -1px 0 rgba(0,0,0,0.50);
+        }
+
+        .tab-btn {
+            flex: none;
+            width: 100%;
+            min-width: 0;
+            padding: 13px 14px;
+            border: 1.5px solid rgba(27,67,180,0.16);
+            background: rgba(255,255,255,0.82);
+            color: #1a3580;
+            font-weight: 600;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            display: flex; align-items: center; justify-content: flex-start; gap: 10px;
+            transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 2px 12px rgba(20,50,140,0.09), inset 0 1.5px 0 rgba(255,255,255,1);
+            position: relative; overflow: hidden;
+            role: tab;
+            tabindex: -1;
+        }
+
+        body.theme-dark .tab-btn {
+            background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.035));
+            border-color: rgba(255,255,255,0.08);
+            color: rgba(235,244,255,0.72);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.14);
+        }
+
+        body.theme-dark .tab-btn:hover {
+            background: linear-gradient(145deg, rgba(255,255,255,0.11), rgba(55,115,255,0.08));
+            border-color: rgba(82,150,255,0.25);
+            color: #fff;
+        }
+
+        .tab-btn i {
+            width: 18px;
+            text-align: center;
+            flex: 0 0 18px;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9) 50%, transparent);
+            pointer-events: none;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,0.65) 50%, transparent 75%);
+            transform: translateX(-130%) skewX(-15deg);
+            pointer-events: none;
+        }
+
+        .tab-btn:hover::after { animation: shimmerSweep 0.65s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+        .tab-btn:hover {
+            background: rgba(255,255,255,0.97);
+            border-color: rgba(27,67,180,0.3);
+            transform: translateY(-4px) scale(1.025);
+            box-shadow: 0 12px 32px rgba(20,50,140,0.18), inset 0 1.5px 0 rgba(255,255,255,1);
+        }
+
+        .tab-btn:active {
+            transform: translateY(-1px) scale(0.975);
+            transition: all 0.15s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(160deg, rgba(32,60,165,0.93) 0%, rgba(22,44,138,0.97) 50%, rgba(14,28,105,1) 100%);
+            color: #fff;
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 8px 28px rgba(15,40,130,0.38), 0 0 0 1px rgba(80,190,255,0.18), inset 0 1.5px 0 rgba(255,255,255,0.22);
+            tabindex: 0;
+        }
+
+        body.theme-dark .tab-btn.active {
+            background: linear-gradient(145deg, rgba(24,95,255,0.95), rgba(12,62,195,0.92));
+            box-shadow: 0 12px 34px rgba(0,92,255,0.32), inset 0 1.5px 0 rgba(255,255,255,0.20);
+            border-color: rgba(150,200,255,0.28);
+            color: #fff;
+        }
+
+        .tab-btn.active:after {
+            background: linear-gradient(100deg, transparent 15%, rgba(130,230,255,0.30) 42%, rgba(255,255,255,0.42) 50%, rgba(30,160,255,0.24) 58%, transparent 84%);
+            animation: borderRun 4.8s ease-in-out infinite;
+        }
+
+        /* ============================================
+           PANEL ROOT – Conteúdo dinâmico
+           ============================================ */
+        #panel-root {
+            min-height: 300px;
+            overflow: visible;
+        }
+
+        .top-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            background: rgba(255,255,255,0.68);
+            backdrop-filter: blur(28px) saturate(180%);
+            padding: 14px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.92);
+            box-shadow: 0 10px 40px rgba(20,50,140,0.13), 0 2px 8px rgba(20,50,140,0.07);
+        }
+
+        .btn-outline {
+            flex: 1; min-width: 150px;
+            padding: 13px 16px;
+            border: 1.5px solid rgba(27,67,180,0.16);
+            background: rgba(255,255,255,0.82);
+            color: #1a3580;
+            font-weight: 600;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            backdrop-filter: blur(16px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.97);
+            border-color: rgba(27,67,180,0.3);
+            transform: translateY(-4px) scale(1.025);
+            box-shadow: 0 12px 32px rgba(20,50,140,0.18);
+        }
+
+        .btn-outline.photo-loaded {
+            border-color: rgba(30,160,90,0.4);
+            color: #15773d;
+            background: rgba(235,255,245,0.9);
+        }
+
+        .section {
+            margin-bottom: 18px;
+            border-radius: 24px;
+            overflow: visible;
+            background: linear-gradient(165deg, rgba(255,255,255,0.78) 0%, rgba(235,245,255,0.65) 60%, rgba(220,236,255,0.55) 100%);
+            backdrop-filter: blur(28px) saturate(170%);
+            -webkit-backdrop-filter: blur(28px) saturate(170%);
+            border: 1px solid rgba(255,255,255,0.9);
+            box-shadow: 0 6px 32px rgba(20,50,140,0.11), 0 1px 4px rgba(20,50,140,0.06);
+            transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        body.theme-dark .top-buttons,
+        body.theme-dark .section {
+            background: linear-gradient(165deg, rgba(25,32,43,0.80) 0%, rgba(10,18,30,0.76) 100%);
+            border-color: rgba(255,255,255,0.10);
+            box-shadow: 0 24px 70px rgba(0,0,0,0.34), inset 0 1.5px 0 rgba(255,255,255,0.08);
+        }
+
+        .section:hover {
+            box-shadow: 0 14px 48px rgba(20,50,140,0.17), 0 2px 8px rgba(20,50,140,0.08);
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            background: linear-gradient(160deg, rgba(32,60,165,0.93) 0%, rgba(22,44,138,0.97) 50%, rgba(14,28,105,1) 100%);
+            backdrop-filter: blur(30px) saturate(210%);
+            -webkit-backdrop-filter: blur(30px) saturate(210%);
+            color: #fff;
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            position: relative;
+            transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
+            animation: headerPulse 5s ease-in-out infinite;
+            border-radius: 24px 24px 0 0;
+        }
+
+        body.theme-dark .section-header {
+            background: linear-gradient(145deg, rgba(20,92,255,0.92), rgba(8,38,128,0.96));
+            box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.18), 0 14px 34px rgba(0,78,220,0.20);
+        }
+
+        .section-header-title {
+            font-weight: 700;
+            font-size: 12.5px;
+            letter-spacing: 1.2px;
+            color: #fff;
+            text-shadow: 0 1px 10px rgba(60,100,255,0.55);
+        }
+
+        .section-toggle {
+            width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; font-weight: 300; line-height: 1;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.45s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .section.collapsed .section-toggle { transform: rotate(-90deg); }
+
+        .section-content {
+            background: rgba(255,255,255,0.38);
+            padding: 22px;
+            display: none;
+            overflow: visible;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            animation: cardReveal 0.42s cubic-bezier(0.34,1.56,0.64,1) both;
+            border-radius: 0 0 24px 24px;
+        }
+
+        body.theme-dark .section-content {
+            background: rgba(255,255,255,0.035);
+        }
+
+        .section.open .section-content { display: block; }
+
+        .form-group { margin-bottom: 18px; }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            font-size: 11.5px;
+            margin-bottom: 8px;
+            color: #1a3580;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        body.theme-dark .form-label,
+        body.theme-dark .photo-editor-title {
+            color: #a9caff;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 13px 16px;
+            background: rgba(255,255,255,0.78);
+            border: 1.5px solid rgba(27,67,180,0.12);
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #0f1c3f;
+            transition: all 0.42s cubic-bezier(0.34,1.56,0.64,1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 2px 10px rgba(20,50,140,0.07), inset 0 1.5px 0 rgba(255,255,255,0.98);
+        }
+
+        body.theme-dark .form-input,
+        body.theme-dark .form-textarea,
+        body.theme-dark .form-select,
+        body.theme-dark .rich-editor,
+        body.theme-dark .rich-text-toolbar,
+        body.theme-dark .date-display-btn,
+        body.theme-dark .btn-outline,
+        body.theme-dark .btn-add,
+        body.theme-dark .toolbar-btn,
+        body.theme-dark .interest-input-wrapper button,
+        body.theme-dark .skill-tag,
+        body.theme-dark .photo-editor-panel,
+        body.theme-dark .photo-editor-close,
+        body.theme-dark .photo-editor-icon-btn,
+        body.theme-dark .photo-editor-action {
+            background: rgba(255,255,255,0.07) !important;
+            border-color: rgba(255,255,255,0.10) !important;
+            color: #eaf2ff !important;
+            box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.08), 0 10px 26px rgba(0,0,0,0.18);
+        }
+
+        body.theme-dark .form-input::placeholder,
+        body.theme-dark .form-textarea::placeholder,
+        body.theme-dark .rich-editor:empty::before,
+        body.theme-dark .date-display-btn.placeholder-text {
+            color: rgba(220,235,255,0.38);
+        }
+
+        body.theme-dark .form-input:hover,
+        body.theme-dark .form-select:hover,
+        body.theme-dark .date-display-btn:hover,
+        body.theme-dark .btn-outline:hover,
+        body.theme-dark .btn-add:hover,
+        body.theme-dark .toolbar-btn:hover {
+            background: rgba(255,255,255,0.115) !important;
+            border-color: rgba(95,160,255,0.28) !important;
+        }
+
+        body.theme-dark .form-input:focus,
+        body.theme-dark .form-textarea:focus,
+        body.theme-dark .form-select:focus,
+        body.theme-dark .rich-editor:focus {
+            background: rgba(255,255,255,0.13) !important;
+            border-color: rgba(95,160,255,0.44) !important;
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: rgba(27,67,180,0.32);
+        }
+
+        .form-input:hover, .form-select:hover {
+            background: rgba(255,255,255,0.92);
+            border-color: rgba(27,67,180,0.24);
+            transform: translateY(-2px) scale(1.003);
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            background: rgba(255,255,255,0.97);
+            border-color: rgba(27,87,255,0.38);
+            transform: translateY(-2px) scale(1.005);
+            animation: inputGlow 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+        }
+
+        .form-textarea {
+            resize: vertical; min-height: 100px;
+        }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-row-three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+        .rich-editor {
+            min-height: 100px;
+            padding: 13px 16px;
+            background: rgba(255,255,255,0.78);
+            border-radius: 0 0 14px 14px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #0f1c3f;
+            outline: none;
+            line-height: 1.65;
+            border: 1.5px solid rgba(27,67,180,0.12);
+            border-top: none;
+            transition: all 0.42s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .rich-editor:focus {
+            background: rgba(255,255,255,0.97);
+            border-color: rgba(27,87,255,0.38);
+        }
+
+        .rich-text-toolbar {
+            display: flex !important;
+            gap: 5px !important;
+            padding: 10px 12px !important;
+            flex-wrap: wrap !important;
+            border-radius: 14px 14px 0 0 !important;
+            margin-bottom: 0 !important;
+            background: rgba(255,255,255,0.72) !important;
+            border: 1.5px solid rgba(27,67,180,0.12) !important;
+            border-bottom: none !important;
+            backdrop-filter: blur(16px) !important;
+        }
+
+        .toolbar-btn {
+            width: 33px; height: 33px;
+            border: 1px solid rgba(27,67,180,0.12);
+            background: rgba(255,255,255,0.82);
+            color: #1a3580;
+            cursor: pointer;
+            border-radius: 9px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .toolbar-btn:hover {
+            background: rgba(255,255,255,0.98);
+            border-color: rgba(27,67,180,0.28);
+            transform: translateY(-3px) scale(1.12);
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(195,210,240,0.8), rgba(210,225,250,0.7));
+            transition: all 0.48s cubic-bezier(0.34,1.56,0.64,1);
+            border-radius: 28px;
+            border: 1.5px solid rgba(27,67,180,0.14);
+        }
+
+        .toggle-slider::before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            transition: all 0.48s cubic-bezier(0.34,1.56,0.64,1);
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(20,50,140,0.28);
+        }
+
+        input:checked + .toggle-slider {
+            background: linear-gradient(135deg, #1a3db0 0%, #2d6ee8 100%);
+            border-color: rgba(27,87,230,0.45);
+        }
+
+        input:checked + .toggle-slider::before {
+            transform: translateX(24px);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .repeatable-block {
+            background: linear-gradient(160deg, rgba(255,255,255,0.82) 0%, rgba(235,245,255,0.68) 100%);
+            padding: 18px;
+            border-radius: 18px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.92);
+            border-left: 3.5px solid rgba(27,87,220,0.5);
+            position: relative;
+            transition: all 0.45s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        body.theme-dark .repeatable-block {
+            background: linear-gradient(160deg, rgba(255,255,255,0.065), rgba(255,255,255,0.035));
+            border-color: rgba(255,255,255,0.10);
+            border-left-color: rgba(45,125,255,0.65);
+            box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.07), 0 16px 38px rgba(0,0,0,0.18);
+        }
+
+        .remove-block {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255,255,255,0.82);
+            border: 1px solid rgba(200,210,235,0.5);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(27,47,110,0.35);
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .remove-block:hover {
+            color: #e03030;
+            background: rgba(255,235,235,0.95);
+            border-color: rgba(220,60,60,0.3);
+            transform: scale(1.18) rotate(95deg);
+        }
+
+        .btn-add {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            background: rgba(255,255,255,0.78);
+            color: #1a3580;
+            border: 1.5px solid rgba(27,67,180,0.18);
+            border-radius: 13px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.42s cubic-bezier(0.34,1.56,0.64,1);
+            margin-top: 12px;
+            backdrop-filter: blur(16px);
+        }
+
+        .btn-add:hover {
+            background: rgba(255,255,255,0.96);
+            border-color: rgba(27,67,180,0.35);
+            transform: translateY(-4px) scale(1.04);
+        }
+
+        .ai-suggestions-btn {
+            position: absolute;
+            right: 20px;
+            top: 18px;
+            background: rgba(255,255,255,0.78);
+            border: 1.5px solid rgba(27,67,180,0.18);
+            color: #1a3580;
+            padding: 8px 15px;
+            border-radius: 11px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: inherit;
+            transition: all 0.38s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .ai-suggestions-btn:hover {
+            background: rgba(255,255,255,0.98);
+            transform: translateY(-3px) scale(1.04);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(27,67,180,0.2) 50%, transparent 100%);
+            margin: 44px 0 22px;
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(27,67,180,0.5);
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 48px;
+        }
+
+        .btn-submit {
+            padding: 16px 52px;
+            background: linear-gradient(160deg, rgba(35,62,185,0.96) 0%, rgba(22,46,155,0.99) 45%, rgba(14,30,120,1) 100%);
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.18);
+            border-radius: 56px;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.48s cubic-bezier(0.34,1.56,0.64,1);
+            animation: submitBreath 5s ease-in-out infinite;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-5px) scale(1.035);
+            box-shadow: 0 20px 52px rgba(15,40,130,0.55);
+            animation: none;
+        }
+
+        .photo-editor-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(6,18,58,0.38);
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
+        }
+
+        .photo-editor-modal.open {
+            display: flex;
+        }
+
+        .photo-editor-panel {
+            width: min(460px, 100%);
+            background: linear-gradient(165deg, rgba(255,255,255,0.92) 0%, rgba(235,245,255,0.86) 100%);
+            border: 1px solid rgba(255,255,255,0.95);
+            border-radius: 24px;
+            box-shadow: 0 24px 80px rgba(10,28,80,0.28), inset 0 1.5px 0 rgba(255,255,255,1);
+            padding: 22px;
+            color: #0f1c3f;
+            animation: cardReveal 0.34s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+
+        .photo-editor-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .photo-editor-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #15327e;
+        }
+
+        .photo-editor-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(27,67,180,0.16);
+            background: rgba(255,255,255,0.72);
+            color: #1a3580;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-crop-stage {
+            width: 320px;
+            height: 320px;
+            max-width: 100%;
+            aspect-ratio: 1;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #d8e1ef;
+            border: 4px solid rgba(26,58,92,0.95);
+            box-shadow: 0 16px 46px rgba(20,50,140,0.18), inset 0 0 0 1px rgba(255,255,255,0.75);
+            cursor: grab;
+            touch-action: none;
+        }
+
+        .photo-crop-stage:active {
+            cursor: grabbing;
+        }
+
+        #photoCropCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .photo-editor-controls {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .photo-editor-icon-btn,
+        .photo-editor-action {
+            border: 1.5px solid rgba(27,67,180,0.16);
+            background: rgba(255,255,255,0.82);
+            color: #1a3580;
+            border-radius: 14px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+            transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+            backdrop-filter: blur(16px);
+        }
+
+        .photo-editor-icon-btn {
+            width: 42px;
+            height: 42px;
+        }
+
+        .photo-editor-icon-btn:hover,
+        .photo-editor-action:hover {
+            background: rgba(255,255,255,0.98);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(20,50,140,0.14);
+        }
+
+        .photo-editor-controls input[type="range"] {
+            width: 100%;
+            accent-color: #1e4bc8;
+        }
+
+        .photo-editor-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .photo-editor-action {
+            padding: 12px 18px;
+        }
+
+        .photo-editor-action.primary {
+            background: linear-gradient(160deg, rgba(35,62,185,0.96) 0%, rgba(22,46,155,0.99) 45%, rgba(14,30,120,1) 100%);
+            color: #fff;
+            border-color: rgba(255,255,255,0.28);
+        }
+
+        input[type="file"] { display: none; }
+
+        .date-input-wrapper {
+            position: relative;
+            display: block;
+        }
+
+        .date-input-trigger {
+            width: 100%;
+            padding: 13px 44px 13px 16px;
+            background: rgba(255,255,255,0.78);
+            border: 1.5px solid rgba(27,67,180,0.12);
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #0f1c3f;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.42s cubic-bezier(0.34,1.56,0.64,1);
+            backdrop-filter: blur(16px);
+            user-select: none;
+        }
+
+        .date-input-trigger:hover {
+            background: rgba(255,255,255,0.94);
+            border-color: rgba(27,67,180,0.24);
+            transform: translateY(-2px);
+        }
+
+        .date-input-trigger.has-value {
+            border-color: rgba(27,87,255,0.28);
+            background: rgba(240,246,255,0.95);
+        }
+
+        .date-input-trigger.active {
+            border-color: rgba(27,87,255,0.42);
+            background: rgba(255,255,255,0.97);
+            transform: translateY(-2px);
+            box-shadow: 0 0 0 5px rgba(27,87,255,0.10);
+        }
+
+        /* ── CUSTOM DATE PICKER ── */
+        .date-wrapper {
+            position: relative;
+        }
+
+        .date-display-btn {
+            width: 100%;
+            padding: 13px 16px;
+            background: rgba(255,255,255,0.78);
+            border: 1.5px solid rgba(27,67,180,0.12);
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #0f1c3f;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 2px 10px rgba(20,50,140,0.07), inset 0 1.5px 0 rgba(255,255,255,0.98);
+        }
+
+        .date-display-btn:hover {
+            background: rgba(255,255,255,0.92);
+            border-color: rgba(27,67,180,0.24);
+            transform: translateY(-2px) scale(1.003);
+        }
+
+        .date-display-btn.has-value { color: #0f1c3f; }
+        .date-display-btn.placeholder-text { color: rgba(27,67,180,0.32); }
+
+        .date-display-btn .cal-icon {
+            color: rgba(27,67,180,0.45);
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        .date-display-btn .date-chevron {
+            margin-left: auto;
+            font-size: 11px;
+            color: rgba(27,67,180,0.35);
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .date-display-btn.open .date-chevron { transform: rotate(180deg); }
+
+        .custom-calendar {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            z-index: 9999;
+            width: 310px;
+            background: linear-gradient(160deg, rgba(255,255,255,0.97) 0%, rgba(238,247,255,0.95) 100%);
+            backdrop-filter: blur(40px) saturate(200%);
+            -webkit-backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255,255,255,0.98);
+            border-radius: 24px;
+            box-shadow:
+                0 28px 70px rgba(15,40,140,0.22),
+                0 4px 16px rgba(15,40,140,0.10),
+                inset 0 1.5px 0 rgba(255,255,255,1);
+            overflow: hidden;
+            animation: calDrop 0.36s cubic-bezier(0.34,1.56,0.64,1) both;
+            transform-origin: top center;
+        }
+
+        body.theme-dark .custom-calendar {
+            background: linear-gradient(160deg, rgba(22,30,42,0.96), rgba(7,13,24,0.94));
+            border-color: rgba(255,255,255,0.10);
+            box-shadow: 0 28px 80px rgba(0,0,0,0.45), inset 0 1.5px 0 rgba(255,255,255,0.10);
+        }
+
+        .custom-calendar.closing {
+            animation: calClose 0.22s ease-in both;
+        }
+
+        .cal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 20px 20px 10px;
+        }
+
+        .cal-month-label {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f1c3f;
+            line-height: 1;
+        }
+
+        .cal-year-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+
+        .cal-year-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a3580;
+        }
+
+        .cal-year-row {
+            display: grid;
+            grid-template-columns: minmax(78px, 1fr) auto;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .cal-year-input {
+            width: 88px;
+            height: 30px;
+            border: 1.5px solid rgba(27,67,180,0.14);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.82);
+            color: #1a3580;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            text-align: center;
+            outline: none;
+            transition: all 0.28s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .cal-year-input:focus {
+            border-color: rgba(27,87,255,0.38);
+            box-shadow: 0 0 0 4px rgba(27,87,255,0.10);
+            background: rgba(255,255,255,0.98);
+        }
+
+        .cal-year-picker-btn {
+            width: 30px;
+            height: 30px;
+            border: 1.5px solid rgba(27,67,180,0.15);
+            border-radius: 50%;
+            background: rgba(255,255,255,0.88);
+            color: #1a3580;
+            cursor: pointer;
+            transition: all 0.28s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .cal-year-picker-btn:hover {
+            transform: scale(1.12);
+            border-color: rgba(27,67,180,0.32);
+        }
+
+        .cal-year-panel {
+            padding: 0 14px 10px;
+            animation: cardReveal 0.22s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+
+        .cal-year-panel-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: rgba(27,67,180,0.58);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .cal-year-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+
+        .cal-year-option {
+            border: 1px solid rgba(27,67,180,0.12);
+            border-radius: 11px;
+            background: rgba(255,255,255,0.74);
+            color: #1a3580;
+            cursor: pointer;
+            padding: 8px 0;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .cal-year-option:hover {
+            transform: translateY(-2px) scale(1.04);
+            background: rgba(27,87,255,0.10);
+            border-color: rgba(27,87,255,0.28);
+        }
+
+        .cal-year-option.active {
+            background: linear-gradient(145deg, #1a3db0 0%, #2d6ee8 100%);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 5px 18px rgba(27,87,220,0.38);
+        }
+
+        body.theme-dark .cal-year-input,
+        body.theme-dark .cal-year-picker-btn,
+        body.theme-dark .cal-nav-btn,
+        body.theme-dark .cal-footer-btn,
+        body.theme-dark .cal-year-option {
+            background: rgba(255,255,255,0.075);
+            border-color: rgba(255,255,255,0.10);
+            color: #dcecff;
+        }
+
+        body.theme-dark .cal-month-label,
+        body.theme-dark .cal-day {
+            color: #eaf2ff;
+        }
+
+        body.theme-dark .cal-weekday,
+        body.theme-dark .cal-day-other,
+        body.theme-dark .cal-year-panel-head {
+            color: rgba(220,235,255,0.42);
+        }
+
+        .cal-nav {
+            display: flex;
+            gap: 5px;
+        }
+
+        .cal-nav-btn {
+            width: 30px;
+            height: 30px;
+            border: 1.5px solid rgba(27,67,180,0.15);
+            background: rgba(255,255,255,0.88);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #1a3580;
+            transition: all 0.32s cubic-bezier(0.34,1.56,0.64,1);
+            box-shadow: 0 2px 8px rgba(20,50,140,0.08);
+        }
+
+        .cal-nav-btn:hover {
+            background: rgba(255,255,255,1);
+            border-color: rgba(27,67,180,0.32);
+            transform: scale(1.18);
+            box-shadow: 0 4px 14px rgba(20,50,140,0.16);
+        }
+
+        .cal-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            padding: 4px 14px 2px;
+            gap: 2px;
+        }
+
+        .cal-weekday {
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: rgba(27,67,180,0.45);
+            letter-spacing: 0.3px;
+            padding: 4px 0;
+        }
+
+        .cal-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            padding: 2px 14px 10px;
+            gap: 3px;
+        }
+
+        .cal-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #0f1c3f;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+            position: relative;
+        }
+
+        .cal-day:not(.cal-day-empty):not(.cal-day-other):hover {
+            background: rgba(27,87,255,0.10);
+            color: #1a3db0;
+            transform: scale(1.18);
+        }
+
+        .cal-day-other {
+            color: rgba(27,67,180,0.25);
+            cursor: default;
+        }
+
+        .cal-day-today {
+            color: #1a3db0;
+            font-weight: 700;
+        }
+
+        .cal-day-today::after {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #1a3db0;
+            border-radius: 50%;
+        }
+
+        .cal-day-selected {
+            background: linear-gradient(145deg, #1a3db0 0%, #2d6ee8 100%);
+            color: #fff !important;
+            font-weight: 700;
+            box-shadow: 0 5px 18px rgba(27,87,220,0.45);
+            transform: scale(1.12) !important;
+        }
+
+        .cal-day-selected::after { display: none; }
+
+        .cal-day-selected:hover { transform: scale(1.18) !important; }
+
+        .cal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 18px 16px;
+            border-top: 1px solid rgba(27,67,180,0.07);
+            margin-top: 2px;
+        }
+
+        .cal-footer-btn {
+            padding: 8px 18px;
+            border: 1.5px solid rgba(27,67,180,0.15);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.85);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a3580;
+            cursor: pointer;
+            transition: all 0.32s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .cal-footer-btn:hover {
+            background: white;
+            border-color: rgba(27,67,180,0.3);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 14px rgba(20,50,140,0.12);
+        }
+
+        .cal-footer-btn.cal-today-btn {
+            background: linear-gradient(135deg, #1a3db0, #2d6ee8);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 4px 14px rgba(27,87,220,0.3);
+        }
+
+        .cal-footer-btn.cal-today-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 7px 22px rgba(27,87,220,0.45);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .skill-tag {
+            background: rgba(255,255,255,0.85);
+            border: 1.5px solid rgba(27,67,180,0.18);
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a3580;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .skill-tag:hover {
+            background: rgba(255,255,255,0.98);
+            border-color: rgba(27,67,180,0.3);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .skill-tag.selected {
+            background: linear-gradient(135deg, #1a3db0 0%, #2d6ee8 100%);
+            color: #fff;
+            border-color: rgba(27,87,230,0.5);
+        }
+
+        .interest-input-wrapper {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .interest-input-wrapper input {
+            flex: 1;
+        }
+
+        .interest-input-wrapper button {
+            padding: 13px 20px;
+            background: rgba(255,255,255,0.82);
+            border: 1.5px solid rgba(27,67,180,0.18);
+            border-radius: 13px;
+            color: #1a3580;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: inherit;
+            transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .interest-input-wrapper button:hover {
+            background: rgba(255,255,255,0.98);
+            border-color: rgba(27,67,180,0.3);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .interests-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .interest-badge {
+            background: linear-gradient(135deg, rgba(32,90,180,0.12) 0%, rgba(60,120,220,0.08) 100%);
+            border: 1.5px solid rgba(27,87,220,0.25);
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a3580;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .interest-badge button {
+            background: transparent;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rich-editor:empty::before {
+            content: attr(data-placeholder);
+            color: rgba(27,67,180,0.32);
+            pointer-events: none;
+        }
+
+        .toolbar-btn.active,
+        .toolbar-btn[data-cmd]:focus {
+            background: rgba(27,67,180,0.15);
+            border-color: rgba(27,67,180,0.4);
+        }
+
+        @media (max-width: 900px) {
+            .form-shell {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .tabs-container {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+                max-height: none;
+                overflow: visible;
+                margin-bottom: 4px;
+            }
+
+            .tab-btn {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .intro-screen { padding: 16px; }
+            .intro-card {
+                min-height: min(560px, calc(100vh - 32px));
+                padding: 40px 22px;
+                border-radius: 30px;
+            }
+            .intro-card::before {
+                inset: 12px;
+                border-radius: 24px;
+            }
+            .intro-cv-ghost {
+                right: 18px;
+                top: 28px;
+                width: 96px;
+                height: 124px;
+                opacity: 0.34;
+            }
+            .intro-logo-wrap { width: min(300px, 78vw); }
+            .intro-title { font-size: clamp(30px, 11vw, 42px); }
+            .intro-copy { font-size: 14px; }
+            .form-topbar { align-items: flex-start; }
+            .form-title { font-size: 26px; }
+            .theme-toggle { width: 46px; height: 46px; }
+            .form-row, .form-row-three { grid-template-columns: 1fr; }
+            .tabs-container { grid-template-columns: 1fr; }
+            .tab-btn { min-width: auto; }
+            .container { padding: 28px 14px 48px; }
+            .custom-calendar { width: min(310px, calc(100vw - 42px)); }
+            .photo-editor-panel { padding: 18px; }
+            .photo-crop-stage { width: min(280px, 100%); height: auto; }
+            .photo-editor-controls { grid-template-columns: auto 1fr auto; }
+            .photo-editor-controls .photo-editor-icon-btn:last-child { grid-column: 1 / -1; width: 100%; }
+            .toolbar-btn { width: 30px; height: 30px; font-size: 12px; }
+            .skills-grid, .interests-list { grid-template-columns: 1fr; }
+        }
+    
+        /* CreativeFlow lightweight skin: no intro, no liquid glass, mobile friendly */
+        :root {
+            --cf-page: #f7f8fd;
+            --cf-surface: #ffffff;
+            --cf-soft: #eef3fb;
+            --cf-card: #f2f5fb;
+            --cf-navy: #091540;
+            --cf-persian: #1b2cc1;
+            --cf-dusk: #3d518c;
+            --cf-cornflower: #7692ff;
+            --cf-icy: #abd2fa;
+            --cf-text: #101522;
+            --cf-muted: #667085;
+            --cf-line: #dce2ef;
+            --cf-shadow: 0 18px 42px rgba(37, 53, 91, 0.12);
+            --cf-soft-shadow: 0 10px 26px rgba(37, 53, 91, 0.08);
+        }
+
+        *, *::before, *::after {
+            animation: none !important;
+            filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            backdrop-filter: none !important;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body,
+        body.theme-dark {
+            min-height: 100vh;
+            font-family: 'Inter', Arial, sans-serif;
+            color: var(--cf-text);
+            background:
+                radial-gradient(circle at 18% 4%, rgba(171,210,250,0.42), transparent 28%),
+                linear-gradient(180deg, #f8fafc 0%, #eef4fb 48%, #f7f8fd 100%);
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after,
+        .intro-screen,
+        .intro-screen::before,
+        .intro-screen::after,
+        .intro-card,
+        .intro-cv-ghost,
+        .intro-logo-wrap,
+        .intro-logo,
+        .intro-eyebrow,
+        .intro-title,
+        .intro-copy,
+        .intro-start-btn { display: none !important; }
+
+        body.intro-active { overflow: auto !important; }
+        body.intro-active .container,
+        body.form-entered .container { opacity: 1 !important; transform: none !important; }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 32px 0 56px;
+        }
+
+        .container::before {
+            content: 'CreativeFlow';
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 18px;
+            padding: 8px 14px;
+            border: 1px solid var(--cf-line);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.86);
+            color: var(--cf-persian);
+            font: 700 13px/1 'Sora', sans-serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            box-shadow: var(--cf-soft-shadow);
+        }
+
+        .form-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin: 0 0 18px;
+            padding: 24px 28px;
+            border: 1px solid var(--cf-line);
+            border-radius: 28px;
+            background: rgba(255,255,255,0.94);
+            box-shadow: var(--cf-soft-shadow);
+        }
+
+        .form-title,
+        .form-topbar .form-title {
+            margin: 0;
+            color: var(--cf-navy) !important;
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(28px, 4vw, 46px);
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .form-topbar::after {
+            content: 'Preenche os teus dados e emite o CV em PDF.';
+            color: var(--cf-muted);
+            font-size: 14px;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .theme-toggle { display: none !important; }
+
+        .form-shell {
+            display: block;
+            width: 100%;
+            padding: 0;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+        }
+
+        .tabs-container {
+            display: grid;
+            grid-template-columns: repeat(9, minmax(0, 1fr));
+            gap: 8px;
+            margin: 0 0 18px;
+            padding: 10px;
+            border: 1px solid var(--cf-line);
+            border-radius: 24px;
+            background: rgba(255,255,255,0.92);
+            box-shadow: var(--cf-soft-shadow);
+            position: static !important;
+            top: auto !important;
+            z-index: auto !important;
+        }
+
+        .tab-btn,
+        body.theme-dark .tab-btn {
+            min-width: 0;
+            padding: 12px 10px;
+            border: 1px solid transparent;
+            border-radius: 16px;
+            background: transparent;
+            color: var(--cf-dusk);
+            font: 700 12px/1.2 'Inter', sans-serif;
+            letter-spacing: 0;
+            box-shadow: none;
+            transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+        }
+
+        .tab-btn::before,
+        .tab-btn::after { display: none !important; }
+
+        .tab-btn:hover,
+        .tab-btn:focus-visible {
+            transform: translateY(-1px);
+            background: var(--cf-soft);
+            color: var(--cf-persian);
+        }
+
+        .tab-btn.active,
+        body.theme-dark .tab-btn.active {
+            background: var(--cf-navy);
+            color: #fff;
+            border-color: var(--cf-navy);
+            box-shadow: 0 10px 20px rgba(9,21,64,0.16);
+        }
+
+        .form-workspace {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 310px;
+            gap: 22px;
+            align-items: start;
+        }
+
+        #cvForm,
+        .cv-action-panel,
+        body.theme-dark .cv-action-panel {
+            border: 1px solid var(--cf-line);
+            border-radius: 28px;
+            background: rgba(255,255,255,0.96);
+            box-shadow: var(--cf-shadow);
+        }
+
+        #cvForm { padding: 22px; }
+        .form-footer { display: none !important; }
+        .cv-action-panel {
+            position: static !important;
+            top: auto !important;
+            padding: 22px;
+        }
+        .cv-action-panel::before { display: none !important; }
+        .cv-action-title { font-family: 'Sora', sans-serif; color: var(--cf-navy) !important; }
+        .cv-action-copy { color: var(--cf-muted) !important; }
+
+        .section,
+        body.theme-dark .section,
+        .top-buttons {
+            margin-bottom: 16px;
+            border: 1px solid var(--cf-line);
+            border-radius: 22px;
+            overflow: hidden;
+            background: var(--cf-surface);
+            box-shadow: none;
+        }
+
+        .section:hover { transform: none; box-shadow: none; }
+
+        .section-header,
+        body.theme-dark .section-header {
+            padding: 16px 18px;
+            border: 0;
+            background: linear-gradient(135deg, var(--cf-navy), #1c3b83);
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .section-header-title {
+            color: #fff;
+            font-family: 'Sora', sans-serif;
+            font-size: 14px;
+            letter-spacing: 0.03em;
+        }
+
+        .section-toggle { color: #fff; }
+
+        .section-content,
+        body.theme-dark .section-content {
+            padding: 20px;
+            background: #fff;
+            color: var(--cf-text);
+            border-top: 1px solid var(--cf-line);
+        }
+
+        .form-label,
+        body.theme-dark .form-label,
+        .photo-editor-title {
+            color: var(--cf-navy) !important;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select,
+        .rich-editor,
+        .rich-text-toolbar,
+        .date-display-btn,
+        .btn-outline,
+        .btn-add,
+        .toolbar-btn,
+        .interest-input-wrapper button,
+        .skill-tag,
+        .photo-editor-panel,
+        .photo-editor-close,
+        .photo-editor-icon-btn,
+        .photo-editor-action,
+        body.theme-dark .form-input,
+        body.theme-dark .form-textarea,
+        body.theme-dark .form-select,
+        body.theme-dark .rich-editor,
+        body.theme-dark .rich-text-toolbar,
+        body.theme-dark .date-display-btn,
+        body.theme-dark .btn-outline,
+        body.theme-dark .btn-add,
+        body.theme-dark .toolbar-btn,
+        body.theme-dark .interest-input-wrapper button,
+        body.theme-dark .skill-tag,
+        body.theme-dark .photo-editor-panel,
+        body.theme-dark .photo-editor-close,
+        body.theme-dark .photo-editor-icon-btn,
+        body.theme-dark .photo-editor-action {
+            border: 1px solid var(--cf-line) !important;
+            border-radius: 14px;
+            background: #fbfcff !important;
+            color: var(--cf-text) !important;
+            box-shadow: none !important;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus,
+        .rich-editor:focus {
+            outline: none;
+            border-color: var(--cf-cornflower) !important;
+            box-shadow: 0 0 0 3px rgba(118,146,255,0.18) !important;
+        }
+
+        .repeatable-block,
+        body.theme-dark .repeatable-block {
+            border: 1px solid var(--cf-line);
+            border-radius: 20px;
+            background: var(--cf-card);
+            box-shadow: none;
+        }
+
+        .btn-add,
+        .btn-outline,
+        .btn-submit,
+        .cv-action-submit,
+        .photo-editor-action.primary {
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+        }
+
+        .btn-add,
+        .btn-outline {
+            color: var(--cf-persian) !important;
+            background: #fff !important;
+        }
+
+        .btn-submit,
+        .cv-action-submit,
+        .photo-editor-action.primary {
+            border: 0 !important;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #3569c8, var(--cf-persian)) !important;
+            color: #fff !important;
+            box-shadow: 0 14px 26px rgba(27,44,193,0.2) !important;
+        }
+
+        .btn-add:hover,
+        .btn-outline:hover,
+        .btn-submit:hover,
+        .cv-action-submit:hover,
+        .photo-editor-action.primary:hover {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .footer-divider { border-color: var(--cf-line); }
+        .footer-text { color: var(--cf-muted); }
+
+        .custom-calendar,
+        body.theme-dark .custom-calendar {
+            border: 1px solid var(--cf-line);
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: var(--cf-shadow);
+        }
+
+        @media (max-width: 1100px) {
+            .tabs-container { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .form-workspace { grid-template-columns: 1fr; }
+            .cv-action-panel {
+                display: block !important;
+                order: 2;
+                position: static !important;
+                margin-top: 18px;
+                margin-bottom: 0;
+            }
+            #cvForm { order: 1; }
+            .cv-action-submit {
+                width: 100%;
+                min-height: 58px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 0 22px;
+                font-size: 14px;
+                font-weight: 800;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                line-height: 1;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container { width: min(100% - 20px, 1180px); padding: 18px 0 36px; }
+            .form-topbar { display: block; padding: 20px; border-radius: 22px; }
+            .form-topbar::after { display: block; margin: 8px 0 0; text-align: left; }
+            .tabs-container { grid-template-columns: repeat(2, minmax(0, 1fr)); border-radius: 20px; }
+            .tab-btn { padding: 11px 8px; font-size: 11px; }
+            #cvForm { padding: 14px; border-radius: 22px; }
+            .section-content { padding: 16px; }
+            .cv-action-panel {
+                padding: 28px 22px;
+                border-radius: 28px;
+            }
+            .cv-action-title {
+                font-size: 26px;
+                line-height: 1.18;
+                margin-bottom: 10px;
+            }
+            .cv-action-copy {
+                font-size: 16px;
+                line-height: 1.65;
+                margin-bottom: 18px;
+            }
+        }
+
+        body.theme-dark .tabs-container,
+        body.theme-dark .top-buttons,
+        body.theme-dark .cv-action-panel {
+            background: rgba(255,255,255,0.96) !important;
+            border-color: var(--cf-line) !important;
+            box-shadow: var(--cf-soft-shadow) !important;
+        }
+
+        body.theme-dark .tab-btn,
+        body.theme-dark .btn-outline {
+            background: #fbfcff !important;
+            border-color: var(--cf-line) !important;
+            color: var(--cf-dusk) !important;
+            box-shadow: none !important;
+        }
+
+        body.theme-dark .tab-btn:hover,
+        body.theme-dark .btn-outline:hover {
+            background: var(--cf-soft) !important;
+            color: var(--cf-persian) !important;
+        }
+
+        body.theme-dark .tab-btn.active {
+            background: var(--cf-navy) !important;
+            border-color: var(--cf-navy) !important;
+            color: #fff !important;
+            box-shadow: 0 10px 20px rgba(9,21,64,0.16) !important;
+        }
+
+        body.theme-dark .cv-action-title { color: var(--cf-navy) !important; }
+        body.theme-dark .cv-action-copy { color: var(--cf-muted) !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-topbar">
+            <h1 class="form-title">FORMULÁRIO CV</h1>
+            <button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <div class="form-shell">
+        <div class="tabs-container" role="tablist">
+            <button type="button" class="tab-btn active" data-tab="info" role="tab" aria-selected="true" tabindex="0">
+                <i class="fas fa-user"></i> 1 Info
+            </button>
+            <button type="button" class="tab-btn" data-tab="perfil" role="tab" aria-selected="false" tabindex="-1">
+                <i class="fas fa-briefcase"></i> 2 Perfil
+            </button>
+            <button type="button" class="tab-btn" data-tab="cargo" role="tab" aria-selected="false" tabindex="-1">
+                <i class="fas fa-bullseye"></i> 3 Cargo
+            </button>
+            <button type="button" class="tab-btn" data-tab="idiomas" role="tab" aria-selected="false" tabindex="-1">
+                <i class="fas fa-globe"></i> 4 Idiomas
+            </button>
+            <button type="button" class="tab-btn" data-tab="experiencia" role="tab" aria-selected="false" tabindex="-1">
+                <i class="fas fa-history"></i> 5 Experiência
+            </button>
+            <button type="button" class="tab-btn" data-tab="educacao" role="tab" aria-selected="false" tabindex="-1">
+                <i class="fas fa-graduation-cap"></i> 6 Educação
+            </button>
+            <button type="button" class="tab-btn" data-tab="competencias" role="tab" aria-selected="false" tabindex="-1">
+                <i class="fas fa-star"></i> 7 Skills
+            </button>
+            <button type="button" class="tab-btn" data-tab="interesses" role="tab" aria-selected="false" tabindex="-1">
+                <i class="fas fa-heart"></i> 8 Interesses
+            </button>
+            <button type="button" class="tab-btn" data-tab="adicionais" role="tab" aria-selected="false" tabindex="-1">
+                <i class="fas fa-info-circle"></i> 9 Adicionais
+            </button>
+        </div>
+
+        <div class="form-workspace">
+        <form id="cvForm">
+            <div id="panel-root"></div>
+
+            <div class="footer-divider"></div>
+            <p class="footer-text">Os teus dados são usados apenas para gerar o teu CV em PDF e não são armazenados.</p>
+
+            <div class="form-footer">
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-file-export"></i> Emitir CV
+                </button>
+            </div>
+        </form>
+        <aside class="cv-action-panel" aria-label="Emitir CV">
+            <div class="cv-action-title">Pronto para gerar?</div>
+            <p class="cv-action-copy">Os teus dados são usados apenas para gerar o teu CV em PDF.</p>
+            <button type="submit" form="cvForm" class="cv-action-submit">
+                <i class="fas fa-file-export"></i> Emitir CV
+            </button>
+        </aside>
+        </div>
+        </div>
+    </div>
+
+    <script defer>
+        // ── MEMÓRIA ENTRE ABAS ───────────────────────────────────────
+        const formMemory = {};
+        const PHOTO_PROFILE_SIZE = 100;
+        const PHOTO_EXPORT_SIZE = 400;
+        const PHOTO_EDITOR_SIZE = 320;
+        let uploadedPhoto = null;
+        let photoEditState = null;
+
+        function setTheme(mode) {
+            const isDark = mode === 'dark';
+            document.body.classList.toggle('theme-dark', isDark);
+            const btn = document.getElementById('themeToggle');
+            if (btn) {
+                btn.innerHTML = `<i class="fas fa-${isDark ? 'sun' : 'moon'}"></i>`;
+                btn.setAttribute('aria-label', isDark ? 'Ativar tema claro' : 'Ativar tema escuro');
+                btn.title = isDark ? 'Ativar tema claro' : 'Ativar tema escuro';
+            }
+            try { localStorage.setItem('cv_form_theme', isDark ? 'dark' : 'light'); } catch(e) {}
+        }
+
+        function initThemeToggle() {
+            const saved = (() => { try { return localStorage.getItem('cv_form_theme'); } catch(e) { return null; } })();
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(saved || (prefersDark ? 'dark' : 'light'));
+            const btn = document.getElementById('themeToggle');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    setTheme(document.body.classList.contains('theme-dark') ? 'light' : 'dark');
+                });
+            }
+        }
+
+        function initIntro() {
+            const intro = document.getElementById('introScreen');
+            const startBtn = document.getElementById('introStartBtn');
+            if (!intro || !startBtn) {
+                document.body.classList.remove('intro-active');
+                return;
+            }
+
+            const enterForm = () => {
+                intro.classList.add('leaving');
+                document.body.classList.add('form-entered');
+                setTimeout(() => {
+                    document.body.classList.remove('intro-active');
+                    intro.remove();
+                    document.querySelectorAll('.tab-btn').forEach((btn, index) => {
+                        btn.style.animation = `navItemReveal 0.52s cubic-bezier(0.2,1.25,0.28,1) ${index * 42}ms both`;
+                    });
+                }, 520);
+            };
+
+            startBtn.addEventListener('click', enterForm);
+            intro.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') enterForm();
+            });
+        }
+
+        const repeatableTabs = {
+            cargo: { containerId: 'cargoContainer', add: () => addCargo(), names: ['cargo_pretendido[]', 'cargo_area[]'] },
+            idiomas: { containerId: 'idiomasContainer', add: () => addIdioma(), names: ['idioma[]', 'idioma_ouvir[]', 'idioma_ler[]', 'idioma_interacao[]', 'idioma_producao[]', 'idioma_escrever[]'] },
+            experiencia: { containerId: 'experienciaContainer', add: () => addExperiencia(), names: ['exp_inicio[]', 'exp_fim[]', 'exp_funcao[]', 'exp_empresa[]', 'exp_local[]', 'exp_descricao[]'] },
+            educacao: { containerId: 'educacaoContainer', add: () => addEducacao(), names: ['edu_inicio[]', 'edu_fim[]', 'edu_curso[]', 'edu_inst[]', 'edu_local[]'] },
+            competencias: { containerId: 'competenciasContainer', add: () => addCompetencia(), names: ['comp_tipo[]', 'comp_nivel[]'] }
+        };
+
+        function repeatKey(tabName) {
+            return '_repeat_' + tabName;
+        }
+
+        function inferRepeatCount(config) {
+            let max = 0;
+            config.names.forEach(name => {
+                Object.keys(formMemory).forEach(key => {
+                    const prefix = name + '_';
+                    if (key.startsWith(prefix)) {
+                        const idx = Number(key.slice(prefix.length));
+                        if (!Number.isNaN(idx)) max = Math.max(max, idx + 1);
+                    }
+                });
+            });
+            return max;
+        }
+
+        function saveRepeatCount() {
+            const config = repeatableTabs[currentTab];
+            if (!config) return;
+            const container = document.getElementById(config.containerId);
+            if (!container) return;
+            formMemory[repeatKey(currentTab)] = container.querySelectorAll('.repeatable-block').length;
+        }
+
+        function clearCurrentRepeatValues() {
+            const config = repeatableTabs[currentTab];
+            if (!config) return;
+            Object.keys(formMemory).forEach(key => {
+                const belongsToTab = config.names.some(name =>
+                    key.startsWith(name + '_') ||
+                    key.startsWith('hidden_' + name + '_') ||
+                    key.startsWith('rich_' + name + '_') ||
+                    key.startsWith('date_' + name + '_')
+                );
+                if (belongsToTab || key.startsWith('dateBtn_')) {
+                    delete formMemory[key];
+                }
+            });
+        }
+
+        function ensureRepeatableBlocks() {
+            const config = repeatableTabs[currentTab];
+            if (!config) return;
+            const container = document.getElementById(config.containerId);
+            if (!container) return;
+
+            const savedCount = formMemory[repeatKey(currentTab)];
+            const desired = savedCount !== undefined ? savedCount : inferRepeatCount(config);
+            let current = container.querySelectorAll('.repeatable-block').length;
+
+            while (current < desired) {
+                config.add();
+                current++;
+            }
+        }
+
+        function richKey(wrapper) {
+            const name = wrapper.dataset.name;
+            const siblings = Array.from(document.querySelectorAll('#panel-root .rich-editor-wrapper'))
+                .filter(item => item.dataset.name === name);
+            return 'rich_' + name + '_' + siblings.indexOf(wrapper);
+        }
+
+        function fieldIndex(el) {
+            if (!el || !el.name) return 0;
+            return Array.from(document.querySelectorAll(`#panel-root [name="${el.name}"]`)).indexOf(el);
+        }
+
+        function dateMemoryKey(hidden) {
+            return 'date_' + hidden.name + '_' + fieldIndex(hidden);
+        }
+
+        function formatIsoDateForButton(value) {
+            const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+            if (!match) return '';
+            return `${match[3]}/${match[2]}/${match[1]}`;
+        }
+
+        function updateDateButtonFromHidden(hidden) {
+            const wrapper = hidden.closest('.date-wrapper');
+            const btn = wrapper ? wrapper.querySelector('.date-display-btn') : null;
+            if (!btn) return;
+            const span = btn.querySelector('.date-text');
+            const formatted = formatIsoDateForButton(hidden.value);
+            if (span) span.textContent = formatted || 'Selecionar data';
+            btn.classList.toggle('has-value', Boolean(formatted));
+            btn.classList.toggle('placeholder-text', !formatted);
+        }
+
+        function saveTabData() {
+            saveRepeatCount();
+            clearCurrentRepeatValues();
+            // Inputs e selects normais
+            document.querySelectorAll('#panel-root input, #panel-root select, #panel-root textarea').forEach(el => {
+                if (!el.name) return;
+                if (el.type === 'checkbox') {
+                    formMemory[el.name] = el.checked;
+                } else {
+                    const key = el.name + '_' + (Array.from(document.querySelectorAll(`[name="${el.name}"]`)).indexOf(el));
+                    formMemory[key] = el.value;
+                }
+            });
+            // Rich editors
+            document.querySelectorAll('#panel-root .rich-editor').forEach(editor => {
+                const wrapper = editor.closest('.rich-editor-wrapper');
+                if (!wrapper) return;
+                if (wrapper.dataset.name) formMemory[richKey(wrapper)] = editor.innerHTML;
+            });
+            // Datas (hidden inputs dos calendários)
+            document.querySelectorAll('#panel-root input[type="hidden"]').forEach((el, i) => {
+                if (el.name) formMemory['hidden_' + el.name + '_' + i] = el.value;
+            });
+            document.querySelectorAll('#panel-root .date-wrapper input[type="hidden"]').forEach(el => {
+                if (el.name) formMemory[dateMemoryKey(el)] = el.value;
+            });
+            // Botões de data (texto visível)
+            document.querySelectorAll('#panel-root .date-display-btn').forEach((btn, i) => {
+                const span = btn.querySelector('.date-text');
+                if (span) formMemory['dateBtn_' + i] = { text: span.textContent, hasValue: btn.classList.contains('has-value') };
+            });
+            // Interesses
+            const interestsContainer = document.getElementById('interestsContainer');
+            if (interestsContainer) {
+                formMemory['interests'] = Array.from(interestsContainer.querySelectorAll('.interest-badge')).map(b => b.childNodes[0].textContent.trim());
+            }
+        }
+
+        function restoreTabData() {
+            ensureRepeatableBlocks();
+            // Inputs e selects normais
+            document.querySelectorAll('#panel-root input, #panel-root select, #panel-root textarea').forEach(el => {
+                if (!el.name) return;
+                if (el.type === 'checkbox') {
+                    if (formMemory[el.name] !== undefined) {
+                        el.checked = formMemory[el.name];
+                        if (el.checked) toggleDataFim && toggleDataFim(el);
+                    }
+                } else {
+                    const key = el.name + '_' + (Array.from(document.querySelectorAll(`[name="${el.name}"]`)).indexOf(el));
+                    if (formMemory[key] !== undefined) el.value = formMemory[key];
+                }
+            });
+            // Rich editors
+            document.querySelectorAll('#panel-root .rich-editor').forEach(editor => {
+                const wrapper = editor.closest('.rich-editor-wrapper');
+                if (!wrapper) return;
+                const saved = formMemory[richKey(wrapper)];
+                if (saved !== undefined) {
+                    editor.innerHTML = saved;
+                    syncRichEditor(editor);
+                }
+            });
+            // Datas (hidden inputs)
+            document.querySelectorAll('#panel-root input[type="hidden"]').forEach((el, i) => {
+                const key = 'hidden_' + el.name + '_' + i;
+                if (formMemory[key] !== undefined) el.value = formMemory[key];
+            });
+            document.querySelectorAll('#panel-root .date-wrapper input[type="hidden"]').forEach(el => {
+                const exactKey = dateMemoryKey(el);
+                const fallbackKey = el.name + '_' + fieldIndex(el);
+                if (formMemory[exactKey] !== undefined) {
+                    el.value = formMemory[exactKey];
+                } else if (formMemory[fallbackKey] !== undefined) {
+                    el.value = formMemory[fallbackKey];
+                }
+                updateDateButtonFromHidden(el);
+            });
+            // Botões de data
+            document.querySelectorAll('#panel-root .date-display-btn').forEach((btn, i) => {
+                const saved = formMemory['dateBtn_' + i];
+                if (saved) {
+                    const span = btn.querySelector('.date-text');
+                    if (span) span.textContent = saved.text;
+                    if (saved.hasValue) { btn.classList.add('has-value'); btn.classList.remove('placeholder-text'); }
+                }
+            });
+            document.querySelectorAll('#panel-root .date-wrapper input[type="hidden"]').forEach(updateDateButtonFromHidden);
+            // Interesses
+            const interestsContainer = document.getElementById('interestsContainer');
+            if (interestsContainer && formMemory['interests']) {
+                formMemory['interests'].forEach(val => {
+                    const badge = document.createElement('div');
+                    badge.className = 'interest-badge';
+                    badge.innerHTML = `${val}<button type="button" onclick="this.closest('.interest-badge').remove()">×</button>`;
+                    interestsContainer.appendChild(badge);
+                });
+            }
+        }
+        // ── END MEMÓRIA ──────────────────────────────────────────────
+
+        const TAB_CONFIG = {
+            info: {
+                title: 'Informações Pessoais',
+                icon: 'user',
+                render: renderInfoTab
+            },
+            perfil: {
+                title: 'Perfil Profissional',
+                icon: 'briefcase',
+                render: renderPerfilTab
+            },
+            cargo: {
+                title: 'Cargo/Área Pretendida',
+                icon: 'bullseye',
+                render: renderCargoTab
+            },
+            idiomas: {
+                title: 'Idiomas',
+                icon: 'globe',
+                render: renderIdiomasTab
+            },
+            experiencia: {
+                title: 'Experiência Profissional',
+                icon: 'history',
+                render: renderExperienciaTab
+            },
+            educacao: {
+                title: 'Educação e Formação',
+                icon: 'graduation-cap',
+                render: renderEducacaoTab
+            },
+            competencias: {
+                title: 'Competências Profissionais',
+                icon: 'star',
+                render: renderCompetenciasTab
+            },
+            interesses: {
+                title: 'Interesses e Hobbies',
+                icon: 'heart',
+                render: renderInteressesTab
+            },
+            adicionais: {
+                title: 'Informações Adicionais',
+                icon: 'info-circle',
+                render: renderAdicionaisTab
+            }
+        };
+
+        const TAB_ORDER = Object.keys(TAB_CONFIG);
+        let currentTab = 'info';
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => switchTab(btn.dataset.tab));
+            btn.addEventListener('keydown', handleTabKeydown);
+        });
+
+        function switchTab(tabName, options = {}) {
+            const { skipSave = false, force = false } = options;
+            if (tabName === currentTab && !force) return;
+            if (!skipSave) saveTabData();
+            closeAllCalendars(false);
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+                btn.setAttribute('tabindex', '-1');
+            });
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.querySelector(`[data-tab="${tabName}"]`).setAttribute('aria-selected', 'true');
+            document.querySelector(`[data-tab="${tabName}"]`).setAttribute('tabindex', '0');
+
+            currentTab = tabName;
+            const panelRoot = document.getElementById('panel-root');
+
+            // Fade out → clear → render → fade in, no layout jump
+            panelRoot.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+            panelRoot.style.opacity = '0';
+            panelRoot.style.transform = 'translateY(6px)';
+
+            setTimeout(() => {
+                panelRoot.innerHTML = '';
+                TAB_CONFIG[tabName].render(panelRoot);
+                // After rendering, attach any post-render listeners
+                if (tabName === 'interesses') {
+                    const inp = panelRoot.querySelector('#interestInput');
+                    if (inp) {
+                        inp.addEventListener('keypress', (e) => {
+                            if (e.key === 'Enter') { e.preventDefault(); addInterest(); }
+                        }, { passive: false });
+                    }
+                }
+                requestAnimationFrame(() => {
+                    restoreTabData();
+                    panelRoot.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+                    panelRoot.style.opacity = '1';
+                    panelRoot.style.transform = 'translateY(0)';
+                });
+            }, 150);
+        }
+
+        function handleTabKeydown(e) {
+            const buttons = Array.from(document.querySelectorAll('.tab-btn'));
+            const index = buttons.indexOf(e.target);
+
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prev = buttons[(index - 1 + buttons.length) % buttons.length];
+                prev.focus();
+                switchTab(prev.dataset.tab);
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                const next = buttons[(index + 1) % buttons.length];
+                next.focus();
+                switchTab(next.dataset.tab);
+            }
+        }
+
+        function renderTopButtons(container) {
+            const div = document.createElement('div');
+            div.className = 'top-buttons';
+            div.innerHTML = `
+                <button type="button" class="btn-outline" onclick="document.getElementById('fileInput').click()">
+                    <i class="fas fa-file-pdf"></i> Anexar CV
+                </button>
+                <input type="file" id="fileInput" accept=".pdf,.doc,.docx">
+                
+                <div style="display:flex; gap:8px; flex:1; min-width:150px;">
+                    <button type="button" class="btn-outline" id="photoBtn" onclick="document.getElementById('photoInput').click()">
+                        <i class="fas fa-image"></i> Foto
+                    </button>
+                    <button type="button" id="photoRemoveBtn" onclick="removePhoto()" style="display:none; padding:12px 14px; border:2px solid #e74c3c; background:transparent; color:#e74c3c; border-radius:8px; cursor:pointer;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <input type="file" id="photoInput" accept="image/*">
+            `;
+            container.appendChild(div);
+
+            document.getElementById('photoInput').addEventListener('change', handlePhotoUpload, { passive: true });
+            document.getElementById('fileInput').addEventListener('change', handleExistingCvUpload, { passive: true });
+            updatePhotoButtonState();
+        }
+
+        function loadExternalScript(src) {
+            return new Promise((resolve, reject) => {
+                const existing = document.querySelector(`script[src="${src}"]`);
+                if (existing) {
+                    existing.addEventListener('load', resolve, { once: true });
+                    existing.addEventListener('error', reject, { once: true });
+                    if (existing.dataset.loaded === 'true') resolve();
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = () => {
+                    script.dataset.loaded = 'true';
+                    resolve();
+                };
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
+        async function ensurePdfJs() {
+            if (!window.pdfjsLib) {
+                await loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
+            }
+            if (window.pdfjsLib?.GlobalWorkerOptions) {
+                window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            }
+        }
+
+        async function extractPdfText(file) {
+            await ensurePdfJs();
+            const buffer = await file.arrayBuffer();
+            const pdf = await window.pdfjsLib.getDocument({ data: buffer }).promise;
+            const pages = [];
+
+            for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+                const page = await pdf.getPage(pageNumber);
+                const content = await page.getTextContent();
+                const rows = [];
+
+                content.items.forEach(item => {
+                    const x = item.transform[4];
+                    const y = item.transform[5];
+                    let row = rows.find(existing => Math.abs(existing.y - y) < 3);
+                    if (!row) {
+                        row = { y, items: [] };
+                        rows.push(row);
+                    }
+                    row.items.push({ x, text: item.str });
+                });
+
+                rows
+                    .sort((a, b) => b.y - a.y)
+                    .forEach(row => {
+                        const line = row.items
+                            .sort((a, b) => a.x - b.x)
+                            .map(item => item.text)
+                            .join(' ')
+                            .replace(/\s+/g, ' ')
+                            .trim();
+                        if (line) pages.push(line);
+                    });
+            }
+
+            return pages.join('\n');
+        }
+
+        function stripHtml(text) {
+            return String(text || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+        }
+
+        function sectionText(lines, startPatterns, endPatterns) {
+            const start = lines.findIndex(line => startPatterns.some(pattern => pattern.test(line)));
+            if (start < 0) return '';
+            const end = lines.findIndex((line, index) =>
+                index > start && endPatterns.some(pattern => pattern.test(line))
+            );
+            return lines.slice(start + 1, end < 0 ? lines.length : end).join('\n').trim();
+        }
+
+        function splitSentences(text) {
+            return String(text || '')
+                .split(/\n|(?<=\.)\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ])/)
+                .map(item => item.trim())
+                .filter(Boolean);
+        }
+
+        function findDateRange(line) {
+            const date = '(\\d{1,2}[\\/.-]\\d{1,2}[\\/.-]\\d{2,4}|\\d{4}|presente|atual|actual)';
+            const match = String(line || '').match(new RegExp(`${date}\\s*(?:-|–|—|a|até|ate)\\s*${date}`, 'i'));
+            if (!match) return null;
+            return { start: match[1], end: match[2], raw: match[0] };
+        }
+
+        function parseDateToIso(value) {
+            const text = String(value || '').trim();
+            if (!text || /presente|atual|actual/i.test(text)) return '';
+            const dmy = text.match(/^(\d{1,2})[\\/.-](\d{1,2})[\\/.-](\d{2,4})$/);
+            if (dmy) {
+                const year = dmy[3].length === 2 ? '20' + dmy[3] : dmy[3];
+                return `${year}-${dmy[2].padStart(2, '0')}-${dmy[1].padStart(2, '0')}`;
+            }
+            const yearOnly = text.match(/^\d{4}$/);
+            if (yearOnly) return `${text}-01-01`;
+            return '';
+        }
+
+        function detectLanguageLevel(value) {
+            const text = String(value || '').toUpperCase();
+            const match = text.match(/\b(A1|A2|B1|B2|C1|C2)\b/);
+            if (match) return match[1];
+            if (/NATIVO/.test(text)) return 'Nativo';
+            if (/FLUENTE/.test(text)) return 'C2';
+            if (/AVAN/.test(text)) return 'C1';
+            if (/INTER/.test(text)) return 'B1';
+            if (/BAS|ELEMENT/.test(text)) return 'A2';
+            return '';
+        }
+
+        function parseExistingCvText(text) {
+            const lines = String(text || '')
+                .split(/\n+/)
+                .map(line => line.replace(/\s+/g, ' ').trim())
+                .filter(Boolean);
+
+            const allText = lines.join('\n');
+            const email = (allText.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i) || [''])[0];
+            const phone = (allText.match(/(?:\+?\d[\d\s().-]{5,}\d)/) || [''])[0].replace(/\s+/g, ' ').trim();
+            const postal = (allText.match(/\b\d{4}[-\s]?\d{3}\b/) || [''])[0];
+
+            const getLabel = (labels) => {
+                for (const line of lines) {
+                    const clean = line.replace(/^[•\-\s]+/, '').replace(/^\d+\.\s*/, '').trim();
+                    for (const label of labels) {
+                        const match = clean.match(new RegExp(`^${label}\\s*:\\s*(.+)$`, 'i'));
+                        if (match) return match[1].trim();
+                    }
+                }
+                return '';
+            };
+
+            const nomeLabel = getLabel(['Nome']);
+            const apelidoLabel = getLabel(['Apelido']);
+            const telefoneLabel = getLabel(['Telefone']);
+            const emailLabel = getLabel(['E-?mail', 'Email']);
+            const enderecoLabel = getLabel(['Endere[cç]o', 'Morada']);
+            const postalLabel = getLabel(['C[oó]digo\\s+Postal', 'Codigo\\s+Postal']);
+            const cargoAtualLabel = getLabel(['Cargo\\s+Atual', 'Cargo']);
+            const objetivoLabel = getLabel(['Objetivo', 'Objectivo']);
+
+            const ignoredName = /curriculum|vitae|telefone|e-?mail|email|endereço|endereco|contacto|perfil|experi|educa|compet|idioma|página|pagina|gerado/i;
+            const nameLine = lines.find(line =>
+                line.length > 3 &&
+                line.length < 70 &&
+                /[A-Za-zÀ-ÿ]{2,}\s+[A-Za-zÀ-ÿ]{2,}/.test(line) &&
+                !ignoredName.test(line) &&
+                !line.includes('@') &&
+                !/\d{2,}/.test(line)
+            ) || '';
+
+            const profile = sectionText(lines,
+                [/perfil profissional/i, /^perfil$/i, /resumo profissional/i],
+                [/cargo/i, /idioma/i, /experi/i, /educa/i, /compet/i, /skills/i, /forma/i]
+            );
+            const cargoText = sectionText(lines,
+                [/cargo/i],
+                [/idioma/i, /experi/i, /educa/i, /compet/i, /skills/i, /interess/i]
+            );
+            const languagesText = sectionText(lines,
+                [/idioma/i],
+                [/experi/i, /educa/i, /compet/i, /skills/i, /interess/i, /adicion/i]
+            );
+
+            const experienceText = sectionText(lines,
+                [/experi/i],
+                [/educa/i, /forma/i, /compet/i, /idioma/i, /interess/i, /informa/i]
+            );
+            const educationText = sectionText(lines,
+                [/educa/i, /forma/i],
+                [/compet/i, /skills/i, /idioma/i, /interess/i, /informa/i, /adicion/i]
+            );
+            const competenceText = sectionText(lines,
+                [/compet/i, /skills/i],
+                [/interess/i, /informa/i, /adicion/i]
+            );
+            const interestText = sectionText(lines,
+                [/interess/i, /hobb/i],
+                [/informa/i, /adicion/i]
+            );
+
+            const makeEntries = (blockText) => {
+                const blockLines = blockText.split(/\n+/).map(line => line.trim()).filter(Boolean);
+                const entries = [];
+                let current = null;
+
+                blockLines.forEach(line => {
+                    const range = findDateRange(line);
+                    if (range || (!current && line.length > 0)) {
+                        if (current) entries.push(current);
+                        current = { title: '', org: '', local: '', start: '', end: '', desc: [] };
+                        if (range) {
+                            current.start = parseDateToIso(range.start);
+                            current.end = parseDateToIso(range.end);
+                            line = line.replace(range.raw, '').trim();
+                        }
+                        current.title = line.replace(/^[-•]\s*/, '').trim();
+                    } else if (current) {
+                        if (!current.org && /universidade|instituto|empresa|ag[eê]ncia|school|college|lda|sa\b|sarl|horizonte|lisboa|praia/i.test(line)) {
+                            const parts = line.split(/\s+[—-]\s+/);
+                            current.org = parts[0] || line;
+                            current.local = parts[1] || '';
+                        } else {
+                            current.desc.push(line.replace(/^[-•]\s*/, ''));
+                        }
+                    }
+                });
+
+                if (current) entries.push(current);
+                return entries.filter(item => item.title || item.org || item.desc.length).slice(0, 8);
+            };
+
+            const languageSource = languagesText || allText;
+            const languageLines = languageSource.split(/\n+/).filter(line => /\b(A1|A2|B1|B2|C1|C2|Fluente|Avan|Inter|Intermedi|B[aá]sico|Basico|Nativo|Ingl|Portugu|Espanhol|Franc)\b/i.test(line));
+            const languages = languageLines
+                .map(line => {
+                    const name = (line.match(/\b(Portugu[eê]s|Ingl[eê]s|Franc[eê]s|Espanhol|Crioulo|Alem[aã]o|Italiano)\b/i) || [''])[0];
+                    const levels = line.match(/\b(A1|A2|B1|B2|C1|C2)\b/gi) || [];
+                    if (!name && levels.length === 0) return null;
+                    const fallback = detectLanguageLevel(line);
+                    return {
+                        idioma: name || line.split(/\s+/)[0],
+                        ouvir: levels[0] || fallback,
+                        ler: levels[1] || levels[0] || fallback,
+                        interacao: levels[2] || levels[0] || fallback,
+                        producao: levels[3] || levels[0] || fallback,
+                        escrever: levels[4] || levels[0] || fallback
+                    };
+                })
+                .filter(Boolean)
+                .slice(0, 5);
+
+            return {
+                nome: nameLine,
+                telefone: phone,
+                email,
+                endereco: '',
+                postal,
+                perfil: profile,
+                experiencias: makeEntries(experienceText),
+                educacao: makeEntries(educationText),
+                competencias: splitSentences(competenceText).slice(0, 10),
+                interesses: splitSentences(interestText).slice(0, 10),
+                idiomas: languages
+            };
+        }
+
+        function parseExistingCvTextV2(text) {
+            const rawLines = String(text || '')
+                .split(/\n+/)
+                .map(line => line.replace(/\s+/g, ' ').trim())
+                .filter(Boolean);
+
+            const normalizeText = (value) => String(value || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+
+            const cleanLine = (line) => String(line || '')
+                .replace(/^\s*\d+[.)]\s*/, '')
+                .replace(/^[\s\-\*\u2022\uFFFD?]+/, '')
+                .replace(/^o\s+/i, '')
+                .trim();
+
+            const headingDefs = [
+                { key: 'info', names: ['informacoes pessoais', 'dados pessoais'] },
+                { key: 'perfil', names: ['perfil', 'perfil profissional', 'resumo profissional'] },
+                { key: 'cargo', names: ['cargo', 'cargo pretendido', 'objetivo profissional'] },
+                { key: 'idiomas', names: ['idiomas', 'linguas'] },
+                { key: 'experiencia', names: ['experiencia', 'experiencia profissional'] },
+                { key: 'educacao', names: ['educacao', 'formacao', 'educacao e formacao'] },
+                { key: 'competencias', names: ['competencias', 'skills', 'habilidades'] },
+                { key: 'interesses', names: ['interesses', 'hobbies'] },
+                { key: 'adicionais', names: ['adicionais', 'informacoes adicionais'] }
+            ];
+
+            const headingKey = (line) => {
+                const numbered = /^\s*\d+[.)]\s*/.test(line);
+                const cleaned = cleanLine(line);
+                const norm = normalizeText(cleaned);
+                for (const def of headingDefs) {
+                    if (def.names.some(name => norm === name || (numbered && (norm.startsWith(name + ' ') || norm.startsWith(name.slice(0, 5)))))) return def.key;
+                }
+                return '';
+            };
+
+            const sectionLines = (key) => {
+                const found = [];
+                let active = false;
+                rawLines.forEach(line => {
+                    const currentKey = headingKey(line);
+                    if (currentKey) {
+                        active = currentKey === key;
+                        return;
+                    }
+                    if (active) found.push(line);
+                });
+                return found;
+            };
+
+            const getLabel = (labels) => {
+                const labelSet = labels.map(normalizeText);
+                for (let index = 0; index < rawLines.length; index += 1) {
+                    const line = rawLines[index];
+                    const cleaned = cleanLine(line);
+                    const colon = cleaned.indexOf(':');
+                    if (colon === -1) continue;
+                    const key = normalizeText(cleaned.slice(0, colon));
+                    if (labelSet.some(label => key === label || key.startsWith(label) || label.startsWith(key) || key.slice(0, 5) === label.slice(0, 5))) {
+                        let value = cleaned.slice(colon + 1).trim();
+                        for (let next = index + 1; next < rawLines.length; next += 1) {
+                            const nextLine = rawLines[next];
+                            const nextClean = cleanLine(nextLine);
+                            if (!nextClean || headingKey(nextLine) || /^\s*(?:[\-\*\u2022\uFFFD?]|\d+[.)])/i.test(nextLine) || nextClean.includes(':')) break;
+                            value += ' ' + nextClean;
+                        }
+                        return value.trim();
+                    }
+                }
+                return '';
+            };
+
+            const allText = rawLines.join('\n');
+            const email = getLabel(['email', 'e-mail']) || (allText.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i) || [''])[0];
+            const phone = getLabel(['telefone', 'telemovel', 'celular']) || ((allText.match(/(?:\+?\d[\d\s().-]{5,}\d)/) || [''])[0].replace(/\s+/g, ' ').trim());
+            const postal = getLabel(['codigo postal', 'cod postal']) || (allText.match(/\b\d{4}[-\s]?\d{3}\b/) || [''])[0];
+
+            const nome = getLabel(['nome']);
+            const apelido = getLabel(['apelido']);
+            const endereco = getLabel(['endereco', 'morada']);
+            const cargoAtual = getLabel(['cargo atual', 'cargo']);
+            const objetivo = getLabel(['objetivo', 'objectivo']);
+
+            const profile = sectionLines('perfil').join(' ').trim();
+            const unique = (items) => [...new Set(items.map(item => String(item || '').trim()).filter(Boolean))];
+            const cargos = unique([cargoAtual, objetivo]);
+
+            const levelFromText = (value) => {
+                const upper = String(value || '').toUpperCase();
+                const coded = upper.match(/\b(A1|A2|B1|B2|C1|C2)\b/);
+                if (coded) return coded[1];
+                const norm = normalizeText(value);
+                if (norm.includes('nativo')) return 'Nativo';
+                if (norm.includes('fluente')) return 'C2';
+                if (norm.includes('avanc')) return 'C1';
+                if (norm.includes('intermedi')) return 'B1';
+                if (norm.includes('basico') || /b.sico/.test(norm)) return 'A2';
+                if (norm.includes('elementar')) return 'A1';
+                return '';
+            };
+
+            const idiomaNames = [
+                { stem: 'portugu', label: 'Portugues' },
+                { stem: 'ingl', label: 'Ingles' },
+                { stem: 'espanh', label: 'Espanhol' },
+                { stem: 'franc', label: 'Frances' },
+                { stem: 'crioulo', label: 'Crioulo' },
+                { stem: 'alema', label: 'Alemao' },
+                { stem: 'itali', label: 'Italiano' }
+            ];
+            const languageLines = sectionLines('idiomas').filter(line => {
+                const norm = normalizeText(line);
+                return idiomaNames.some(item => norm.includes(item.stem)) || /\b(A1|A2|B1|B2|C1|C2)\b/i.test(line);
+            });
+
+            const languages = languageLines.map(line => {
+                const cleaned = cleanLine(line);
+                const norm = normalizeText(cleaned);
+                const matchedName = idiomaNames.find(item => norm.includes(item.stem));
+                const readableName = matchedName ? matchedName.label : cleaned.replace(/\(.+\)/, '').trim();
+                const level = levelFromText(cleaned);
+                if (!readableName || !level) return null;
+                return {
+                    idioma: readableName,
+                    ouvir: level,
+                    ler: level,
+                    interacao: level,
+                    producao: level,
+                    escrever: level
+                };
+            }).filter(Boolean).slice(0, 5);
+
+            const parseExperience = () => {
+                const entries = [];
+                let current = null;
+                sectionLines('experiencia').forEach(line => {
+                    const cleaned = cleanLine(line);
+                    const match = cleaned.match(/^(\d{4}|\d{1,2}[\/.-]\d{1,2}[\/.-]\d{2,4})\s*(?:[\u2013\u2014\-?]|\ba\b|ate|at[eé])\s*(\d{4}|presente|atual|actual|\d{1,2}[\/.-]\d{1,2}[\/.-]\d{2,4})\s*:?\s*(.*)$/i);
+                    if (match) {
+                        if (current) entries.push(current);
+                        const rest = match[3].trim();
+                        const parts = rest.split(/\s+[\u2013\u2014\-?]\s+/);
+                        current = {
+                            title: (parts[0] || rest || 'Experiencia').trim(),
+                            org: '',
+                            local: '',
+                            start: parseDateToIso(match[1]),
+                            end: parseDateToIso(match[2]),
+                            desc: parts.slice(1).join(' - ') ? [parts.slice(1).join(' - ')] : []
+                        };
+                    } else if (current && cleaned) {
+                        current.desc.push(cleaned);
+                    }
+                });
+                if (current) entries.push(current);
+                return entries.slice(0, 8);
+            };
+
+            const bulletItems = (key) => {
+                const items = [];
+                sectionLines(key).forEach(line => {
+                    const startsBullet = /^\s*(?:[\-\*\u2022\uFFFD?]|o\s+)/i.test(line);
+                    const cleaned = cleanLine(line);
+                    if (!cleaned) return;
+                    if (startsBullet || !items.length) items.push(cleaned);
+                    else items[items.length - 1] += ' ' + cleaned;
+                });
+                return items.map(item => item.trim()).filter(Boolean);
+            };
+
+            const education = bulletItems('educacao').map(item => ({
+                title: item,
+                org: '',
+                local: '',
+                start: '',
+                end: '',
+                desc: []
+            })).slice(0, 8);
+
+            return {
+                nome: nome || '',
+                apelido,
+                telefone: phone,
+                email,
+                endereco,
+                postal,
+                cargos,
+                perfil: profile,
+                experiencias: parseExperience(),
+                educacao: education,
+                competencias: bulletItems('competencias').slice(0, 10),
+                interesses: bulletItems('interesses').slice(0, 10),
+                adicionais: bulletItems('adicionais').slice(0, 12),
+                idiomas: languages
+            };
+        }
+
+        function parseLooseCvText(text) {
+            const rawLines = String(text || '')
+                .split(/\n+/)
+                .map(line => line.replace(/\s+/g, ' ').trim())
+                .filter(Boolean);
+
+            const normalizeText = (value) => String(value || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+
+            const cleanLine = (line) => String(line || '')
+                .replace(/^[\s\-\*\u2022\uFFFD?]+/, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            const allText = rawLines.join('\n');
+            const email = (allText.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i) || [''])[0];
+            const telefone = ((allText.match(/(?:\+?\d[\d\s().-]{5,}\d)/) || [''])[0] || '').replace(/\s+/g, ' ').trim();
+            const postal = (allText.match(/\b\d{4}[-\s]?\d{3}\b/) || [''])[0];
+
+            const blocked = /curriculum|vitae|cv\b|contacto|contato|telefone|telemovel|email|e-mail|endere|morada|codigo|perfil|experiencia|educacao|formacao|competencia|idioma|interesse|pagina|gerado|creativeflow/i;
+            const likelyName = rawLines.slice(0, 35)
+                .map(cleanLine)
+                .find(line => {
+                    if (!line || line.length < 5 || line.length > 70) return false;
+                    if (blocked.test(normalizeText(line))) return false;
+                    if (line.includes('@') || /\d{2,}/.test(line)) return false;
+                    return /[A-Za-zÀ-ÿ]{2,}\s+[A-Za-zÀ-ÿ]{2,}/.test(line);
+                }) || '';
+
+            const labelAfter = (labels) => {
+                const labelSet = labels.map(normalizeText);
+                for (let i = 0; i < rawLines.length; i += 1) {
+                    const clean = cleanLine(rawLines[i]);
+                    const norm = normalizeText(clean).replace(/:$/, '');
+                    const colon = clean.indexOf(':');
+                    if (colon >= 0) {
+                        const key = normalizeText(clean.slice(0, colon));
+                        if (labelSet.some(label => key === label || key.includes(label))) {
+                            return clean.slice(colon + 1).trim();
+                        }
+                    }
+                    if (labelSet.some(label => norm === label || norm.includes(label))) {
+                        const next = cleanLine(rawLines[i + 1] || '');
+                        if (next && !blocked.test(normalizeText(next))) return next;
+                    }
+                }
+                return '';
+            };
+
+            const endereco = labelAfter(['endereco', 'morada', 'address']);
+            const cargo = labelAfter(['cargo', 'cargo pretendido', 'objetivo profissional', 'funcao']);
+
+            return {
+                nome: likelyName,
+                apelido: '',
+                telefone,
+                email,
+                endereco,
+                postal,
+                cargos: cargo ? [cargo] : [],
+                perfil: '',
+                experiencias: [],
+                educacao: [],
+                competencias: [],
+                interesses: [],
+                adicionais: [],
+                idiomas: []
+            };
+        }
+
+        function mergeParsedCv(primary, fallback) {
+            const merged = { ...primary };
+            ['nome', 'apelido', 'telefone', 'email', 'endereco', 'postal', 'perfil'].forEach(key => {
+                if (!merged[key] && fallback[key]) merged[key] = fallback[key];
+            });
+            ['cargos', 'experiencias', 'educacao', 'competencias', 'interesses', 'adicionais', 'idiomas'].forEach(key => {
+                if ((!merged[key] || merged[key].length === 0) && fallback[key] && fallback[key].length) {
+                    merged[key] = fallback[key];
+                }
+            });
+            return merged;
+        }
+
+        function setMemoryValue(name, value, index = 0) {
+            if (value === undefined || value === null || value === '') return;
+            formMemory[`${name}_${index}`] = value;
+        }
+
+        function setRichMemory(name, value, index = 0) {
+            if (!value) return;
+            const html = String(value).includes('<') ? String(value) : `<p>${String(value).replace(/\n+/g, '</p><p>')}</p>`;
+            setMemoryValue(name, html, index);
+            formMemory[`rich_${name}_${index}`] = html;
+        }
+
+        function fillFormFromParsedCv(parsed) {
+            if (parsed.nome) setMemoryValue('nome', parsed.nome, 0);
+            if (parsed.apelido) setMemoryValue('apelido', parsed.apelido, 0);
+            if (parsed.telefone) setMemoryValue('telefone', parsed.telefone, 0);
+            if (parsed.email) setMemoryValue('email', parsed.email, 0);
+            if (parsed.endereco) setMemoryValue('endereco', parsed.endereco, 0);
+            if (parsed.postal) setMemoryValue('postal', parsed.postal, 0);
+            if (parsed.perfil) setRichMemory('perfil_profissional', parsed.perfil, 0);
+
+            if (parsed.cargos && parsed.cargos.length) {
+                formMemory[repeatKey('cargo')] = parsed.cargos.length;
+                parsed.cargos.forEach((item, index) => {
+                    setMemoryValue('cargo_pretendido[]', item, index);
+                });
+            }
+
+            if (parsed.experiencias.length) {
+                formMemory[repeatKey('experiencia')] = parsed.experiencias.length;
+                parsed.experiencias.forEach((item, index) => {
+                    setMemoryValue('exp_inicio[]', item.start, index);
+                    setMemoryValue('exp_fim[]', item.end, index);
+                    setMemoryValue('exp_funcao[]', item.title, index);
+                    setMemoryValue('exp_empresa[]', item.org, index);
+                    setMemoryValue('exp_local[]', item.local, index);
+                    setRichMemory('exp_descricao[]', item.desc.join('\n'), index);
+                });
+            }
+
+            if (parsed.educacao.length) {
+                formMemory[repeatKey('educacao')] = parsed.educacao.length;
+                parsed.educacao.forEach((item, index) => {
+                    setMemoryValue('edu_inicio[]', item.start, index);
+                    setMemoryValue('edu_fim[]', item.end, index);
+                    setMemoryValue('edu_curso[]', item.title, index);
+                    setMemoryValue('edu_inst[]', item.org, index);
+                    setMemoryValue('edu_local[]', item.local, index);
+                });
+            }
+
+            if (parsed.idiomas.length) {
+                formMemory[repeatKey('idiomas')] = parsed.idiomas.length;
+                parsed.idiomas.forEach((item, index) => {
+                    setMemoryValue('idioma[]', item.idioma, index);
+                    setMemoryValue('idioma_ouvir[]', item.ouvir, index);
+                    setMemoryValue('idioma_ler[]', item.ler, index);
+                    setMemoryValue('idioma_interacao[]', item.interacao, index);
+                    setMemoryValue('idioma_producao[]', item.producao, index);
+                    setMemoryValue('idioma_escrever[]', item.escrever, index);
+                });
+            }
+
+            if (parsed.competencias.length) {
+                formMemory[repeatKey('competencias')] = parsed.competencias.length;
+                parsed.competencias.forEach((item, index) => {
+                    setMemoryValue('comp_tipo[]', stripHtml(item), index);
+                    setMemoryValue('comp_nivel[]', '', index);
+                });
+            }
+
+            if (parsed.interesses.length) {
+                formMemory.interests = parsed.interesses.map(stripHtml);
+            }
+
+            if (parsed.adicionais && parsed.adicionais.length) {
+                setRichMemory('observacoes', parsed.adicionais.map(stripHtml).join('\n'), 0);
+            }
+        }
+
+        async function handleExistingCvUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (!/pdf$/i.test(file.name) && file.type !== 'application/pdf') {
+                alert('Por agora a importação automática lê apenas PDF com texto selecionável.');
+                return;
+            }
+
+            const btn = e.target.closest('.top-buttons')?.querySelector('.btn-outline');
+            const original = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> A ler CV...';
+                btn.disabled = true;
+            }
+
+            try {
+                const text = await extractPdfText(file);
+                if (!text || text.replace(/\s+/g, '').length < 40) {
+                    alert('Não consegui extrair texto suficiente desse PDF. Se for um PDF digitalizado/imagem, será preciso OCR.');
+                    return;
+                }
+
+                const parsed = mergeParsedCv(parseExistingCvTextV2(text), parseLooseCvText(text));
+                fillFormFromParsedCv(parsed);
+
+                switchTab('info', { skipSave: true, force: true });
+                setTimeout(restoreTabData, 240);
+
+                const filled = [
+                    parsed.nome && 'nome',
+                    parsed.email && 'email',
+                    parsed.telefone && 'telefone',
+                    parsed.perfil && 'perfil',
+                    parsed.experiencias.length && `${parsed.experiencias.length} experiência(s)`,
+                    parsed.educacao.length && `${parsed.educacao.length} formação(ões)`,
+                    parsed.idiomas.length && `${parsed.idiomas.length} idioma(s)`,
+                    parsed.competencias.length && `${parsed.competencias.length} competência(s)`
+                ].filter(Boolean).join(', ');
+
+                alert(filled ? `CV importado. Revê os campos preenchidos: ${filled}.` : 'CV lido, mas não consegui identificar campos automaticamente. Podes preencher manualmente.');
+            } catch (err) {
+                alert('Não foi possível ler o CV: ' + err.message);
+            } finally {
+                if (btn) {
+                    btn.innerHTML = original;
+                    btn.disabled = false;
+                }
+            }
+        }
+
+        function updatePhotoButtonState() {
+            const btn = document.getElementById('photoBtn');
+            const removeBtn = document.getElementById('photoRemoveBtn');
+            if (!btn || !removeBtn) return;
+
+            if (uploadedPhoto) {
+                btn.classList.add('photo-loaded');
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Carregado';
+                removeBtn.style.display = 'block';
+            } else {
+                btn.classList.remove('photo-loaded');
+                btn.innerHTML = '<i class="fas fa-image"></i> Foto';
+                removeBtn.style.display = 'none';
+            }
+        }
+
+        function handlePhotoUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                const img = new Image();
+                img.onload = () => {
+                    openPhotoEditor(img, file);
+                };
+                img.src = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function ensurePhotoEditor() {
+            let modal = document.getElementById('photoEditorModal');
+            if (modal) return modal;
+
+            modal = document.createElement('div');
+            modal.id = 'photoEditorModal';
+            modal.className = 'photo-editor-modal';
+            modal.setAttribute('aria-hidden', 'true');
+            modal.innerHTML = `
+                <div class="photo-editor-panel" role="dialog" aria-modal="true" aria-label="Ajustar foto do perfil">
+                    <div class="photo-editor-head">
+                        <div>
+                            <div class="photo-editor-title">Ajustar foto do perfil</div>
+                        </div>
+                        <button type="button" class="photo-editor-close" id="photoEditorClose" title="Fechar">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="photo-crop-stage" id="photoCropStage" title="Arraste a foto para enquadrar">
+                        <canvas id="photoCropCanvas" width="${PHOTO_EDITOR_SIZE}" height="${PHOTO_EDITOR_SIZE}"></canvas>
+                    </div>
+                    <div class="photo-editor-controls">
+                        <button type="button" class="photo-editor-icon-btn" id="photoZoomOut" title="Diminuir zoom">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="range" id="photoZoomRange" min="1" max="3" step="0.01" value="1" aria-label="Zoom da foto">
+                        <button type="button" class="photo-editor-icon-btn" id="photoZoomIn" title="Aumentar zoom">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button type="button" class="photo-editor-icon-btn" id="photoResetCrop" title="Repor enquadramento">
+                            <i class="fas fa-rotate-left"></i>
+                        </button>
+                    </div>
+                    <div class="photo-editor-actions">
+                        <button type="button" class="photo-editor-action" id="photoCancelCrop">Cancelar</button>
+                        <button type="button" class="photo-editor-action primary" id="photoUseCrop">
+                            <i class="fas fa-check"></i> Usar foto
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            const stage = modal.querySelector('#photoCropStage');
+            const zoomRange = modal.querySelector('#photoZoomRange');
+
+            modal.querySelector('#photoEditorClose').addEventListener('click', cancelPhotoEditor);
+            modal.querySelector('#photoCancelCrop').addEventListener('click', cancelPhotoEditor);
+            modal.querySelector('#photoUseCrop').addEventListener('click', confirmPhotoCrop);
+            modal.querySelector('#photoZoomOut').addEventListener('click', () => setPhotoZoom((photoEditState?.zoom || 1) - 0.08));
+            modal.querySelector('#photoZoomIn').addEventListener('click', () => setPhotoZoom((photoEditState?.zoom || 1) + 0.08));
+            modal.querySelector('#photoResetCrop').addEventListener('click', resetPhotoCrop);
+            zoomRange.addEventListener('input', () => setPhotoZoom(Number(zoomRange.value)));
+
+            stage.addEventListener('pointerdown', (e) => {
+                if (!photoEditState) return;
+                e.preventDefault();
+                stage.setPointerCapture(e.pointerId);
+                photoEditState.dragging = true;
+                photoEditState.startX = e.clientX;
+                photoEditState.startY = e.clientY;
+                photoEditState.startOffsetX = photoEditState.offsetX;
+                photoEditState.startOffsetY = photoEditState.offsetY;
+            });
+
+            stage.addEventListener('pointermove', (e) => {
+                if (!photoEditState || !photoEditState.dragging) return;
+                photoEditState.offsetX = photoEditState.startOffsetX + (e.clientX - photoEditState.startX);
+                photoEditState.offsetY = photoEditState.startOffsetY + (e.clientY - photoEditState.startY);
+                clampPhotoCrop();
+                drawPhotoCropPreview();
+            });
+
+            stage.addEventListener('pointerup', (e) => {
+                if (!photoEditState) return;
+                photoEditState.dragging = false;
+                try { stage.releasePointerCapture(e.pointerId); } catch (_) {}
+            });
+
+            stage.addEventListener('pointercancel', () => {
+                if (photoEditState) photoEditState.dragging = false;
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) cancelPhotoEditor();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('open')) cancelPhotoEditor();
+            });
+
+            return modal;
+        }
+
+        function openPhotoEditor(img, file) {
+            const modal = ensurePhotoEditor();
+            photoEditState = {
+                img,
+                file,
+                zoom: 1,
+                offsetX: 0,
+                offsetY: 0,
+                dragging: false
+            };
+            modal.querySelector('#photoZoomRange').value = '1';
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            drawPhotoCropPreview();
+        }
+
+        function cancelPhotoEditor() {
+            const modal = document.getElementById('photoEditorModal');
+            if (modal) {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+            document.body.style.overflow = '';
+            photoEditState = null;
+            const input = document.getElementById('photoInput');
+            if (input && !uploadedPhoto) input.value = '';
+        }
+
+        function setPhotoZoom(value) {
+            if (!photoEditState) return;
+            photoEditState.zoom = Math.min(3, Math.max(1, value));
+            const range = document.getElementById('photoZoomRange');
+            if (range) range.value = String(photoEditState.zoom);
+            clampPhotoCrop();
+            drawPhotoCropPreview();
+        }
+
+        function resetPhotoCrop() {
+            if (!photoEditState) return;
+            photoEditState.zoom = 1;
+            photoEditState.offsetX = 0;
+            photoEditState.offsetY = 0;
+            const range = document.getElementById('photoZoomRange');
+            if (range) range.value = '1';
+            drawPhotoCropPreview();
+        }
+
+        function getPhotoDrawMetrics(size = PHOTO_EDITOR_SIZE) {
+            if (!photoEditState) return null;
+            const { img, zoom, offsetX, offsetY } = photoEditState;
+            const baseScale = Math.max(size / img.width, size / img.height);
+            const scale = baseScale * zoom;
+            const width = img.width * scale;
+            const height = img.height * scale;
+            return {
+                x: (size - width) / 2 + offsetX * (size / PHOTO_EDITOR_SIZE),
+                y: (size - height) / 2 + offsetY * (size / PHOTO_EDITOR_SIZE),
+                width,
+                height
+            };
+        }
+
+        function clampPhotoCrop() {
+            if (!photoEditState) return;
+            const metrics = getPhotoDrawMetrics(PHOTO_EDITOR_SIZE);
+            const maxX = Math.max(0, (metrics.width - PHOTO_EDITOR_SIZE) / 2);
+            const maxY = Math.max(0, (metrics.height - PHOTO_EDITOR_SIZE) / 2);
+            photoEditState.offsetX = Math.min(maxX, Math.max(-maxX, photoEditState.offsetX));
+            photoEditState.offsetY = Math.min(maxY, Math.max(-maxY, photoEditState.offsetY));
+        }
+
+        function drawPhotoCropPreview() {
+            if (!photoEditState) return;
+            const canvas = document.getElementById('photoCropCanvas');
+            const ctx = canvas.getContext('2d');
+            const metrics = getPhotoDrawMetrics(PHOTO_EDITOR_SIZE);
+            ctx.clearRect(0, 0, PHOTO_EDITOR_SIZE, PHOTO_EDITOR_SIZE);
+            ctx.fillStyle = '#d8e1ef';
+            ctx.fillRect(0, 0, PHOTO_EDITOR_SIZE, PHOTO_EDITOR_SIZE);
+            ctx.drawImage(photoEditState.img, metrics.x, metrics.y, metrics.width, metrics.height);
+        }
+
+        function confirmPhotoCrop() {
+            if (!photoEditState) return;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = PHOTO_EXPORT_SIZE;
+            canvas.height = PHOTO_EXPORT_SIZE;
+            const ctx = canvas.getContext('2d');
+            const metrics = getPhotoDrawMetrics(PHOTO_EXPORT_SIZE);
+
+            ctx.clearRect(0, 0, PHOTO_EXPORT_SIZE, PHOTO_EXPORT_SIZE);
+            ctx.drawImage(photoEditState.img, metrics.x, metrics.y, metrics.width, metrics.height);
+
+            const dataUrl = canvas.toDataURL('image/webp', 0.82);
+            const mimeMatch = dataUrl.match(/^data:(.*?);base64,/);
+            const tipo = mimeMatch ? mimeMatch[1] : 'image/webp';
+            uploadedPhoto = {
+                nome: photoEditState.file.name,
+                tipo,
+                largura: PHOTO_PROFILE_SIZE,
+                altura: PHOTO_PROFILE_SIZE,
+                export_largura: PHOTO_EXPORT_SIZE,
+                export_altura: PHOTO_EXPORT_SIZE,
+                dataUrl,
+                base64: dataUrl.split(',')[1]
+            };
+
+            const modal = document.getElementById('photoEditorModal');
+            if (modal) {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+            document.body.style.overflow = '';
+            photoEditState = null;
+            updatePhotoButtonState();
+        }
+
+        function removePhoto() {
+            uploadedPhoto = null;
+            const input = document.getElementById('photoInput');
+            if (input) input.value = '';
+            updatePhotoButtonState();
+        }
+
+        function renderInfoTab(container) {
+            renderTopButtons(container);
+            const section = document.createElement('div');
+            section.className = 'section open';
+            section.innerHTML = `
+                <div class="section-header" onclick="toggleSection(this)">
+                    <span class="section-header-title">INFORMAÇÕES PESSOAIS</span>
+                    <span class="section-toggle">+</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label class="form-label">Nome *</label>
+                        <input type="text" class="form-input" placeholder="Seu nome completo" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Apelido</label>
+                        <input type="text" class="form-input" placeholder="Apelido (opcional)" name="apelido">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Telefone</label>
+                            <input type="tel" class="form-input" placeholder="+238 123 4567" name="telefone">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">E-mail *</label>
+                            <input type="email" class="form-input" placeholder="seu.email@exemplo.com" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Endereço</label>
+                        <input type="text" class="form-input" placeholder="Rua, nº, Cidade" name="endereco">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Código Postal</label>
+                        <input type="text" class="form-input" placeholder="2400-123" name="postal">
+                    </div>
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function renderPerfilTab(container) {
+            const section = document.createElement('div');
+            section.className = 'section open';
+            section.innerHTML = `
+                <div class="section-header" onclick="toggleSection(this)">
+                    <span class="section-header-title">PERFIL PROFISSIONAL</span>
+                    <span class="section-toggle">+</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-group" style="position: relative;">
+                        <label class="form-label">Descreva seu perfil profissional</label>
+                        ${createRichEditorHTML('perfil_profissional', 'Descreva suas principais competências, experiências e objetivos profissionais...')}
+                    </div>
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function renderCargoTab(container) {
+            const section = document.createElement('div');
+            section.className = 'section open';
+            section.innerHTML = `
+                <div class="section-header" onclick="toggleSection(this)">
+                    <span class="section-header-title">CARGO/ÁREA PRETENDIDA</span>
+                    <span class="section-toggle">+</span>
+                </div>
+                <div class="section-content">
+                    <div id="cargoContainer">
+                        <div class="repeatable-block">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Cargo Pretendido</label>
+                                    <input type="text" class="form-input" name="cargo_pretendido[]" placeholder="Ex: Analista de Sistemas">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Área</label>
+                                    <select class="form-select" name="cargo_area[]">
+                                        <option value="">Selecionar Área</option>
+                                        <option>Tecnologias de Informação</option>
+                                        <option>Administração e Gestão</option>
+                                        <option>Finanças e Contabilidade</option>
+                                        <option>Recursos Humanos</option>
+                                        <option>Marketing e Comunicação</option>
+                                        <option>Saúde e Medicina</option>
+                                        <option>Educação e Formação</option>
+                                        <option>Engenharia</option>
+                                        <option>Direito e Jurídico</option>
+                                        <option>Comércio e Vendas</option>
+                                        <option>Logística e Transportes</option>
+                                        <option>Turismo e Hotelaria</option>
+                                        <option>Construção Civil</option>
+                                        <option>Artes e Design</option>
+                                        <option>Agricultura e Pescas</option>
+                                        <option>Segurança e Defesa</option>
+                                        <option>Outro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add" onclick="addCargo()">
+                        <i class="fas fa-plus"></i> Adicionar Cargo
+                    </button>
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function addCargo() {
+            const container = document.getElementById('cargoContainer');
+            const block = document.createElement('div');
+            block.className = 'repeatable-block';
+            block.innerHTML = `
+                <button type="button" class="remove-block" onclick="this.closest('.repeatable-block').remove()"><i class="fas fa-times"></i></button>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Cargo Pretendido</label>
+                        <input type="text" class="form-input" name="cargo_pretendido[]" placeholder="Ex: Analista de Sistemas">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Área</label>
+                        <select class="form-select" name="cargo_area[]">
+                            <option value="">Selecionar Área</option>
+                            <option>Tecnologias de Informação</option>
+                            <option>Administração e Gestão</option>
+                            <option>Finanças e Contabilidade</option>
+                            <option>Recursos Humanos</option>
+                            <option>Marketing e Comunicação</option>
+                            <option>Saúde e Medicina</option>
+                            <option>Educação e Formação</option>
+                            <option>Engenharia</option>
+                            <option>Direito e Jurídico</option>
+                            <option>Comércio e Vendas</option>
+                            <option>Logística e Transportes</option>
+                            <option>Turismo e Hotelaria</option>
+                            <option>Construção Civil</option>
+                            <option>Artes e Design</option>
+                            <option>Agricultura e Pescas</option>
+                            <option>Segurança e Defesa</option>
+                            <option>Outro</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+            container.appendChild(block);
+            animateNewBlock(block);
+        }
+
+        function renderIdiomasTab(container) {
+            const section = document.createElement('div');
+            section.className = 'section open';
+            section.innerHTML = `
+                <div class="section-header" onclick="toggleSection(this)">
+                    <span class="section-header-title">IDIOMAS</span>
+                    <span class="section-toggle">+</span>
+                </div>
+                <div class="section-content">
+                    <div id="idiomasContainer"></div>
+                    <button type="button" class="btn-add" onclick="addIdioma()">
+                        <i class="fas fa-plus"></i> Adicionar Idioma
+                    </button>
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function renderExperienciaTab(container) {
+            const section = document.createElement('div');
+            section.className = 'section open';
+            section.innerHTML = `
+                <div class="section-header" onclick="toggleSection(this)">
+                    <span class="section-header-title">EXPERIÊNCIA PROFISSIONAL</span>
+                    <span class="section-toggle">+</span>
+                </div>
+                <div class="section-content">
+                    <div id="experienciaContainer"></div>
+                    <button type="button" class="btn-add" onclick="addExperiencia()">
+                        <i class="fas fa-plus"></i> Adicionar Experiência
+                    </button>
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function renderEducacaoTab(container) {
+            const section = document.createElement('div');
+            section.className = 'section open';
+            section.innerHTML = `
+                <div class="section-header" onclick="toggleSection(this)">
+                    <span class="section-header-title">EDUCAÇÃO E FORMAÇÃO</span>
+                    <span class="section-toggle">+</span>
+                </div>
+                <div class="section-content">
+                    <div id="educacaoContainer"></div>
+                    <button type="button" class="btn-add" onclick="addEducacao()">
+                        <i class="fas fa-plus"></i> Adicionar Educação
+                    </button>
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function renderCompetenciasTab(container) {
+            const section = document.createElement('div');
+            section.className = 'section open';
+            section.innerHTML = `
+                <div class="section-header" onclick="toggleSection(this)">
+                    <span class="section-header-title">COMPETÊNCIAS PROFISSIONAIS</span>
+                    <span class="section-toggle">+</span>
+                </div>
+                <div class="section-content">
+                    <div id="competenciasContainer"></div>
+                    <button type="button" class="btn-add" onclick="addCompetencia()">
+                        <i class="fas fa-plus"></i> Adicionar Competência
+                    </button>
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function renderInteressesTab(container) {
+            const section = document.createElement('div');
+            section.className = 'section open';
+            section.innerHTML = `
+                <div class="section-header" onclick="toggleSection(this)">
+                    <span class="section-header-title">INTERESSES E HOBBIES</span>
+                    <span class="section-toggle">+</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label class="form-label">Adicionar Interesse</label>
+                        <div class="interest-input-wrapper">
+                            <input type="text" class="form-input" id="interestInput" placeholder="Ex: Futebol, Leitura, Música..." name="novo_interesse">
+                            <button type="button" onclick="addInterest()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="interestsContainer" class="interests-list"></div>
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function renderAdicionaisTab(container) {
+            const section = document.createElement('div');
+            section.className = 'section open';
+            section.innerHTML = `
+                <div class="section-header" onclick="toggleSection(this)">
+                    <span class="section-header-title">INFORMAÇÕES ADICIONAIS</span>
+                    <span class="section-toggle">+</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label class="form-label">Certificações</label>
+                        ${createRichEditorHTML('certificacoes', 'Ex: Certificado SCRUM Master, AWS Solutions Architect...')}
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Prêmios e Reconhecimentos</label>
+                        ${createRichEditorHTML('premios', 'Ex: Prêmio de Melhor Funcionário 2023...')}
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Publicações e Projetos</label>
+                        ${createRichEditorHTML('publicacoes', 'Ex: Artigos publicados, projetos github, portfólio...')}
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Observações</label>
+                        ${createRichEditorHTML('observacoes', 'Qualquer outra informação relevante...')}
+                    </div>
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function toggleSection(header) {
+            const section = header.closest('.section');
+            section.classList.toggle('open');
+            section.classList.toggle('collapsed');
+        }
+
+        function addIdioma() {
+            const container = document.getElementById('idiomasContainer');
+            const block = document.createElement('div');
+            block.className = 'repeatable-block';
+            const nivelOptions = `
+                <option value="">Nível</option>
+                <option value="A1">A1 - Iniciante</option>
+                <option value="A2">A2 - Básico</option>
+                <option value="B1">B1 - Intermediário</option>
+                <option value="B2">B2 - Independente</option>
+                <option value="C1">C1 - Avançado</option>
+                <option value="C2">C2 - Fluente</option>
+                <option value="Nativo">Nativo</option>
+            `;
+            block.innerHTML = `
+                <button type="button" class="remove-block" onclick="this.closest('.repeatable-block').remove()"><i class="fas fa-times"></i></button>
+                <div class="form-group">
+                    <label class="form-label">Idioma *</label>
+                    <input type="text" class="form-input" name="idioma[]" placeholder="Ex: Inglês, Francês" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="font-size:16px;text-transform:none;letter-spacing:0;color:#25345f;">Compreensão</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Ouvir</label>
+                    <select class="form-select" name="idioma_ouvir[]">${nivelOptions}</select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Ler</label>
+                    <select class="form-select" name="idioma_ler[]">${nivelOptions}</select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="font-size:16px;text-transform:none;letter-spacing:0;color:#25345f;">Produção Oral</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Interação</label>
+                    <select class="form-select" name="idioma_interacao[]">${nivelOptions}</select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Produção</label>
+                    <select class="form-select" name="idioma_producao[]">${nivelOptions}</select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="font-size:16px;text-transform:none;letter-spacing:0;color:#25345f;">Produção Escrita</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Escrever</label>
+                    <select class="form-select" name="idioma_escrever[]">${nivelOptions}</select>
+                </div>
+            `;
+            container.appendChild(block);
+            animateNewBlock(block);
+        }
+
+        function addExperiencia() {
+            const container = document.getElementById('experienciaContainer');
+            const block = document.createElement('div');
+            block.className = 'repeatable-block';
+            block.innerHTML = `
+                <button type="button" class="remove-block" onclick="this.closest('.repeatable-block').remove()"><i class="fas fa-times"></i></button>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Data Início</label>
+                        <div class="date-wrapper">
+                            <button type="button" class="date-display-btn placeholder-text" onclick="toggleCalendar(this,'exp_inicio[]')">
+                                <i class="fas fa-calendar-alt cal-icon"></i>
+                                <span class="date-text">Selecionar data</span>
+                                <i class="fas fa-chevron-down date-chevron"></i>
+                            </button>
+                            <input type="hidden" name="exp_inicio[]">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Data Fim</label>
+                        <div class="date-wrapper">
+                            <button type="button" class="date-display-btn placeholder-text data-fim-btn" onclick="toggleCalendar(this,'exp_fim[]')">
+                                <i class="fas fa-calendar-alt cal-icon"></i>
+                                <span class="date-text">Selecionar data</span>
+                                <i class="fas fa-chevron-down date-chevron"></i>
+                            </button>
+                            <input type="hidden" name="exp_fim[]" class="data-fim-hidden">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-group">
+                        <label class="form-label" style="margin-bottom:0;">Atualmente nesta posição</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" onchange="toggleDataFim(this)">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group"><label class="form-label">Função *</label><input type="text" class="form-input" name="exp_funcao[]" placeholder="Sua função" required></div>
+                <div class="form-group"><label class="form-label">Empresa *</label><input type="text" class="form-input" name="exp_empresa[]" placeholder="Nome da empresa" required></div>
+                <div class="form-group"><label class="form-label">Localidade</label><input type="text" class="form-input" name="exp_local[]" placeholder="Cidade/País"></div>
+                <div class="form-group"><label class="form-label">Descrição</label>${createRichEditorHTML('exp_descricao[]', 'Descreva suas responsabilidades...')}</div>
+            `;
+            container.appendChild(block);
+            animateNewBlock(block);
+        }
+
+        function addEducacao() {
+            const container = document.getElementById('educacaoContainer');
+            const block = document.createElement('div');
+            block.className = 'repeatable-block';
+            block.innerHTML = `
+                <button type="button" class="remove-block" onclick="this.closest('.repeatable-block').remove()"><i class="fas fa-times"></i></button>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Data Início</label>
+                        <div class="date-wrapper">
+                            <button type="button" class="date-display-btn placeholder-text" onclick="toggleCalendar(this,'edu_inicio[]')">
+                                <i class="fas fa-calendar-alt cal-icon"></i>
+                                <span class="date-text">Selecionar data</span>
+                                <i class="fas fa-chevron-down date-chevron"></i>
+                            </button>
+                            <input type="hidden" name="edu_inicio[]">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Data Fim</label>
+                        <div class="date-wrapper">
+                            <button type="button" class="date-display-btn placeholder-text data-fim-btn" onclick="toggleCalendar(this,'edu_fim[]')">
+                                <i class="fas fa-calendar-alt cal-icon"></i>
+                                <span class="date-text">Selecionar data</span>
+                                <i class="fas fa-chevron-down date-chevron"></i>
+                            </button>
+                            <input type="hidden" name="edu_fim[]" class="data-fim-hidden">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-group">
+                        <label class="form-label" style="margin-bottom:0;">Atualmente a estudar</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" onchange="toggleDataFim(this)">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group"><label class="form-label">Curso *</label><input type="text" class="form-input" name="edu_curso[]" placeholder="Ex: Licenciatura em Informática" required></div>
+                <div class="form-group"><label class="form-label">Instituição *</label><input type="text" class="form-input" name="edu_inst[]" placeholder="Nome da instituição" required></div>
+                <div class="form-group"><label class="form-label">Localidade</label><input type="text" class="form-input" name="edu_local[]" placeholder="Cidade/País"></div>
+            `;
+            container.appendChild(block);
+            animateNewBlock(block);
+        }
+
+        function addCompetencia() {
+            const container = document.getElementById('competenciasContainer');
+            const block = document.createElement('div');
+            block.className = 'repeatable-block';
+            block.innerHTML = `
+                <button type="button" class="remove-block" onclick="this.closest('.repeatable-block').remove()"><i class="fas fa-times"></i></button>
+                <div class="form-group"><label class="form-label">Tipo *</label><input type="text" class="form-input" name="comp_tipo[]" placeholder="Ex: JavaScript, Liderança, Comunicação" required></div>
+                <div class="form-group"><label class="form-label">Nível</label>
+                    <select class="form-select" name="comp_nivel[]">
+                        <option value="">Selecionar</option>
+                        <option>Iniciante</option>
+                        <option>Intermediário</option>
+                        <option>Avançado</option>
+                        <option>Especialista</option>
+                    </select>
+                </div>
+            `;
+            container.appendChild(block);
+            animateNewBlock(block);
+        }
+
+        function addInterest() {
+            const input = document.getElementById('interestInput');
+            const value = input.value.trim();
+            if (!value) return;
+
+            const container = document.getElementById('interestsContainer');
+            const badge = document.createElement('div');
+            badge.className = 'interest-badge';
+            badge.innerHTML = `
+                ${value}
+                <button type="button" onclick="this.closest('.interest-badge').remove()">×</button>
+            `;
+            container.appendChild(badge);
+            input.value = '';
+            input.focus();
+        }
+
+        function toggleDataFim(checkbox) {
+            const block = checkbox.closest('.repeatable-block');
+            const btn = block.querySelector('.data-fim-btn');
+            const hidden = block.querySelector('.data-fim-hidden');
+            if (!btn) return;
+            const disabled = checkbox.checked;
+            btn.disabled = disabled;
+            btn.style.opacity = disabled ? '0.38' : '1';
+            btn.style.pointerEvents = disabled ? 'none' : '';
+            if (disabled) {
+                btn.querySelector('.date-text').textContent = 'Selecionar data';
+                btn.classList.remove('has-value');
+                btn.classList.add('placeholder-text');
+                if (hidden) hidden.value = '';
+                closeAllCalendars();
+            }
+        }
+
+        // ── CALENDAR ENGINE ──────────────────────────────────────────
+        const MONTHS_PT = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+                           'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+        const DAYS_PT   = ['seg','ter','qua','qui','sex','sáb','dom'];
+
+        // ── RICH TEXT EDITOR ─────────────────────────────────────────
+        function createRichEditorHTML(name, placeholder) {
+            const id = 'rich_' + name.replace(/[\[\]]/g, '_') + '_' + Math.random().toString(36).slice(2, 7);
+            return `
+                <div class="rich-editor-wrapper" data-name="${name}">
+                    <div class="rich-text-toolbar">
+                        <button type="button" class="toolbar-btn" title="Negrito" data-cmd="bold"><b>B</b></button>
+                        <button type="button" class="toolbar-btn" title="Itálico" data-cmd="italic"><i>I</i></button>
+                        <button type="button" class="toolbar-btn" title="Sublinhado" data-cmd="underline"><u>U</u></button>
+                        <button type="button" class="toolbar-btn" title="Lista com marcadores" data-cmd="insertUnorderedList"><i class="fas fa-list-ul"></i></button>
+                        <button type="button" class="toolbar-btn" title="Lista numerada" data-cmd="insertOrderedList"><i class="fas fa-list-ol"></i></button>
+                        <button type="button" class="toolbar-btn" title="Alinhar à esquerda" data-cmd="justifyLeft"><i class="fas fa-align-left"></i></button>
+                        <button type="button" class="toolbar-btn" title="Centralizar" data-cmd="justifyCenter"><i class="fas fa-align-center"></i></button>
+                        <button type="button" class="toolbar-btn" title="Alinhar à direita" data-cmd="justifyRight"><i class="fas fa-align-right"></i></button>
+                        <button type="button" class="toolbar-btn" title="Justificado" data-cmd="justifyFull"><i class="fas fa-align-justify"></i></button>
+                    </div>
+                    <div class="rich-editor"
+                         contenteditable="true"
+                         id="${id}"
+                         data-placeholder="${placeholder}"
+                         spellcheck="true"></div>
+                    <input type="hidden" name="${name}" class="rich-editor-hidden">
+                </div>
+            `;
+        }
+
+        // Attach toolbar button logic (event delegation on document)
+        document.addEventListener('mousedown', function(e) {
+            const btn = e.target.closest('.toolbar-btn[data-cmd]');
+            if (!btn) return;
+            e.preventDefault();
+            const wrapper = btn.closest('.rich-editor-wrapper');
+            const editor = wrapper ? wrapper.querySelector('.rich-editor') : null;
+            if (editor) {
+                editor.focus();
+                document.execCommand(btn.dataset.cmd, false, null);
+                syncRichEditor(editor);
+                updateToolbarState(wrapper);
+            }
+        });
+
+        // Sync contenteditable → hidden input on every input/keyup
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('rich-editor')) {
+                syncRichEditor(e.target);
+            }
+        }, true);
+
+        document.addEventListener('keyup', function(e) {
+            if (e.target.classList.contains('rich-editor')) {
+                updateToolbarState(e.target.closest('.rich-editor-wrapper'));
+            }
+        }, true);
+
+        document.addEventListener('mouseup', function(e) {
+            if (e.target.closest('.rich-editor-wrapper')) {
+                const wrapper = e.target.closest('.rich-editor-wrapper');
+                if (wrapper) updateToolbarState(wrapper);
+            }
+        });
+
+        function syncRichEditor(editor) {
+            const wrapper = editor.closest('.rich-editor-wrapper');
+            if (!wrapper) return;
+            const hidden = wrapper.querySelector('.rich-editor-hidden');
+            if (hidden) hidden.value = editor.innerHTML;
+        }
+
+        function updateToolbarState(wrapper) {
+            if (!wrapper) return;
+            wrapper.querySelectorAll('.toolbar-btn[data-cmd]').forEach(btn => {
+                const cmd = btn.dataset.cmd;
+                try {
+                    const active = document.queryCommandState(cmd);
+                    btn.style.background = active ? 'rgba(27,67,180,0.15)' : '';
+                    btn.style.borderColor = active ? 'rgba(27,67,180,0.4)' : '';
+                } catch(e) {}
+            });
+        }
+
+        // Placeholder behavior for rich editors
+        document.addEventListener('focus', function(e) {
+            if (e.target.classList.contains('rich-editor')) {
+                e.target.classList.remove('empty');
+            }
+        }, true);
+        document.addEventListener('blur', function(e) {
+            if (e.target.classList.contains('rich-editor')) {
+                const isEmpty = e.target.innerText.trim() === '';
+                e.target.innerHTML = isEmpty ? '' : e.target.innerHTML;
+                syncRichEditor(e.target);
+            }
+        }, true);
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('rich-editor')) {
+                syncRichEditor(e.target);
+            }
+        }, true);
+        // ── END RICH TEXT EDITOR ─────────────────────────────────────
+
+        let activeCalBtn = null;
+
+        function closeAllCalendars(animated = true) {
+            document.querySelectorAll('.custom-calendar').forEach(cal => {
+                cal.remove();
+            });
+            if (activeCalBtn) {
+                activeCalBtn.classList.remove('open');
+                activeCalBtn = null;
+            }
+        }
+
+        function toggleCalendar(btn, fieldName) {
+            const isOpen = btn.classList.contains('open');
+            closeAllCalendars(true);
+            if (isOpen) return;
+
+            btn.classList.add('open');
+            activeCalBtn = btn;
+
+            const hidden = btn.closest('.date-wrapper').querySelector('input[type="hidden"]');
+            let selDate = hidden.value ? new Date(hidden.value + 'T00:00:00') : null;
+            const today = new Date();
+            let viewYear  = selDate ? selDate.getFullYear() : today.getFullYear();
+            let viewMonth = selDate ? selDate.getMonth()    : today.getMonth();
+            let yearPanelOpen = false;
+            let yearBase = Math.floor((viewYear - 6) / 12) * 12;
+
+            const cal = document.createElement('div');
+            cal.className = 'custom-calendar';
+
+            function render() {
+                const firstDay = new Date(viewYear, viewMonth, 1);
+                // Monday-based: Mon=0 ... Sun=6
+                let startDow = (firstDay.getDay() + 6) % 7;
+                const daysInMonth  = new Date(viewYear, viewMonth + 1, 0).getDate();
+                const daysInPrev   = new Date(viewYear, viewMonth, 0).getDate();
+
+                const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+                const selStr   = selDate
+                    ? `${selDate.getFullYear()}-${String(selDate.getMonth()+1).padStart(2,'0')}-${String(selDate.getDate()).padStart(2,'0')}`
+                    : null;
+
+                let cells = '';
+                // prev month filler
+                for (let i = startDow - 1; i >= 0; i--) {
+                    cells += `<div class="cal-day cal-day-other">${daysInPrev - i}</div>`;
+                }
+                // current month
+                for (let d = 1; d <= daysInMonth; d++) {
+                    const dStr = `${viewYear}-${String(viewMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                    let cls = 'cal-day';
+                    if (dStr === selStr)   cls += ' cal-day-selected';
+                    else if (dStr === todayStr) cls += ' cal-day-today';
+                    cells += `<div class="${cls}" onclick="calPickDay(this,'${dStr}')">${d}</div>`;
+                }
+                // next month filler
+                const totalCells = Math.ceil((startDow + daysInMonth) / 7) * 7;
+                let next = 1;
+                while (startDow + daysInMonth + (next - 1) < totalCells) {
+                    cells += `<div class="cal-day cal-day-other">${next++}</div>`;
+                }
+
+                const yearOptions = Array.from({ length: 12 }, (_, idx) => yearBase + idx);
+                const yearPanel = yearPanelOpen ? `
+                    <div class="cal-year-panel">
+                        <div class="cal-year-panel-head">
+                            <button type="button" class="cal-nav-btn" id="calYearPrev" aria-label="Anos anteriores">&#8249;</button>
+                            <span>${yearOptions[0]} - ${yearOptions[yearOptions.length - 1]}</span>
+                            <button type="button" class="cal-nav-btn" id="calYearNext" aria-label="Pr&oacute;ximos anos">&#8250;</button>
+                        </div>
+                        <div class="cal-year-grid">
+                            ${yearOptions.map(year => `<button type="button" class="cal-year-option ${year === viewYear ? 'active' : ''}" data-year="${year}">${year}</button>`).join('')}
+                        </div>
+                    </div>
+                ` : '';
+
+                cal.innerHTML = `
+                    <div class="cal-header">
+                        <div class="cal-month-label">${MONTHS_PT[viewMonth]}</div>
+                        <div class="cal-year-nav">
+                            <div class="cal-year-row">
+                                <input class="cal-year-input" id="calYearInput" type="number" min="1900" max="2100" value="${viewYear}" aria-label="Ano">
+                                <button type="button" class="cal-year-picker-btn" id="calYearPicker" aria-label="Escolher ano">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="cal-nav">
+                                <button type="button" class="cal-nav-btn" id="calPrev">&#8249;</button>
+                                <button type="button" class="cal-nav-btn" id="calNext">&#8250;</button>
+                            </div>
+                        </div>
+                    </div>
+                    ${yearPanel}
+                    <div class="cal-weekdays">
+                        ${DAYS_PT.map(d => `<div class="cal-weekday">${d}</div>`).join('')}
+                    </div>
+                    <div class="cal-days">${cells}</div>
+                    <div class="cal-footer">
+                        <button type="button" class="cal-footer-btn" id="calClear">Limpar</button>
+                        <button type="button" class="cal-footer-btn cal-today-btn" id="calToday">Hoje</button>
+                    </div>
+                `;
+
+                cal.querySelector('#calPrev').onclick = (e) => {
+                    e.stopPropagation();
+                    viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+                    render();
+                };
+                cal.querySelector('#calNext').onclick = (e) => {
+                    e.stopPropagation();
+                    viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+                    render();
+                };
+                const yearInput = cal.querySelector('#calYearInput');
+                yearInput.onclick = (e) => {
+                    e.stopPropagation();
+                    yearInput.select();
+                };
+                yearInput.onkeydown = (e) => {
+                    e.stopPropagation();
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        yearInput.blur();
+                    }
+                };
+                yearInput.onchange = (e) => {
+                    e.stopPropagation();
+                    const nextYear = Math.max(1900, Math.min(2100, parseInt(yearInput.value, 10) || viewYear));
+                    viewYear = nextYear;
+                    yearBase = Math.floor((viewYear - 6) / 12) * 12;
+                    yearPanelOpen = false;
+                    render();
+                };
+                cal.querySelector('#calYearPicker').onclick = (e) => {
+                    e.stopPropagation();
+                    yearPanelOpen = !yearPanelOpen;
+                    yearBase = Math.floor((viewYear - 6) / 12) * 12;
+                    render();
+                };
+                if (yearPanelOpen) {
+                    cal.querySelector('#calYearPrev').onclick = (e) => {
+                        e.stopPropagation();
+                        yearBase -= 12;
+                        render();
+                    };
+                    cal.querySelector('#calYearNext').onclick = (e) => {
+                        e.stopPropagation();
+                        yearBase += 12;
+                        render();
+                    };
+                    cal.querySelectorAll('.cal-year-option').forEach(option => {
+                        option.onclick = (e) => {
+                            e.stopPropagation();
+                            viewYear = Number(option.dataset.year);
+                            yearPanelOpen = false;
+                            render();
+                        };
+                    });
+                }
+                cal.querySelector('#calClear').onclick = (e) => {
+                    e.stopPropagation();
+                    selDate = null;
+                    hidden.value = '';
+                    if (hidden.name) formMemory[dateMemoryKey(hidden)] = '';
+                    btn.querySelector('.date-text').textContent = 'Selecionar data';
+                    btn.classList.remove('has-value');
+                    btn.classList.add('placeholder-text');
+                    render();
+                };
+                cal.querySelector('#calToday').onclick = (e) => {
+                    e.stopPropagation();
+                    calPickDay(null, todayStr, btn, hidden, cal, true);
+                };
+            }
+
+            render();
+            btn.closest('.date-wrapper').appendChild(cal);
+
+            // Store refs on cal for calPickDay
+            cal._btn    = btn;
+            cal._hidden = hidden;
+        }
+
+        function calPickDay(el, dateStr, btn, hidden, cal, fromToday) {
+            // Support both call patterns
+            if (!btn) {
+                cal = el.closest('.custom-calendar');
+                btn    = cal._btn;
+                hidden = cal._hidden;
+            }
+
+            hidden.value = dateStr;
+            if (hidden.name) formMemory[dateMemoryKey(hidden)] = dateStr;
+            const [y, m, d] = dateStr.split('-').map(Number);
+            btn.querySelector('.date-text').textContent =
+                `${String(d).padStart(2,'0')}/${String(m).padStart(2,'0')}/${y}`;
+            btn.classList.add('has-value');
+            btn.classList.remove('placeholder-text');
+
+            closeAllCalendars(false);
+        }
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.date-wrapper')) {
+                closeAllCalendars(true);
+            }
+        }, { passive: true });
+        // ── END CALENDAR ENGINE ──────────────────────────────────────
+
+        function animateNewBlock(block) {
+            block.style.opacity = '0';
+            block.style.transform = 'translateY(16px) scale(0.96)';
+            block.style.filter = 'blur(4px)';
+            requestAnimationFrame(() => {
+                block.style.transition = 'opacity 0.4s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1), filter 0.35s ease';
+                block.style.opacity = '1';
+                block.style.transform = 'translateY(0) scale(1)';
+                block.style.filter = 'blur(0)';
+                setTimeout(() => {
+                    block.style.removeProperty('transition');
+                    block.style.removeProperty('filter');
+                }, 520);
+            });
+        }
+
+        document.getElementById('cvForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Guardar aba atual antes de recolher
+            saveTabData();
+
+            const data = {};
+
+            // Recolher da memória (campos de todas as abas)
+            Object.entries(formMemory).forEach(([key, value]) => {
+                if (key.startsWith('rich_')) {
+                    return;
+                } else if (key.startsWith('hidden_') || key.startsWith('dateBtn_') || key.startsWith('_repeat_') || key === 'interests') {
+                    // ignorar metadados internos
+                } else {
+                    // campos normais: nome_indice
+                    const match = key.match(/^(.+)_(\d+)$/);
+                    if (match) {
+                        const fieldName = match[1];
+                        const idx = parseInt(match[2]);
+                        if (fieldName.endsWith('[]')) {
+                            const k = fieldName.slice(0, -2);
+                            if (!data[k]) data[k] = [];
+                            data[k][idx] = value;
+                        } else {
+                            // se já existe valor do mesmo campo, mantém o último
+                            if (idx === 0 || data[fieldName] === undefined) {
+                                data[fieldName] = value;
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Limpar arrays de undefined
+            Object.keys(data).forEach(k => {
+                if (Array.isArray(data[k])) {
+                    data[k] = data[k].filter(v => v !== undefined && v !== '');
+                }
+            });
+
+            // Interesses da memória
+            if (formMemory['interests'] && formMemory['interests'].length > 0) {
+                data['interesses'] = formMemory['interests'];
+            }
+
+            if (uploadedPhoto) {
+                data.foto = uploadedPhoto.dataUrl;
+                data.foto_base64 = uploadedPhoto.base64;
+                data.foto_nome = uploadedPhoto.nome;
+                data.foto_tipo = uploadedPhoto.tipo;
+                data.foto_largura = uploadedPhoto.largura;
+                data.foto_altura = uploadedPhoto.altura;
+                data.foto_export_largura = uploadedPhoto.export_largura;
+                data.foto_export_altura = uploadedPhoto.export_altura;
+                data.photo = uploadedPhoto.dataUrl;
+                data.photo_base64 = uploadedPhoto.base64;
+                data.photo_name = uploadedPhoto.nome;
+                data.photo_type = uploadedPhoto.tipo;
+            }
+
+            // Identificar o tipo para o Switch do n8n
+            data.tipo_documento = 'cv';
+
+            // Identificar o chat_id do Telegram (passado via query string ?chat_id=xxx)
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('chat_id')) data.chat_id = params.get('chat_id');
+
+            const WEBHOOK_URL = '/.netlify/functions/gerar-cv';
+
+            const btnSubmit = this.querySelector('.btn-submit');
+            const actionSubmit = document.querySelector('.cv-action-submit');
+            [btnSubmit, actionSubmit].filter(Boolean).forEach(btn => {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> A enviar...';
+            });
+
+            try {
+                const res = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    const base64 = data.pdf;
+                    const binary = atob(base64);
+                    const bytes = new Uint8Array(binary.length);
+                    for (let i = 0; i < binary.length; i++) { bytes[i] = binary.charCodeAt(i); }
+                    const blob = new Blob([bytes], { type: 'application/pdf' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = data.filename || 'curriculo.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    [btnSubmit, actionSubmit].filter(Boolean).forEach(btn => {
+                        btn.innerHTML = '<i class="fas fa-check-circle"></i> Enviado com sucesso!';
+                        btn.style.background = 'linear-gradient(135deg, #15773d, #1ea854)';
+                    });
+                } else {
+                    throw new Error('Erro ' + res.status);
+                }
+            } catch (err) {
+                [btnSubmit, actionSubmit].filter(Boolean).forEach(btn => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-file-export"></i> Emitir CV';
+                });
+                alert('Erro ao enviar: ' + err.message);
+            }
+        });
+
+        window.addEventListener('load', () => {
+            initThemeToggle();
+            initIntro();
+            currentTab = null;
+            switchTab('info');
+        }, { passive: true });
+    </script>
+</body>
+</html>

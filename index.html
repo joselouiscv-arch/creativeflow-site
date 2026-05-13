@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreativeFlow - Documentos Profissionais</title>
+<meta name="description" content="Emite CVs, faturas e pró-formas profissionais em segundos com a CreativeFlow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0b1b2d;
+  --navy:#102a43;
+  --navy-2:#173b57;
+  --blue:#2f88b8;
+  --blue-soft:#dff2fb;
+  --sky:#8ed4f1;
+  --gold:#c39d3c;
+  --white:#fff;
+  --muted:#55708b;
+  --line:rgba(16,42,67,.13);
+  --glass:rgba(255,255,255,.72);
+  --glass-strong:rgba(255,255,255,.9);
+  --dark:#0d1d31;
+  --shadow:0 18px 48px rgba(16,42,67,.13);
+  --radius:18px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Manrope",Arial,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(145deg,#ffffff 0%,#eaf7fc 46%,#f9fbfd 100%);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:50;
+  height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 clamp(18px,4vw,54px);
+  background:linear-gradient(90deg,rgba(255,255,255,.9),rgba(226,242,250,.9));
+  border-bottom:1px solid rgba(255,255,255,.9);
+  box-shadow:0 6px 24px rgba(16,42,67,.08);
+}
+.nav-logo{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:700;
+  letter-spacing:.02em;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.nav-logo .creative{color:var(--blue)}
+.nav-logo .flow{color:var(--ink)}
+.nav-links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:5px;
+}
+.nav-links a,
+.nav-links button{
+  border:0;
+  background:transparent;
+  border-radius:9px;
+  padding:7px 13px;
+  color:#385672;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  transition:background .2s ease,color .2s ease,transform .2s ease;
+}
+.nav-links a:hover,
+.nav-links button:hover,
+.nav-links .act{
+  color:var(--blue);
+  background:rgba(47,136,184,.09);
+  transform:scale(1.03);
+}
+
+.hero{
+  min-height:calc(100svh - 62px);
+  padding:112px clamp(22px,5vw,72px) 72px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:62px 0 0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.72) 42%,rgba(170,213,233,.58) 66%,rgba(17,61,89,.34) 100%),
+    url("assets/website-hero-bg.jpeg") center/cover no-repeat;
+  z-index:-2;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:62px 0 0;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 76%,#eaf7fc 100%);
+  z-index:-1;
+}
+.hero-inner{
+  width:min(1180px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(360px,520px);
+  align-items:center;
+  gap:clamp(34px,6vw,82px);
+}
+.hero-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 15px;
+  border-radius:999px;
+  color:var(--blue);
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(47,136,184,.18);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.tag-pulse{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--blue);
+}
+.hero-title{
+  margin:24px 0 18px;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(46px,6vw,72px);
+  line-height:1.02;
+  color:var(--ink);
+  max-width:640px;
+  text-wrap:balance;
+}
+.hero-title em{
+  color:var(--blue);
+  font-style:normal;
+}
+.hero-sub{
+  max-width:520px;
+  color:#28516f;
+  font-size:clamp(16px,1.8vw,20px);
+  line-height:1.65;
+  font-weight:600;
+}
+.hero-btns{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+.btn-solid,.btn-ghost,.ab-btn,.cf-submit{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:0;
+  border-radius:12px;
+  padding:13px 28px;
+  font-weight:800;
+  transition:transform .2s ease,background .2s ease,box-shadow .2s ease;
+}
+.btn-solid,.ab-btn,.cf-submit{
+  color:#fff;
+  background:var(--blue);
+  box-shadow:0 12px 24px rgba(47,136,184,.22);
+}
+.btn-solid:hover,.ab-btn:hover,.cf-submit:hover{
+  background:#2478a6;
+  transform:scale(1.03);
+}
+.btn-ghost{
+  color:var(--navy);
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(47,136,184,.24);
+}
+.btn-ghost:hover{
+  transform:scale(1.03);
+  background:#fff;
+}
+.hero-stats-bar{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin-top:34px;
+  border:1px solid rgba(47,136,184,.18);
+  border-radius:16px;
+  overflow:hidden;
+  background:rgba(255,255,255,.58);
+  box-shadow:0 12px 32px rgba(16,42,67,.09);
+}
+.hs-cell{
+  padding:16px 12px;
+  text-align:center;
+  border-right:1px solid rgba(47,136,184,.13);
+}
+.hs-cell:last-child{border-right:0}
+.hs-num{
+  display:block;
+  color:var(--blue);
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:24px;
+  font-weight:700;
+  line-height:1;
+}
+.hs-lbl{
+  display:block;
+  margin-top:7px;
+  color:#5d7387;
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.hero-doc-card{
+  padding:28px;
+  border-radius:22px;
+  background:rgba(255,255,255,.74);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:var(--shadow);
+}
+.hdc-label{
+  margin-bottom:18px;
+  color:var(--blue);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.hdc-list{display:grid;gap:10px}
+.hdc-item{
+  display:grid;
+  grid-template-columns:40px 1fr auto;
+  align-items:center;
+  gap:13px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.95);
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.hdc-item:hover{
+  transform:scale(1.03);
+  background:#fff;
+  border-color:rgba(47,136,184,.35);
+}
+.hdc-ico{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:#e8f5fb;
+  color:var(--blue);
+  font-size:19px;
+}
+.hdc-name{font-size:14px;font-weight:800;color:var(--ink)}
+.hdc-desc{font-size:12px;color:#57708a}
+.hdc-arrow{color:var(--blue)}
+
+.wrap{width:min(1180px,calc(100% - 42px));margin:0 auto}
+section{scroll-margin-top:80px}
+.section-pad{padding:82px 0}
+.sec-head{text-align:center;margin-bottom:42px}
+.sec-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+}
+.sec-divider::before,.sec-divider::after{
+  content:"";
+  width:min(160px,25vw);
+  height:1px;
+  background:var(--line);
+}
+.sec-label{
+  color:var(--blue);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.sec-title{
+  margin-top:8px;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(34px,4.8vw,54px);
+  line-height:1.05;
+  color:var(--ink);
+}
+.sec-sub{
+  margin:12px auto 0;
+  max-width:640px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.services-wrapper{
+  background:linear-gradient(135deg,#0d1d31,#142f4a);
+  padding:64px 0;
+}
+.services-wrapper .sec-title{color:#fff}
+.services-wrapper .sec-sub{color:rgba(255,255,255,.66)}
+.services-wrapper .sec-divider::before,.services-wrapper .sec-divider::after{background:rgba(255,255,255,.16)}
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.svc-card{
+  min-height:230px;
+  padding:28px;
+  border-radius:16px;
+  color:#fff;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.12);
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.svc-card:hover{
+  transform:scale(1.03);
+  background:rgba(255,255,255,.09);
+  border-color:rgba(142,212,241,.42);
+}
+.svc-num{
+  color:rgba(142,212,241,.24);
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:42px;
+  font-weight:700;
+  line-height:1;
+}
+.svc-ico{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  margin:16px 0 18px;
+  border-radius:11px;
+  color:var(--sky);
+  background:rgba(142,212,241,.12);
+  border:1px solid rgba(142,212,241,.2);
+  font-size:22px;
+}
+.svc-name{font-size:17px;font-weight:900;margin-bottom:7px}
+.svc-desc{color:rgba(255,255,255,.66);font-size:13px;line-height:1.6}
+.svc-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:20px;
+  color:var(--sky);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.portfolio{
+  background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(234,247,252,.82));
+}
+.port-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+.port-card{
+  overflow:hidden;
+  border-radius:16px;
+  background:rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:0 16px 36px rgba(16,42,67,.1);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.port-card:hover{
+  transform:scale(1.03);
+  box-shadow:0 24px 48px rgba(16,42,67,.16);
+}
+.port-thumb{
+  aspect-ratio:4/3.9;
+  overflow:hidden;
+  background:#eef6fa;
+}
+.port-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.port-body{
+  position:relative;
+  min-height:174px;
+  padding:22px 74px 22px 22px;
+}
+.port-name{font-size:20px;font-weight:900;color:var(--ink);margin-bottom:10px}
+.port-desc{font-size:14px;color:#4d6379;line-height:1.6}
+.port-btn{
+  display:inline-flex;
+  gap:6px;
+  align-items:center;
+  margin-top:18px;
+  color:#2556d8;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.port-icon{
+  position:absolute;
+  right:18px;
+  bottom:18px;
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  color:#2556d8;
+  background:#eef3ff;
+  font-size:26px;
+}
+
+.about-wrapper{
+  padding:74px 0;
+  background:linear-gradient(135deg,#0d1d31,#132c46);
+}
+.about-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+  align-items:center;
+}
+.about-left .sec-title{color:#fff}
+.about-left p{
+  margin-top:18px;
+  color:rgba(255,255,255,.68);
+  font-size:15px;
+  line-height:1.75;
+}
+.feats{display:grid;gap:14px}
+.feat{
+  display:grid;
+  grid-template-columns:46px 1fr;
+  gap:14px;
+  align-items:start;
+  padding:17px;
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  transition:transform .2s ease,border-color .2s ease;
+}
+.feat:hover{transform:scale(1.03);border-color:rgba(142,212,241,.38)}
+.feat-ico{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  color:var(--sky);
+  background:rgba(142,212,241,.12);
+  font-size:22px;
+}
+.feat-title{color:#fff;font-weight:900}
+.feat-desc{margin-top:4px;color:rgba(255,255,255,.58);font-size:13px}
+
+.pf-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+.process-card,.faq-card,.contact-left,.contact-form,.agent-banner{
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.process-card{
+  padding:36px;
+  color:#fff;
+  background:linear-gradient(135deg,#0d1d31,#132c46);
+}
+.process-card .sec-title{color:#fff;font-size:36px}
+.steps{display:grid;gap:0;margin-top:28px}
+.step-item{
+  position:relative;
+  display:grid;
+  grid-template-columns:40px 1fr;
+  gap:16px;
+}
+.step-item:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  left:19px;
+  top:40px;
+  bottom:4px;
+  width:2px;
+  background:rgba(142,212,241,.18);
+}
+.step-dot{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:var(--sky);
+  border:2px solid rgba(142,212,241,.34);
+  background:rgba(142,212,241,.1);
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:700;
+  z-index:1;
+}
+.step-body{padding-bottom:24px}
+.step-title{font-weight:900;margin-bottom:4px}
+.step-desc{font-size:13px;color:rgba(255,255,255,.62);line-height:1.55}
+.faq-card{
+  padding:36px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.92);
+}
+.faq-card .sec-title{font-size:36px}
+.faq-list{display:grid;gap:12px;margin-top:28px}
+.faq-item{
+  overflow:hidden;
+  border-radius:13px;
+  background:rgba(255,255,255,.84);
+  border:1px solid rgba(16,42,67,.09);
+}
+.faq-q{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border:0;
+  background:transparent;
+  padding:17px 18px;
+  text-align:left;
+  color:var(--ink);
+  font-weight:800;
+}
+.faq-q i{color:var(--blue);transition:transform .2s ease}
+.faq-a{
+  display:none;
+  padding:0 18px 18px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.65;
+}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q i{transform:rotate(45deg)}
+
+.agent-section{padding:6px 0 70px}
+.agent-banner{
+  max-width:900px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:104px 1fr auto;
+  align-items:center;
+  gap:24px;
+  padding:26px 32px;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.95);
+}
+.ab-avatar{
+  width:96px;
+  height:96px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  border-radius:50%;
+  background:#f5fbff;
+  border:1px solid rgba(47,136,184,.2);
+}
+.ab-avatar img{width:74px;height:74px;object-fit:contain}
+.ab-title{
+  color:#2f7be6;
+  font-size:28px;
+  font-weight:900;
+  line-height:1.14;
+}
+.ab-sub{margin-top:7px;color:#4c6176;font-size:14px}
+
+.contact-inner{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:30px;
+  align-items:start;
+}
+.contact-left{
+  padding:36px;
+  color:#fff;
+  background:linear-gradient(135deg,#0d1d31,#132c46);
+}
+.contact-left .sec-title{color:#fff;font-size:36px}
+.contact-left p{margin-top:16px;color:rgba(255,255,255,.66);line-height:1.7}
+.ci-items{display:grid;gap:14px;margin-top:28px}
+.ci-row{display:grid;grid-template-columns:42px 1fr;gap:13px;align-items:center}
+.ci-icon{
+  width:42px;height:42px;display:grid;place-items:center;border-radius:11px;
+  color:var(--sky);background:rgba(142,212,241,.12);border:1px solid rgba(142,212,241,.2)
+}
+.ci-lbl{color:rgba(255,255,255,.45);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
+.ci-val{margin-top:1px;color:#fff;font-weight:700}
+.contact-form{
+  padding:36px;
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(255,255,255,.95);
+}
+.cf-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cf-field{display:grid;gap:7px;margin-bottom:14px}
+.cf-field label{
+  color:#4b6279;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.cf-field input,.cf-field textarea,.cf-field select{
+  width:100%;
+  border:1px solid rgba(16,42,67,.1);
+  border-radius:11px;
+  padding:13px 14px;
+  outline:none;
+  color:var(--ink);
+  background:rgba(255,255,255,.9);
+}
+.cf-field input:focus,.cf-field textarea:focus,.cf-field select:focus{border-color:rgba(47,136,184,.55);background:#fff}
+.cf-field textarea{resize:vertical;min-height:118px}
+.cf-submit{width:100%;margin-top:4px}
+
+footer{
+  padding:32px 18px 40px;
+  text-align:center;
+  color:#1b3248;
+  background:rgba(255,255,255,.74);
+  border-top:1px solid rgba(16,42,67,.08);
+}
+.ft-logo{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:21px;
+  font-weight:700;
+}
+.ft-logo span{color:var(--blue)}
+.ft-info{margin-top:6px;font-size:13px}
+.ft-author{margin-top:3px;font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#5b6f82}
+.ft-copy{margin-top:14px;font-size:12px;color:#7a8c9d}
+
+.chat-launch{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:80;
+  width:62px;
+  height:62px;
+  display:grid;
+  place-items:center;
+  border:0;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 14px 34px rgba(16,42,67,.2);
+  transition:transform .2s ease;
+}
+.chat-launch:hover{transform:scale(1.03)}
+.chat-launch img{width:42px;height:42px;object-fit:contain}
+.chat-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:90;
+  background:rgba(7,19,31,.2);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease;
+}
+.chat-backdrop.show{opacity:1;pointer-events:auto}
+.chat-drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  z-index:100;
+  width:min(420px,100%);
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  box-shadow:-22px 0 60px rgba(16,42,67,.22);
+  transform:translateX(105%);
+  transition:transform .24s ease;
+}
+.chat-drawer.open{transform:translateX(0)}
+.cd-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:18px;
+  color:#fff;
+  background:linear-gradient(135deg,#0d1d31,#173b57);
+}
+.cd-av{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:#fff;overflow:hidden}
+.cd-av img{width:36px;height:36px;object-fit:contain}
+.cd-info{flex:1}
+.cd-name{font-weight:900}
+.cd-status{color:rgba(255,255,255,.72);font-size:12px}
+.cd-close{
+  width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;
+}
+.cd-msgs{flex:1;overflow:auto;padding:18px;background:#f3f9fc}
+.cm{display:flex;gap:10px;margin-bottom:12px;align-items:flex-end}
+.cm.cu{justify-content:flex-end}
+.cm-bubble{
+  max-width:285px;
+  padding:11px 13px;
+  border-radius:15px;
+  color:var(--ink);
+  background:#fff;
+  box-shadow:0 5px 16px rgba(16,42,67,.08);
+  font-size:14px;
+  line-height:1.45;
+}
+.cu .cm-bubble{color:#fff;background:var(--blue)}
+.cm-av-w{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#fff;overflow:hidden;flex:0 0 auto}
+.cm-av-w img{width:24px;height:24px;object-fit:contain}
+.cm-av-u{color:#fff;background:var(--blue);font-size:11px;font-weight:900}
+.qr-wrap{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.qr{
+  border:1px solid rgba(47,136,184,.22);
+  border-radius:999px;
+  padding:7px 10px;
+  color:var(--blue);
+  background:#f5fbff;
+  font-size:12px;
+  font-weight:800;
+}
+.cd-footer{display:flex;gap:10px;padding:14px;border-top:1px solid var(--line)}
+.cd-input{
+  flex:1;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px 13px;
+  outline:none;
+}
+.cd-send{width:46px;border:0;border-radius:12px;color:#fff;background:var(--blue)}
+
+.reveal{opacity:1;transform:none}
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.vis{opacity:1;transform:translateY(0)}
+  .reveal-d1{transition-delay:.08s}
+  .reveal-d2{transition-delay:.14s}
+  .reveal-d3{transition-delay:.2s}
+  .hero-doc-card{animation:softFloat 6s ease-in-out infinite}
+  @keyframes softFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+}
+
+@media (max-width:980px){
+  .nav{height:auto;min-height:62px;align-items:flex-start;flex-direction:column;padding:12px 16px;gap:10px}
+  .nav-links{width:100%;overflow-x:auto;justify-content:flex-start;padding-bottom:3px}
+  .nav-links a,.nav-links button{white-space:nowrap;background:rgba(255,255,255,.62)}
+  .hero{padding:130px 20px 56px;min-height:auto}
+  .hero::before,.hero::after{inset:0}
+  .hero-inner{grid-template-columns:1fr;gap:28px}
+  .hero-title{font-size:44px}
+  .hero-doc-card{padding:20px}
+  .svc-grid,.port-grid,.about-inner,.pf-grid,.contact-inner{grid-template-columns:1fr}
+  .wrap{width:calc(100% - 28px)}
+  .services-wrapper,.about-wrapper{padding:48px 0}
+  .section-pad{padding:58px 0}
+  .agent-banner{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .cf-row-2{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .nav-logo{font-size:19px}
+  .hero-title{font-size:38px}
+  .hero-sub{font-size:15px}
+  .hero-stats-bar{grid-template-columns:1fr}
+  .hs-cell{border-right:0;border-bottom:1px solid rgba(47,136,184,.13)}
+  .hs-cell:last-child{border-bottom:0}
+  .hdc-item{grid-template-columns:38px 1fr auto}
+  .sec-title{font-size:34px}
+  .svc-card{min-height:auto}
+  .port-body{padding-right:68px}
+  .contact-left,.contact-form,.process-card,.faq-card{padding:24px}
+}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Navegação principal">
+  <a class="nav-logo" href="#home" aria-label="CreativeFlow">
+    <span class="creative">CREATIVE</span><span class="flow">FLOW</span>
+  </a>
+  <div class="nav-links">
+    <a class="act" href="#home">Home</a>
+    <a href="#services">Serviços</a>
+    <a href="#about">Sobre</a>
+    <a href="#contact">Contato</a>
+    <button type="button" onclick="openChat()">Suporte</button>
+    <a href="#faq">FAQ</a>
+    <a href="termos-condicoes.html">Termos e Condições</a>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-left reveal">
+        <div class="hero-tag"><span class="tag-pulse"></span>Cabo Verde - Plataforma oficial</div>
+        <h1 class="hero-title">Emite documentos profissionais em <em>segundos</em></h1>
+        <p class="hero-sub">Sem complexidade. Sem software pago. Cria de forma rápida e profissional.</p>
+        <div class="hero-btns">
+          <a class="btn-solid" href="#services"><i class="ti ti-file-plus"></i>Começar agora</a>
+          <a class="btn-ghost" href="#portfolio"><i class="ti ti-eye"></i>Ver modelos</a>
+        </div>
+        <div class="hero-stats-bar">
+          <div class="hs-cell"><span class="hs-num">4+</span><span class="hs-lbl">Tipos de documentos</span></div>
+          <div class="hs-cell"><span class="hs-num">&lt;1min</span><span class="hs-lbl">Tempo de geração</span></div>
+          <div class="hs-cell"><span class="hs-num">100%</span><span class="hs-lbl">Grátis para começar</span></div>
+        </div>
+      </div>
+
+      <div class="hero-doc-card reveal reveal-d2" aria-label="Documentos disponíveis">
+        <div class="hdc-label">O que podes emitir</div>
+        <div class="hdc-list">
+          <a class="hdc-item" href="cv.html">
+            <div class="hdc-ico"><i class="ti ti-id-badge-2"></i></div>
+            <div><div class="hdc-name">CV Profissional</div><div class="hdc-desc">Currículo moderno e limpo</div></div>
+            <i class="ti ti-chevron-right hdc-arrow"></i>
+          </a>
+          <a class="hdc-item" href="fatura.html">
+            <div class="hdc-ico"><i class="ti ti-receipt"></i></div>
+            <div><div class="hdc-name">Fatura Comercial</div><div class="hdc-desc">Fatura com dados fiscais</div></div>
+            <i class="ti ti-chevron-right hdc-arrow"></i>
+          </a>
+          <a class="hdc-item" href="proforma.html">
+            <div class="hdc-ico"><i class="ti ti-file-invoice"></i></div>
+            <div><div class="hdc-name">Pró-forma</div><div class="hdc-desc">Proposta com validade de 15 dias</div></div>
+            <i class="ti ti-chevron-right hdc-arrow"></i>
+          </a>
+          <a class="hdc-item" href="#contact">
+            <div class="hdc-ico"><i class="ti ti-certificate"></i></div>
+            <div><div class="hdc-name">Declaração</div><div class="hdc-desc">Declaração de rendimentos</div></div>
+            <i class="ti ti-chevron-right hdc-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="services-wrapper">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="sec-divider"><div class="sec-label">O que podes emitir</div></div>
+          <h2 class="sec-title">Our Services</h2>
+          <p class="sec-sub">Escolhe o tipo de documento que precisas e gera em menos de 1 minuto.</p>
+        </div>
+        <div class="svc-grid">
+          <a class="svc-card reveal reveal-d1" href="cv.html">
+            <div class="svc-num">01</div><div class="svc-ico"><i class="ti ti-id-badge-2"></i></div>
+            <div class="svc-name">CV Profissional</div>
+            <div class="svc-desc">Cria um CV profissional com os teus dados, experiência, formação e competências. Descarrega em PDF pronto a enviar.</div>
+            <div class="svc-link"><i class="ti ti-arrow-right"></i>Criar CV</div>
+          </a>
+          <a class="svc-card reveal reveal-d2" href="fatura.html">
+            <div class="svc-num">02</div><div class="svc-ico"><i class="ti ti-receipt"></i></div>
+            <div class="svc-name">Fatura Comercial</div>
+            <div class="svc-desc">Emite faturas comerciais com dados do cliente, produtos, valores, impostos e método de pagamento.</div>
+            <div class="svc-link"><i class="ti ti-arrow-right"></i>Emitir Fatura</div>
+          </a>
+          <a class="svc-card reveal reveal-d3" href="proforma.html">
+            <div class="svc-num">03</div><div class="svc-ico"><i class="ti ti-file-invoice"></i></div>
+            <div class="svc-name">Pró-forma</div>
+            <div class="svc-desc">Gera pró-formas com validade de 15 dias para enviar propostas comerciais antes da confirmação final.</div>
+            <div class="svc-link"><i class="ti ti-arrow-right"></i>Emitir Pró-forma</div>
+          </a>
+          <a class="svc-card reveal reveal-d1" href="#contact">
+            <div class="svc-num">04</div><div class="svc-ico"><i class="ti ti-certificate"></i></div>
+            <div class="svc-name">Declaração</div>
+            <div class="svc-desc">Cria declarações de rendimentos, de trabalho ou outras declarações formais personalizadas.</div>
+            <div class="svc-link"><i class="ti ti-arrow-right"></i>Criar Declaração</div>
+          </a>
+          <a class="svc-card reveal reveal-d2" href="#contact">
+            <div class="svc-num">05</div><div class="svc-ico"><i class="ti ti-address-card"></i></div>
+            <div class="svc-name">Carta de Apresentação</div>
+            <div class="svc-desc">Gera uma carta de apresentação profissional para acompanhar o teu CV nas candidaturas.</div>
+            <div class="svc-link"><i class="ti ti-arrow-right"></i>Criar Carta</div>
+          </a>
+          <a class="svc-card reveal reveal-d3" href="#contact">
+            <div class="svc-num">06</div><div class="svc-ico"><i class="ti ti-file-certificate"></i></div>
+            <div class="svc-name">Contrato Simples</div>
+            <div class="svc-desc">Cria contratos de prestação de serviços básicos com cláusulas essenciais já formatadas.</div>
+            <div class="svc-link"><i class="ti ti-arrow-right"></i>Criar Contrato</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad portfolio" id="portfolio">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-divider"><div class="sec-label">Modelos prontos para usar</div></div>
+        <h2 class="sec-title">Portfolio</h2>
+      </div>
+      <div class="port-grid">
+        <a class="port-card reveal reveal-d1" href="cv.html">
+          <div class="port-thumb"><img src="assets/service-cv.png" alt="Modelo de CV profissional" loading="lazy" decoding="async"></div>
+          <div class="port-body">
+            <div class="port-name">CV profissional</div>
+            <div class="port-desc">Cria um CV profissional com os teus dados, experiência, formação e competências.</div>
+            <div class="port-btn"><i class="ti ti-arrow-right"></i>Criar CV</div>
+            <i class="port-icon ti ti-file-text"></i>
+          </div>
+        </a>
+        <a class="port-card reveal reveal-d2" href="fatura.html">
+          <div class="port-thumb"><img src="assets/service-fatura.png" alt="Modelo de fatura comercial" loading="lazy" decoding="async"></div>
+          <div class="port-body">
+            <div class="port-name">Fatura comercial</div>
+            <div class="port-desc">Emite faturas comerciais com os dados do cliente, produtos, valores e método de pagamento.</div>
+            <div class="port-btn"><i class="ti ti-arrow-right"></i>Emitir Fatura</div>
+            <i class="port-icon ti ti-receipt"></i>
+          </div>
+        </a>
+        <a class="port-card reveal reveal-d3" href="proforma.html">
+          <div class="port-thumb"><img src="assets/service-proforma.png" alt="Modelo de fatura pró-forma" loading="lazy" decoding="async"></div>
+          <div class="port-body">
+            <div class="port-name">Pró-forma</div>
+            <div class="port-desc">Gera pró-formas com validade de 15 dias para enviar propostas antes da confirmação.</div>
+            <div class="port-btn"><i class="ti ti-arrow-right"></i>Emitir Pró-forma</div>
+            <i class="port-icon ti ti-file-invoice"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-wrapper">
+      <div class="wrap about-inner">
+        <div class="about-left reveal">
+          <div class="sec-label">Sobre</div>
+          <h2 class="sec-title">Uma plataforma simples, feita para quem precisa de resultados.</h2>
+          <p>A CreativeFlow nasceu da necessidade de ter uma forma rápida e profissional de emitir documentos sem depender de software complexo ou pago. Preenches o formulário, clicas em emitir, e o documento está pronto para descarregar em PDF.</p>
+        </div>
+        <div class="feats reveal reveal-d2">
+          <div class="feat"><div class="feat-ico"><i class="ti ti-bolt"></i></div><div><div class="feat-title">Rápido</div><div class="feat-desc">Menos de 1 minuto do formulário ao PDF final.</div></div></div>
+          <div class="feat"><div class="feat-ico"><i class="ti ti-lock-open"></i></div><div><div class="feat-title">Sem conta necessária</div><div class="feat-desc">Acedes, preenches e descarregas. Simples assim.</div></div></div>
+          <div class="feat"><div class="feat-ico"><i class="ti ti-file-check"></i></div><div><div class="feat-title">Profissional</div><div class="feat-desc">Documentos com formato limpo e apresentável.</div></div></div>
+          <div class="feat"><div class="feat-ico"><i class="ti ti-device-mobile"></i></div><div><div class="feat-title">Funciona em qualquer dispositivo</div><div class="feat-desc">No telemóvel, tablet ou computador. Sempre disponível.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="faq">
+    <div class="wrap pf-grid">
+      <div class="process-card reveal">
+        <div class="sec-label">Como funciona</div>
+        <h2 class="sec-title">Our Process</h2>
+        <div class="steps">
+          <div class="step-item"><div class="step-dot">01</div><div class="step-body"><div class="step-title">Escolhe</div><div class="step-desc">Seleciona CV, fatura ou pró-forma conforme o documento que precisas.</div></div></div>
+          <div class="step-item"><div class="step-dot">02</div><div class="step-body"><div class="step-title">Preenche</div><div class="step-desc">Insere os dados principais no formulário simples e direto.</div></div></div>
+          <div class="step-item"><div class="step-dot">03</div><div class="step-body"><div class="step-title">Gera</div><div class="step-desc">A CreativeFlow organiza as informações e prepara o PDF em segundos.</div></div></div>
+          <div class="step-item"><div class="step-dot">04</div><div class="step-body"><div class="step-title">Descarrega</div><div class="step-desc">Recebe o documento final pronto para guardar, enviar ou imprimir.</div></div></div>
+        </div>
+      </div>
+      <div class="faq-card reveal reveal-d2">
+        <div class="sec-label">Dúvidas frequentes</div>
+        <h2 class="sec-title">Perguntas Frequentes</h2>
+        <p class="sec-sub">Respostas às dúvidas mais comuns</p>
+        <div class="faq-list">
+          <div class="faq-item open"><button class="faq-q" type="button" onclick="faq(this)">Preciso de criar conta para usar?<i class="ti ti-plus"></i></button><div class="faq-a">Não. Acedes, preenches e descarregas sem nenhum registo ou conta.</div></div>
+          <div class="faq-item"><button class="faq-q" type="button" onclick="faq(this)">Os documentos são legalmente válidos?<i class="ti ti-plus"></i></button><div class="faq-a">A plataforma organiza os teus dados num formato profissional. A responsabilidade pelas informações preenchidas é do utilizador.</div></div>
+          <div class="faq-item"><button class="faq-q" type="button" onclick="faq(this)">Quanto tempo demora a gerar um documento?<i class="ti ti-plus"></i></button><div class="faq-a">Normalmente menos de 1 minuto, dependendo do dispositivo e da ligação.</div></div>
+          <div class="faq-item"><button class="faq-q" type="button" onclick="faq(this)">Como obtenho suporte?<i class="ti ti-plus"></i></button><div class="faq-a">Podes falar com a Jaqueline, a assistente virtual, ou contactar-nos pelo formulário.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="agent-section" id="jaqueline">
+    <div class="agent-banner reveal">
+      <div class="ab-avatar"><img src="assets/conversation-icon.png" alt="Assistente virtual Jaqueline" loading="lazy" decoding="async"></div>
+      <div>
+        <div class="ab-title">Tens dúvidas? Fala com a Jaqueline.</div>
+        <div class="ab-sub">A assistente virtual da CreativeFlow está disponível para ajudar.</div>
+      </div>
+      <button class="ab-btn" type="button" onclick="openChat()">Iniciar conversa</button>
+    </div>
+  </section>
+
+  <section class="section-pad" id="contact">
+    <div class="wrap contact-inner">
+      <div class="contact-left reveal">
+        <div class="sec-label">Fala connosco</div>
+        <h2 class="sec-title">Contacto</h2>
+        <p>Tens dúvidas ou precisas de ajuda personalizada? Entra em contacto connosco.</p>
+        <div class="ci-items">
+          <div class="ci-row"><div class="ci-icon"><i class="ti ti-mail"></i></div><div><div class="ci-lbl">Email</div><div class="ci-val">joselouis.cv@gmail.com</div></div></div>
+          <div class="ci-row"><div class="ci-icon"><i class="ti ti-phone"></i></div><div><div class="ci-lbl">Contacto</div><div class="ci-val">+238 978 31 65</div></div></div>
+          <div class="ci-row"><div class="ci-icon"><i class="ti ti-map-pin"></i></div><div><div class="ci-lbl">Endereço</div><div class="ci-val">Praia - Cabo Verde</div></div></div>
+        </div>
+      </div>
+      <form class="contact-form reveal reveal-d2">
+        <div class="cf-row-2">
+          <div class="cf-field"><label>Nome</label><input type="text" placeholder="O teu nome"></div>
+          <div class="cf-field"><label>Email</label><input type="email" placeholder="email@exemplo.com"></div>
+        </div>
+        <div class="cf-field"><label>Assunto</label><select><option>Suporte técnico</option><option>Pedido de documento</option><option>Parceria</option><option>Outro</option></select></div>
+        <div class="cf-field"><label>Mensagem</label><textarea placeholder="Escreve a tua mensagem..."></textarea></div>
+        <button class="cf-submit" type="submit"><i class="ti ti-send"></i>Enviar mensagem</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="ft-logo">Creative<span>Flow</span></div>
+  <div class="ft-info">© 2026 CreativeFlow - Cabo Verde</div>
+  <div class="ft-author">Autor: Luis José Dos Santos</div>
+  <div class="ft-copy">Feito com dedicação para simplificar documentos em Cabo Verde.</div>
+</footer>
+
+<button class="chat-launch" type="button" onclick="openChat()" aria-label="Abrir conversa com a Jaqueline">
+  <img src="assets/conversation-icon.png" alt="">
+</button>
+<div class="chat-backdrop" id="chat-backdrop" onclick="closeChat()"></div>
+<aside class="chat-drawer" id="chat-drawer" aria-label="Chat de suporte">
+  <div class="cd-header">
+    <div class="cd-av"><img src="assets/conversation-icon.png" alt=""></div>
+    <div class="cd-info">
+      <div class="cd-name">Jaqueline</div>
+      <div class="cd-status">Online agora - CreativeFlow</div>
+    </div>
+    <button class="cd-close" type="button" onclick="closeChat()" aria-label="Fechar chat"><i class="ti ti-x"></i></button>
+  </div>
+  <div class="cd-msgs" id="cd-msgs"></div>
+  <div class="cd-footer">
+    <input class="cd-input" id="cd-input" type="text" placeholder="Escreve a tua mensagem..." autocomplete="off">
+    <button class="cd-send" type="button" onclick="cdSend()" aria-label="Enviar mensagem"><i class="ti ti-send"></i></button>
+  </div>
+</aside>
+
+<script>
+const chatDrawer = document.getElementById('chat-drawer');
+const chatBackdrop = document.getElementById('chat-backdrop');
+const chatMsgs = document.getElementById('cd-msgs');
+const chatInput = document.getElementById('cd-input');
+let chatStarted = false;
+
+function openChat(){
+  chatDrawer.classList.add('open');
+  chatBackdrop.classList.add('show');
+  if(!chatStarted){
+    chatStarted = true;
+    setTimeout(function(){ addBot('Olá! Sou a Jaqueline da CreativeFlow. Como posso ajudar-te hoje?', ['Criar CV','Emitir Fatura','Pró-forma']); }, 250);
+  }
+  setTimeout(function(){ chatInput.focus(); }, 260);
+}
+
+function closeChat(){
+  chatDrawer.classList.remove('open');
+  chatBackdrop.classList.remove('show');
+}
+
+function avatar(){
+  return '<div class="cm-av-w"><img src="assets/conversation-icon.png" alt=""></div>';
+}
+
+function addBot(text, quicks){
+  const row = document.createElement('div');
+  row.className = 'cm cb';
+  row.innerHTML = avatar() + '<div><div class="cm-bubble">' + text + '</div></div>';
+  if(quicks && quicks.length){
+    const wrap = document.createElement('div');
+    wrap.className = 'qr-wrap';
+    quicks.forEach(function(item){
+      const button = document.createElement('button');
+      button.className = 'qr';
+      button.type = 'button';
+      button.textContent = item;
+      button.addEventListener('click', function(){ quickReply(item); });
+      wrap.appendChild(button);
+    });
+    row.lastElementChild.appendChild(wrap);
+  }
+  chatMsgs.appendChild(row);
+  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+}
+
+function addUser(text){
+  const row = document.createElement('div');
+  row.className = 'cm cu';
+  row.innerHTML = '<div class="cm-bubble">' + text + '</div><div class="cm-av-w cm-av-u">Tu</div>';
+  chatMsgs.appendChild(row);
+  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+}
+
+function quickReply(text){
+  addUser(text);
+  if(text.indexOf('CV') !== -1){
+    addBot('Perfeito. Podes abrir o formulário aqui: <a href="cv.html"><strong>Criar CV</strong></a>.', ['Emitir Fatura','Pró-forma']);
+  } else if(text.indexOf('Fatura') !== -1){
+    addBot('Claro. Segue para: <a href="fatura.html"><strong>Emitir fatura</strong></a>.', ['Criar CV','Pró-forma']);
+  } else {
+    addBot('Sem problema. Abre aqui: <a href="proforma.html"><strong>Emitir pró-forma</strong></a>.', ['Criar CV','Emitir Fatura']);
+  }
+}
+
+function cdSend(){
+  const text = chatInput.value.trim();
+  if(!text) return;
+  addUser(text);
+  chatInput.value = '';
+  setTimeout(function(){
+    addBot('Recebi a tua mensagem. Para acelerar, podes escolher um dos documentos ou usar o formulário de contacto.', ['Criar CV','Emitir Fatura','Pró-forma']);
+  }, 300);
+}
+
+chatInput.addEventListener('keydown', function(event){
+  if(event.key === 'Enter') cdSend();
+});
+
+document.querySelector('.contact-form').addEventListener('submit', function(event){
+  event.preventDefault();
+  alert('Mensagem registada. A CreativeFlow entra em contacto assim que possível.');
+});
+
+function faq(button){
+  const item = button.closest('.faq-item');
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(el){ el.classList.remove('open'); });
+  if(!open) item.classList.add('open');
+}
+
+const revealEnabled = window.matchMedia('(min-width: 901px) and (prefers-reduced-motion: no-preference)').matches;
+if(revealEnabled && 'IntersectionObserver' in window){
+  const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('vis');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('vis'); });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termos e Condições — CreativeFlow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #091540;
+    --persian: #1b2cc1;
+    --dusk: #3d518c;
+    --cornflower: #7692ff;
+    --icy: #abd2fa;
+    --text: #101522;
+    --muted: #667085;
+    --line: #dce2ef;
+    --white: #ffffff;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: #dceff7; }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Inter', Arial, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 42% 24%, rgba(255,255,255,0.74), transparent 32%),
+      linear-gradient(135deg, #eef9ff 0%, #d4eaf5 48%, #b7cfdf 100%);
+    overflow-x: hidden;
+  }
+
+  .site-header {
+    width: 100%;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(16px, 2.5vw, 28px) clamp(24px, 4vw, 56px);
+    background: rgba(9,21,64,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .brand {
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .brand span { color: var(--icy); }
+
+  .back-link {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--white); }
+
+  .hero {
+    width: calc(100% - clamp(26px, 4vw, 70px));
+    margin: 0 auto;
+    margin-top: clamp(72px, 8vw, 96px);
+    min-height: clamp(220px, 20vw, 320px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: clamp(80px, 8vw, 120px) clamp(32px, 5vw, 72px) clamp(36px, 4vw, 56px);
+    border-radius: 0 0 clamp(22px, 2.5vw, 40px) clamp(22px, 2.5vw, 40px);
+    overflow: hidden;
+    color: var(--white);
+    background: var(--navy);
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(27,44,193,0.55), rgba(9,21,64,0.88));
+    z-index: -1;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    margin-bottom: 14px;
+    padding: 0 14px;
+    border: 1px solid rgba(255,255,255,0.38);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    color: var(--icy);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.68);
+    font-size: clamp(0.83rem, 1vw, 0.95rem);
+    line-height: 1.6;
+  }
+
+  .update-badge {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 5px 13px;
+    border-radius: 999px;
+    background: rgba(171,210,250,0.14);
+    border: 1px solid rgba(171,210,250,0.38);
+    font-size: 0.7rem;
+    color: var(--icy);
+    font-weight: 600;
+  }
+
+  .page-shell {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: clamp(28px, 4vw, 48px) clamp(18px, 3vw, 28px) 72px;
+  }
+
+  .toc {
+    border: 1px solid rgba(255,255,255,0.58);
+    border-radius: 14px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.5), rgba(238,241,248,0.26)),
+      rgba(238,241,248,0.28);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 14px 36px rgba(37,53,91,0.09), inset 0 1px 0 rgba(255,255,255,0.78);
+    padding: 26px 30px;
+    margin-bottom: 28px;
+  }
+
+  .toc h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--persian);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .toc ol {
+    padding-left: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px 24px;
+  }
+
+  .toc ol li a {
+    font-size: 0.8rem;
+    color: var(--dusk);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .toc ol li a:hover { color: var(--persian); }
+
+  .section {
+    border: 1px solid rgba(255,255,255,0.54);
+    border-radius: 13px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.46), rgba(238,241,248,0.22)),
+      rgba(238,241,248,0.26);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 28px rgba(37,53,91,0.07), inset 0 1px 0 rgba(255,255,255,0.76);
+    padding: 26px 30px;
+    margin-bottom: 14px;
+    scroll-margin-top: 96px;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+
+  .section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(37,53,91,0.11), inset 0 1px 0 rgba(255,255,255,0.82);
+  }
+
+  .section-num {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    margin-bottom: 9px;
+    padding: 0 9px;
+    border-radius: 6px;
+    color: var(--persian);
+    background: rgba(118,146,255,0.12);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .section h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(0.95rem, 1.4vw, 1.18rem);
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .section p {
+    font-size: 0.865rem;
+    color: var(--muted);
+    margin-bottom: 9px;
+    line-height: 1.7;
+  }
+
+  .section ul, .section ol {
+    padding-left: 18px;
+    margin-bottom: 9px;
+  }
+
+  .section ul li, .section ol li {
+    font-size: 0.865rem;
+    color: var(--muted);
+    margin-bottom: 7px;
+    line-height: 1.62;
+  }
+
+  .highlight-box {
+    background: rgba(27,44,193,0.07);
+    border-left: 3px solid var(--persian);
+    border-radius: 0 9px 9px 0;
+    padding: 13px 17px;
+    margin: 12px 0 3px;
+  }
+
+  .highlight-box p {
+    color: var(--navy);
+    font-weight: 600;
+    margin: 0;
+    font-size: 0.84rem;
+  }
+
+  .warning-box {
+    background: rgba(234,179,8,0.08);
+    border-left: 3px solid #eab308;
+    border-radius: 0 9px 9px 0;
+    padding: 13px 17px;
+    margin: 12px 0 3px;
+  }
+
+  .warning-box p {
+    color: #854d0e;
+    font-weight: 600;
+    margin: 0;
+    font-size: 0.84rem;
+  }
+
+  .contact-card {
+    border: 1px solid rgba(255,255,255,0.58);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(9,21,64,0.88), rgba(27,44,193,0.7));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 22px 56px rgba(9,21,64,0.18), inset 0 1px 0 rgba(255,255,255,0.18);
+    padding: 34px 30px;
+    margin-top: 28px;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .contact-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .contact-card p {
+    color: rgba(255,255,255,0.66);
+    font-size: 0.855rem;
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+
+  .contact-card a {
+    display: inline-block;
+    background: var(--white);
+    color: var(--persian);
+    padding: 11px 26px;
+    border-radius: 9px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s var(--ease), box-shadow 0.2s;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.13);
+  }
+
+  .contact-card a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.17);
+  }
+
+  footer {
+    text-align: center;
+    padding: 26px 24px;
+    color: var(--muted);
+    font-size: 0.77rem;
+    font-weight: 500;
+  }
+
+  footer span { color: var(--persian); font-weight: 700; }
+
+  .animate {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.58s var(--ease), transform 0.58s var(--ease);
+  }
+  .animate.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    .toc ol { grid-template-columns: 1fr; }
+    .section, .toc { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand">Creative<span>Flow</span></a>
+  <a href="index.html" class="back-link">← Voltar ao site</a>
+</header>
+
+<div class="hero">
+  <span class="hero-tag">Legal</span>
+  <h1>Termos e Condições</h1>
+  <p>Lê com atenção antes de utilizar a plataforma CreativeFlow.</p>
+  <span class="update-badge">Última actualização: Maio de 2026</span>
+</div>
+
+<div class="page-shell">
+
+  <div class="toc animate">
+    <h2>Índice</h2>
+    <ol>
+      <li><a href="#s1">Aceitação dos Termos</a></li>
+      <li><a href="#s2">Descrição do Serviço</a></li>
+      <li><a href="#s3">Utilização Permitida</a></li>
+      <li><a href="#s4">Dados Pessoais e Privacidade</a></li>
+      <li><a href="#s5">Documentos Gerados</a></li>
+      <li><a href="#s6">Responsabilidade Legal</a></li>
+      <li><a href="#s7">Disponibilidade do Serviço</a></li>
+      <li><a href="#s8">Propriedade Intelectual</a></li>
+      <li><a href="#s9">Limitação de Responsabilidade</a></li>
+      <li><a href="#s10">Alterações aos Termos</a></li>
+      <li><a href="#s11">Lei Aplicável</a></li>
+      <li><a href="#s12">Contacto</a></li>
+    </ol>
+  </div>
+
+  <div class="section animate" id="s1">
+    <span class="section-num">01</span>
+    <h2>Aceitação dos Termos</h2>
+    <p>Ao aceder e utilizar a plataforma CreativeFlow, o utilizador declara ter lido, compreendido e aceite integralmente os presentes Termos e Condições de Utilização.</p>
+    <p>Caso não concorde com alguma das disposições aqui estabelecidas, deverá abster-se de utilizar o serviço.</p>
+    <div class="highlight-box"><p>A utilização da plataforma implica a aceitação automática destes termos, sem necessidade de assinatura ou registo prévio.</p></div>
+  </div>
+
+  <div class="section animate" id="s2">
+    <span class="section-num">02</span>
+    <h2>Descrição do Serviço</h2>
+    <p>A CreativeFlow é uma plataforma digital gratuita que permite a geração de documentos profissionais em formato PDF, nomeadamente:</p>
+    <ul>
+      <li><strong>Fatura</strong> — documento comercial com dados do emitente, cliente, produtos/serviços e método de pagamento;</li>
+      <li><strong>Pró-forma</strong> — proposta comercial com validade de 15 dias, sem carácter de cobrança definitiva;</li>
+      <li><strong>Curriculum Vitae (CV)</strong> — documento de apresentação profissional pessoal.</li>
+    </ul>
+    <p>O serviço é disponibilizado gratuitamente, podendo no futuro ser introduzidos planos pagos para funcionalidades adicionais, com aviso prévio aos utilizadores.</p>
+  </div>
+
+  <div class="section animate" id="s3">
+    <span class="section-num">03</span>
+    <h2>Utilização Permitida</h2>
+    <p>O utilizador compromete-se a usar a plataforma de forma lícita e responsável. É expressamente proibido:</p>
+    <ul>
+      <li>Gerar documentos com informações falsas, fraudulentas ou enganosas;</li>
+      <li>Utilizar a plataforma para fins ilegais ou que violem a legislação em vigor em Cabo Verde ou em qualquer outro país;</li>
+      <li>Tentar aceder, modificar ou interferir com o funcionamento técnico da plataforma;</li>
+      <li>Usar a plataforma para emitir documentos em nome de terceiros sem autorização expressa;</li>
+      <li>Reproduzir, copiar ou distribuir o código ou design da plataforma sem autorização.</li>
+    </ul>
+    <div class="warning-box"><p>⚠️ A CreativeFlow reserva-se o direito de bloquear o acesso a utilizadores que violem estas condições, sem aviso prévio.</p></div>
+  </div>
+
+  <div class="section animate" id="s4">
+    <span class="section-num">04</span>
+    <h2>Dados Pessoais e Privacidade</h2>
+    <p>A CreativeFlow foi desenhada com privacidade como princípio base:</p>
+    <ul>
+      <li><strong>Nenhum dado pessoal é armazenado</strong> nos servidores da plataforma após a geração do documento;</li>
+      <li>Os dados inseridos nos formulários são utilizados exclusivamente para gerar o documento PDF solicitado;</li>
+      <li>Após a geração e entrega do PDF, todos os dados do formulário são descartados automaticamente;</li>
+      <li>Não é necessário criar conta, fazer login ou fornecer endereço de e-mail para usar o serviço;</li>
+      <li>A plataforma não utiliza cookies de rastreamento nem partilha dados com terceiros para fins comerciais.</li>
+    </ul>
+    <div class="highlight-box"><p>O utilizador é o único responsável pelos dados que introduz. A CreativeFlow não tem acesso, controlo ou responsabilidade sobre o conteúdo dos documentos gerados.</p></div>
+  </div>
+
+  <div class="section animate" id="s5">
+    <span class="section-num">05</span>
+    <h2>Documentos Gerados</h2>
+    <p>Os documentos gerados pela CreativeFlow são entregues em formato PDF directamente para download no browser do utilizador.</p>
+    <ul>
+      <li>O utilizador é o único proprietário do documento gerado;</li>
+      <li>A CreativeFlow não guarda cópias dos documentos gerados;</li>
+      <li>Não é possível recuperar um documento após fechar a janela de download — o utilizador deve guardar o ficheiro imediatamente;</li>
+      <li>Os modelos de documento são criados com base em práticas comerciais comuns, mas podem necessitar de ajustes conforme a legislação fiscal do país do utilizador.</li>
+    </ul>
+  </div>
+
+  <div class="section animate" id="s6">
+    <span class="section-num">06</span>
+    <h2>Responsabilidade Legal dos Documentos</h2>
+    <div class="warning-box"><p>⚠️ Os documentos gerados pela CreativeFlow <strong>não têm validade fiscal ou legal automática</strong>. A responsabilidade pela conformidade legal é exclusivamente do utilizador.</p></div>
+    <p>Em particular:</p>
+    <ul>
+      <li>As <strong>faturas</strong> geradas não substituem faturas emitidas por software certificado pela Autoridade Tributária de Cabo Verde (DNRE) ou equivalente no país do utilizador;</li>
+      <li>O utilizador deve verificar junto das autoridades competentes se os documentos cumprem os requisitos legais aplicáveis;</li>
+      <li>A <strong>pró-forma</strong> é um documento de proposta comercial e não tem força executória;</li>
+      <li>O <strong>CV</strong> é um documento de apresentação pessoal e a sua veracidade é da responsabilidade exclusiva do utilizador.</li>
+    </ul>
+    <p>A CreativeFlow não se responsabiliza por quaisquer consequências legais, fiscais ou comerciais decorrentes da utilização dos documentos gerados.</p>
+  </div>
+
+  <div class="section animate" id="s7">
+    <span class="section-num">07</span>
+    <h2>Disponibilidade do Serviço</h2>
+    <p>A CreativeFlow esforça-se por manter o serviço disponível de forma contínua, mas não garante disponibilidade ininterrupta.</p>
+    <ul>
+      <li>O serviço pode estar temporariamente indisponível por razões de manutenção, actualização ou problemas técnicos;</li>
+      <li>A CreativeFlow não se responsabiliza por perdas ou inconvenientes causados por indisponibilidade temporária;</li>
+      <li>Funcionalidades podem ser alteradas, adicionadas ou removidas sem aviso prévio;</li>
+      <li>O serviço é fornecido "tal como está" (as-is), sem garantias de perfeição técnica.</li>
+    </ul>
+  </div>
+
+  <div class="section animate" id="s8">
+    <span class="section-num">08</span>
+    <h2>Propriedade Intelectual</h2>
+    <p>Todo o conteúdo da plataforma CreativeFlow — incluindo design, código, modelos de documento, logótipo e textos — é propriedade de <strong>Luís José dos Santos</strong> e está protegido por direitos de propriedade intelectual.</p>
+    <ul>
+      <li>É proibida a reprodução, cópia, distribuição ou utilização comercial de qualquer elemento da plataforma sem autorização escrita prévia;</li>
+      <li>Os modelos de documento podem ser utilizados livremente para fins pessoais ou comerciais do utilizador, mas não podem ser revendidos como templates;</li>
+      <li>A marca CreativeFlow e o respectivo logótipo são exclusivos do seu criador.</li>
+    </ul>
+  </div>
+
+  <div class="section animate" id="s9">
+    <span class="section-num">09</span>
+    <h2>Limitação de Responsabilidade</h2>
+    <p>Na máxima extensão permitida pela lei, a CreativeFlow e o seu criador não serão responsáveis por:</p>
+    <ul>
+      <li>Danos directos ou indirectos resultantes da utilização ou incapacidade de utilização da plataforma;</li>
+      <li>Erros, imprecisões ou omissões nos documentos gerados com base nos dados fornecidos pelo utilizador;</li>
+      <li>Perda de dados causada por falha técnica durante o processo de geração do documento;</li>
+      <li>Consequências decorrentes de documentos gerados com informações incorrectas fornecidas pelo utilizador;</li>
+      <li>Danos causados por acesso não autorizado de terceiros aos dados introduzidos durante a sessão.</li>
+    </ul>
+  </div>
+
+  <div class="section animate" id="s10">
+    <span class="section-num">10</span>
+    <h2>Alterações aos Termos</h2>
+    <p>A CreativeFlow reserva-se o direito de actualizar os presentes Termos e Condições a qualquer momento.</p>
+    <ul>
+      <li>As alterações entram em vigor no momento da sua publicação na plataforma;</li>
+      <li>A data da última actualização está indicada no topo deste documento;</li>
+      <li>A continuação da utilização da plataforma após alterações implica a aceitação dos novos termos;</li>
+      <li>Recomendamos a consulta periódica deste documento.</li>
+    </ul>
+  </div>
+
+  <div class="section animate" id="s11">
+    <span class="section-num">11</span>
+    <h2>Lei Aplicável</h2>
+    <p>Os presentes Termos e Condições são regidos pela legislação da <strong>República de Cabo Verde</strong>.</p>
+    <p>Qualquer litígio emergente da utilização da plataforma será submetido à jurisdição dos tribunais competentes de Cabo Verde, sem prejuízo de resolução amigável prévia.</p>
+  </div>
+
+  <div class="section animate" id="s12">
+    <span class="section-num">12</span>
+    <h2>Contacto</h2>
+    <p>Para questões relacionadas com estes Termos e Condições, ou para qualquer dúvida sobre a plataforma, podes entrar em contacto através dos canais disponíveis no site ou falar directamente com a assistente virtual Jaqueline.</p>
+  </div>
+
+  <div class="contact-card animate">
+    <h3>Tens alguma dúvida?</h3>
+    <p>Fala com a assistente virtual Jaqueline para esclarecimentos rápidos sobre a plataforma.</p>
+    <a href="index.html#jaqueline">Falar com a Jaqueline</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 <span>CreativeFlow</span> · Cabo Verde · Todos os direitos reservados</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 55);
+      }
+    });
+  }, { threshold: 0.07 });
+
+  document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

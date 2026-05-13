@@ -1,0 +1,17 @@
+{
+  "name": "quero-criar-um-web-site-vou",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@sparticuz/chromium": "^148.0.0",
+    "puppeteer-core": "^24.43.0"
+  }
+}
